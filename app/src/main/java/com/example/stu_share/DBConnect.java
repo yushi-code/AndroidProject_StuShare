@@ -1,4 +1,4 @@
-package com.georgebrown.stushare;
+package com.example.stu_share;
 
 import android.provider.BaseColumns;
 

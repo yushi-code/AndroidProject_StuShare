@@ -1,4 +1,4 @@
-package com.georgebrown.stushare;
+package com.example.stu_share;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -32,11 +33,8 @@ public class MainActivity extends AppCompatActivity {
         btnFgtPswd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //Intent intent =new Intent(getBaseContext(), Menu.class);
-                //startActivity(intent);
-
-
+                    Intent intent =new Intent(getBaseContext(), Menu.class);
+                    startActivity(intent);
             }
         });
         btnCreateAcc.setOnClickListener(new View.OnClickListener() {
@@ -54,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void openSignupActivity(){
-        //Intent intent =new Intent(this, Signup.class);
-        //startActivity(intent);
+        Intent intent =new Intent(this, Signup.class);
+        startActivity(intent);
     }
     public void openMainMenu(){
-        //Intent intent =new Intent(this, Menu.class);
-        //startActivity(intent);
+        Intent intent =new Intent(this, Menu.class);
+        startActivity(intent);
     }
 
 }
