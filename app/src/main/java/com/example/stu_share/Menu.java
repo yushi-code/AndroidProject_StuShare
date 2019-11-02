@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class Menu extends AppCompatActivity {
-        private Button btnMyEvents, btnViewEvents,btnCrtEvt;
+        private Button btnMyEvents, btnViewEvents,btnCrtEvt, btnMyProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,13 @@ public class Menu extends AppCompatActivity {
                 openCreateEvent();
             }
         });
+        btnMyProfile = findViewById(R.id.btnMyProfile);
+        btnMyProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMyProfileEvent();
+            }
+        });
 
     }
     public void openMyEventsActivity(){
@@ -47,6 +54,10 @@ public class Menu extends AppCompatActivity {
     }
     public void openCreateEvent(){
         Intent intent =new Intent(this, CreateDescription.class);
+        startActivity(intent);
+    }
+    public void openMyProfileEvent(){
+        Intent intent =new Intent(this, MyProfile.class);
         startActivity(intent);
     }
 }

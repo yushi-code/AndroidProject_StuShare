@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         btnFgtPswd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent intent =new Intent(getBaseContext(), Menu.class);
+                    Intent intent =new Intent(getBaseContext(), PasswordReset.class);
                     startActivity(intent);
             }
         });
