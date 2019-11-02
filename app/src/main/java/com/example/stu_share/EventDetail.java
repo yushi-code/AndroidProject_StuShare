@@ -2,6 +2,7 @@ package com.example.stu_share;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class EventDetail extends AppCompatActivity {
-    private Button btnLogout,btnJoin;
+    private Button btnLogout,btnJoin, btnLogout2, btnHome3;
     private TextView txtEvtTitle,txtEvtDetail,txtStDate,txtStTime,txtEndTime,txtEndDate;
     DBHelper dbHelper = null;
     @Override
@@ -41,5 +42,14 @@ public class EventDetail extends AppCompatActivity {
                 dbHelper.eventReg(db,event.id,"2");
             }
         });
+    }
+    public void OpenMenuActivity() {
+        Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
+    }
+
+    public void logout(){
+        Intent intent =new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

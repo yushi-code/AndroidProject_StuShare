@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 public class ListEvents extends AppCompatActivity {
     ListView listView;
+    Button btnHome, btnLogout12;
     DBHelper dbHelper=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,5 +57,14 @@ public class ListEvents extends AppCompatActivity {
                 Toast.makeText(getBaseContext(),"Nothing selected",Toast.LENGTH_LONG);
             }
         });*/
+    }
+    public void OpenMenuActivity() {
+        Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
+    }
+
+    public void logout(){
+        Intent intent =new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
