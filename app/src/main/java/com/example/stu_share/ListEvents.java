@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 public class ListEvents extends AppCompatActivity {
     ListView listView;
+    Button btnHome, btnLogout12;
     DBHelper dbHelper=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +22,7 @@ public class ListEvents extends AppCompatActivity {
         setContentView(R.layout.activity_list_events);
         dbHelper=new DBHelper(this);
         final SQLiteDatabase db = dbHelper.getReadableDatabase();
-        dbHelper.updateEventList(db,dbHelper.getEventCursorAct(db),"1");
+        dbHelper.updateEventList(db,dbHelper.getEventCursorAct(db));
         listView = (ListView) findViewById(R.id.listView);
         final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,EventCoordinator.EVENTS);
         listView.setAdapter(arrayAdapter);
@@ -55,5 +57,29 @@ public class ListEvents extends AppCompatActivity {
                 Toast.makeText(getBaseContext(),"Nothing selected",Toast.LENGTH_LONG);
             }
         });*/
+        btnHome = findViewById(R.id.btnHome);
+        btnLogout12 = findViewById(R.id.btnLogout12);
+        btnLogout12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenMenuActivity();
+            }
+        });
+    }
+    public void OpenMenuActivity() {
+        Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
+    }
+
+    public void logout(){
+        Intent intent =new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

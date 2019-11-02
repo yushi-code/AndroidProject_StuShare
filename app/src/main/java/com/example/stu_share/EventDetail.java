@@ -2,14 +2,16 @@ package com.example.stu_share;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class EventDetail extends AppCompatActivity {
-    private Button btnLogout,btnJoin;
+    private Button btnLogout,btnJoin, btnHome3;
     private TextView txtEvtTitle,txtEvtDetail,txtStDate,txtStTime,txtEndTime,txtEndDate;
     DBHelper dbHelper = null;
     @Override
@@ -17,7 +19,11 @@ public class EventDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_detail);
         btnJoin=findViewById(R.id.btnReg);
-        btnLogout=findViewById(R.id.btnLogout111);
+        btnLogout=findViewById(R.id.btnLogout2);
+
+
+        btnHome3 = findViewById(R.id.btnHome3);
+
         txtEvtTitle=findViewById(R.id.txtEventTitle);
         txtEvtDetail=findViewById(R.id.txtEvtDetail);
         txtStDate=findViewById(R.id.txtStDate);
@@ -39,7 +45,32 @@ public class EventDetail extends AppCompatActivity {
                 dbHelper = new DBHelper(getBaseContext());
                 final SQLiteDatabase db = dbHelper.getWritableDatabase();
                 dbHelper.eventReg(db,event.id,"2");
+                Toast.makeText(getBaseContext(), "you have successfully joined the event",
+                        Toast.LENGTH_LONG).show();
             }
         });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
+
+        btnHome3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenMenuActivity();
+            }
+        });
+    }
+    public void OpenMenuActivity() {
+        Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
+    }
+
+    public void logout(){
+        Intent intent =new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

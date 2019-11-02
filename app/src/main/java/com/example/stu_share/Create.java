@@ -3,6 +3,7 @@ package com.example.stu_share;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,7 +19,8 @@ import java.util.Locale;
 
 public class Create extends AppCompatActivity {
     EditText txtStDate,txtStTime,txtEndTime,txtEndDate;
-    Button btnCreate;
+
+    Button btnCreate, btnHome, btnLogout;
     DBHelper dbHelper = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,13 @@ public class Create extends AppCompatActivity {
         setContentView(R.layout.activity_create);
         dbHelper = new DBHelper(this);
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
+        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
         txtStDate=findViewById(R.id.txtStDate);
         txtStTime=findViewById(R.id.txtStTime);
         txtEndTime=findViewById(R.id.txtEndTime);
@@ -48,7 +57,7 @@ public class Create extends AppCompatActivity {
                 String myFormat = "MM/dd/yy";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.CANADA);
                 txtEndDate.setText(sdf.format(myCalendar.getTime()));
-            };
+            }
 
         };
 
@@ -91,6 +100,13 @@ public class Create extends AppCompatActivity {
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+        btnHome = findViewById(R.id.btnHome);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenMenuActivity();
+            }
+        });
         btnCreate=findViewById(R.id.btnCreate);
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,13 +114,25 @@ public class Create extends AppCompatActivity {
                 final EventCoordinator.Event event2=
                         new EventCoordinator.Event("1","2","active",txtStDate.getText().toString(),txtStTime.getText().toString(),txtEndDate.getText().toString(),txtEndTime.getText().toString(),event1.eventTitle,event1.eventDetail);
 
-                long id = dbHelper.insertEvent(db,event2);
-                dbHelper.updateEventList(db,dbHelper.getEventCursorAct(db),"1");
-                //Toast.makeText(getBaseContext(), "Word added with id = "+event2.toString()+"!"+txtStDate.getText().toString(),
-                       // Toast.LENGTH_LONG).show();
+                long id = dbHelper.insertEvent(db, event2);
+                dbHelper.updateEventList(db,dbHelper.getEventCursorAct(db));
+                Toast.makeText(getBaseContext(), "Event added with\n "+event2.toString(),
+                       Toast.LENGTH_LONG).show();
             }
         });
 
 
+
+
+
+    }
+    public void OpenMenuActivity(){
+        Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
+    }
+
+    public void logout(){
+        Intent intent =new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

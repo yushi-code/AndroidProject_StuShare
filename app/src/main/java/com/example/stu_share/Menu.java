@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class Menu extends AppCompatActivity {
-        private Button btnMyEvents, btnViewEvents,btnCrtEvt, btnMyProfile;
+        private Button btnMyEvents, btnViewEvents,btnCrtEvt, btnMyProfile, btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,13 @@ public class Menu extends AppCompatActivity {
                 openMyProfileEvent();
             }
         });
+        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
 
     }
     public void openMyEventsActivity(){
@@ -58,6 +65,11 @@ public class Menu extends AppCompatActivity {
     }
     public void openMyProfileEvent(){
         Intent intent =new Intent(this, MyProfile.class);
+        startActivity(intent);
+    }
+
+    public void logout(){
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }
