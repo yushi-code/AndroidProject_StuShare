@@ -133,7 +133,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor c=getRegListCur(db,id);
         while (c.moveToNext()){
             EventCoordinator.Event event=new EventCoordinator.Event(
-                    c.getString(c.getColumnIndexOrThrow(DBConnect.DBEntity._ID)),
+                    c.getString(c.getColumnIndexOrThrow(DBConnect.DBEntity.EVTREG_COL_NAME_EVENTID)),
                     c.getString(c.getColumnIndexOrThrow(DBConnect.DBEntity.EVENT_COL_NAME_ORGID)),
                     c.getString(c.getColumnIndexOrThrow(DBConnect.DBEntity.EVENT_COL_NAME_STATUS)),
                     c.getString(c.getColumnIndexOrThrow(DBConnect.DBEntity.EVENT_COL_NAME_ST_DATE)),
@@ -232,7 +232,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public boolean eventDeReg(SQLiteDatabase db, String id, String userId) {
 
-        return db.delete(TABLE_NAME_EVENTREG, "event_id= ? and user_id = ? ;"  , new String[]{id,userId}) > 0;
+        return db.delete(TABLE_NAME_EVENTREG, "event_id= ? and user_id = ? ;"  , new String[]{"16",userId}) > 0;
     }
 }
 

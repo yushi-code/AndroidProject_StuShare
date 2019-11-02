@@ -8,13 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 public class ListEvents extends AppCompatActivity {
     ListView listView;
-    Button btnHome, btnLogout12;
     DBHelper dbHelper=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,51 +33,11 @@ public class ListEvents extends AppCompatActivity {
             {
                 EventCoordinator.Event tmp=(EventCoordinator.Event) adapter.getItemAtPosition(position);
                 Intent intent =new Intent(getBaseContext(), EventDetail.class);
-                Toast.makeText(getBaseContext(),"selected"+position,Toast.LENGTH_LONG);
                 intent.putExtra("args",tmp);
                 startActivity(intent);
-                Toast.makeText(getBaseContext(),"selected"+position,Toast.LENGTH_LONG);
+
             }
         });
 
-
-        /*listView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
-                EventCoordinator.Event tmp=(EventCoordinator.Event) parent.getItemAtPosition(position);
-                Intent intent =new Intent(getBaseContext(), EventDetail.class);
-                Toast.makeText(getBaseContext(),"selected"+position,Toast.LENGTH_LONG);
-                intent.putExtra("args",tmp);
-                //startActivity(intent);
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                Toast.makeText(getBaseContext(),"Nothing selected",Toast.LENGTH_LONG);
-            }
-        });*/
-        btnHome = findViewById(R.id.btnHome);
-        btnLogout12 = findViewById(R.id.btnLogout12);
-        btnLogout12.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logout();
-            }
-        });
-
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                OpenMenuActivity();
-            }
-        });
-    }
-    public void OpenMenuActivity() {
-        Intent intent = new Intent(this, Menu.class);
-        startActivity(intent);
-    }
-
-    public void logout(){
-        Intent intent =new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 }
