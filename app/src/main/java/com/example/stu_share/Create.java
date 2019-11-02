@@ -115,8 +115,8 @@ public class Create extends AppCompatActivity {
                         new EventCoordinator.Event("1","2","active",txtStDate.getText().toString(),txtStTime.getText().toString(),txtEndDate.getText().toString(),txtEndTime.getText().toString(),event1.eventTitle,event1.eventDetail);
 
                 long id = dbHelper.insertEvent(db, event2);
-                dbHelper.updateEventList(db,dbHelper.getEventCursorAct(db),"1");
-                Toast.makeText(getBaseContext(), "Word added with id = "+event2.toString()+"!"+txtStDate.getText().toString(),
+                dbHelper.updateEventList(db,dbHelper.getEventCursorAct(db));
+                Toast.makeText(getBaseContext(), "Event added with\n "+event2.toString(),
                        Toast.LENGTH_LONG).show();
             }
         });
