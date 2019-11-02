@@ -53,7 +53,7 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="277dp"
         android:layout_marginRight="277dp"
-        android:text="Enter 'user' or 'admin'"
+        android:text="Email"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#FFF"
         android:textSize="24sp"
