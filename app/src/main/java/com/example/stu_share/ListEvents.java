@@ -21,7 +21,7 @@ public class ListEvents extends AppCompatActivity {
         dbHelper=new DBHelper(this);
         final SQLiteDatabase db = dbHelper.getReadableDatabase();
         dbHelper.updateEventList(db,dbHelper.getEventCursorAct(db),"1");
-        listView = (ListView) findViewById(R.id.listView2323);
+        listView = (ListView) findViewById(R.id.listView);
         final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,EventCoordinator.EVENTS);
         listView.setAdapter(arrayAdapter);
 

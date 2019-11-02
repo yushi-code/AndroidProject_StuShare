@@ -5,26 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ListEvents">
+
     <Button
         android:id="@+id/btnLogout12"
         android:layout_width="152dp"
         android:layout_height="54dp"
-        android:layout_marginStart="242dp"
-        android:layout_marginLeft="242dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginRight="17dp"
-        android:text="LogOut"
+        android:text="Logout"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/listView2323"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:layout_width="417dp"
+        android:layout_height="591dp"
         android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

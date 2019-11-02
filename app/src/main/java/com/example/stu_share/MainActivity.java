@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btnCreateAcc = findViewById(R.id.btnReg);
-        btnFgtPswd=findViewById(R.id.btnFgtPswd);
+        btnFgtPswd=findViewById(R.id.btnResetPassword);
         txtEm=findViewById(R.id.txtRegEm);
         txtPswd=findViewById(R.id.txtPswd);
         dbHelper=new DBHelper(this);
