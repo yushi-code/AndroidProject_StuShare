@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegEventDetail">
+
     <TextView
-        android:id="@+id/txtEndTime"
+        android:id="@+id/txtEndTime123"
         android:layout_width="70dp"
         android:layout_height="20dp"
         android:layout_marginTop="4dp"
@@ -15,34 +16,34 @@
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/txtStTime" />
+        app:layout_constraintStart_toEndOf="@+id/textView124"
+        app:layout_constraintTop_toBottomOf="@+id/txtStTime123" />
 
     <TextView
-        android:id="@+id/txtStDate"
+        android:id="@+id/txtStDate123"
         android:layout_width="70dp"
         android:layout_height="20dp"
         android:textSize="16dp"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toTopOf="@+id/textView18" />
+        app:layout_constraintStart_toEndOf="@+id/textView128"
+        app:layout_constraintTop_toTopOf="@+id/textView128" />
 
     <TextView
-        android:id="@+id/txtStTime"
+        android:id="@+id/txtStTime123"
         android:layout_width="70dp"
         android:layout_height="20dp"
         android:textSize="16dp"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toTopOf="@+id/textView18" />
+        app:layout_constraintStart_toEndOf="@+id/textView123"
+        app:layout_constraintTop_toTopOf="@+id/textView128" />
 
     <TextView
-        android:id="@+id/txtEndDate"
+        android:id="@+id/txtEndDate123"
         android:layout_width="70dp"
         android:layout_height="20dp"
         android:textSize="16dp"
         app:layout_constraintEnd_toStartOf="@+id/textView13"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView19"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintStart_toEndOf="@+id/textView129"
+        app:layout_constraintTop_toBottomOf="@+id/textView128" />
 
     <Button
         android:id="@+id/btnLogout111"
@@ -61,7 +62,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/textView120"
         android:layout_width="wrap_content"
         android:layout_height="16dp"
         android:layout_marginStart="20dp"
@@ -72,17 +73,17 @@
         app:layout_constraintTop_toBottomOf="@+id/btnLogout111" />
 
     <TextView
-        android:id="@+id/txtEventTitle"
+        android:id="@+id/txtEventTitle123"
         android:layout_width="wrap_content"
         android:layout_height="26dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/textView120" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/textView127"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -90,45 +91,41 @@
         android:layout_marginTop="60dp"
         android:text="Detail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEventTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEventTitle123" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/textView123"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:text="Time"
-        app:layout_constraintStart_toEndOf="@+id/txtStDate"
-        app:layout_constraintTop_toTopOf="@+id/textView18" />
+        app:layout_constraintStart_toStartOf="@+id/btnLogout111"
+        app:layout_constraintTop_toTopOf="@+id/textView128" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/textView124"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="6dp"
         android:text="Time"
-        app:layout_constraintStart_toEndOf="@+id/txtEndDate"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintStart_toStartOf="@+id/textView123"
+        app:layout_constraintTop_toBottomOf="@+id/textView123" />
 
     <TextView
-        android:id="@+id/txtEvtDetail"
+        android:id="@+id/txtEvtDetail123"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="37dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/textView127" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/textView128"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -139,16 +136,16 @@
         app:layout_constraintTop_toBottomOf="@+id/btnLogout111" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/textView129"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:text="End"
-        app:layout_constraintStart_toStartOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintStart_toStartOf="@+id/textView128"
+        app:layout_constraintTop_toBottomOf="@+id/textView128" />
 
     <Button
-        android:id="@+id/btnReg1"
+        android:id="@+id/btnReg123"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -156,5 +153,5 @@
         android:layout_marginRight="20dp"
         android:text="DeRegister"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEvtDetail" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEvtDetail123" />
 </androidx.constraintlayout.widget.ConstraintLayout>

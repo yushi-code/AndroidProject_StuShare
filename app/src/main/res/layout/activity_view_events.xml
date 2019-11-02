@@ -36,10 +36,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listView" />
+        app:layout_constraintTop_toBottomOf="@+id/listView2323" />
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/listView2323"
         android:layout_width="417dp"
         android:layout_height="591dp"
         android:layout_marginTop="10dp"

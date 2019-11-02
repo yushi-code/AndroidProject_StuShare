@@ -2,12 +2,9 @@ package com.example.stu_share;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ListActivity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,7 +21,7 @@ public class ListEvents extends AppCompatActivity {
         dbHelper=new DBHelper(this);
         final SQLiteDatabase db = dbHelper.getReadableDatabase();
         dbHelper.updateEventList(db,dbHelper.getEventCursorAct(db),"1");
-        listView = (ListView) findViewById(R.id.listView);
+        listView = (ListView) findViewById(R.id.listView2323);
         final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,EventCoordinator.EVENTS);
         listView.setAdapter(arrayAdapter);
 
@@ -39,6 +36,7 @@ public class ListEvents extends AppCompatActivity {
                 Toast.makeText(getBaseContext(),"selected"+position,Toast.LENGTH_LONG);
                 intent.putExtra("args",tmp);
                 startActivity(intent);
+                Toast.makeText(getBaseContext(),"selected"+position,Toast.LENGTH_LONG);
             }
         });
 

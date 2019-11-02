@@ -42,10 +42,7 @@ public class MyEvents extends AppCompatActivity {
             }
         });
     }
-    public void openCreateDescriptionActivity(){
-        Intent intent =new Intent(this, CreateDescription.class);
-        startActivity(intent);
-    }
+
     public void openOwnedEventActivity(){
         Intent intent =new Intent(this, Owned.class);
         String[] tt=new String[]{"2","2"};

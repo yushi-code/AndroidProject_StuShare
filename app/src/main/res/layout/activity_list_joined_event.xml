@@ -7,7 +7,7 @@
     tools:context=".ListJoinedEventActivity">
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/listView2323"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"

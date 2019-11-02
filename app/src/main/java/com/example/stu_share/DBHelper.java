@@ -117,8 +117,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return db.query(DBConnect.DBEntity.TABLE_NAME_EVENT,
                 projection,
-                "status=? ",
-                new String[] { "active" },
+                "status=? and end_date<? ",
+                new String[] { "active",dateToday },
                 null,
                 null,
                 null);
@@ -187,8 +187,8 @@ public class DBHelper extends SQLiteOpenHelper {
         Date date=new Date();
         return db.query(DBConnect.DBEntity.TABLE_NAME_EVENT,
                 projection,
-                "organizer_id=? ",
-                new String[] { id},
+                "organizer_id=? and end_date<? ",
+                new String[] { id,dateToday},
                 null,
                 null,
                 null);
@@ -232,7 +232,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public boolean eventDeReg(SQLiteDatabase db, String id, String userId) {
 
-        return db.delete(TABLE_NAME_EVENTREG, EVTREG_COL_NAME_EVENTID + "=?" +"and "+EVTREG_COL_NAME_USERID+"=? ;"  , new String[]{id,userId}) > 0;
+        return db.delete(TABLE_NAME_EVENTREG, "event_id= ? and user_id = ? ;"  , new String[]{id,userId}) > 0;
     }
 }
 
