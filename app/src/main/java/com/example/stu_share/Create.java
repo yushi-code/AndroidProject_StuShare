@@ -100,8 +100,8 @@ public class Create extends AppCompatActivity {
 
                 long id = dbHelper.insertEvent(db,event2);
                 dbHelper.updateEventList(db,dbHelper.getEventCursorAct(db),"1");
-                Toast.makeText(getBaseContext(), "Word added with id = "+event2.toString()+"!"+txtStDate.getText().toString(),
-                        Toast.LENGTH_LONG).show();
+                //Toast.makeText(getBaseContext(), "Word added with id = "+event2.toString()+"!"+txtStDate.getText().toString(),
+                       // Toast.LENGTH_LONG).show();
             }
         });
 

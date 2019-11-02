@@ -8,7 +8,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import static com.example.stu_share.DBConnect.DBEntity.EVTREG_COL_NAME_EVENTID;
+import static com.example.stu_share.DBConnect.DBEntity.EVTREG_COL_NAME_USERID;
+import static com.example.stu_share.DBConnect.DBEntity.TABLE_NAME_EVENT;
+import static com.example.stu_share.DBConnect.DBEntity.TABLE_NAME_EVENTREG;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
@@ -34,6 +41,19 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(DBConnect.DBEntity.SQL_DROP);
         Log.d("DATABASE", "Database dropped");
         onCreate(db);
+    }
+
+
+    //add to database table with event id and participante id
+    public long eventReg(SQLiteDatabase db, String eventID,String userID){
+
+        ContentValues values = new ContentValues();
+        values.put(DBConnect.DBEntity.EVTREG_COL_NAME_EVENTID, eventID);
+        values.put(DBConnect.DBEntity. EVTREG_COL_NAME_USERID ,userID);
+        values.put(DBConnect.DBEntity.EVTREG_COL_NAME_STATUS ,"registered");
+
+
+        return db.insert(TABLE_NAME_EVENTREG, null, values);
     }
 
     public long insertUser(SQLiteDatabase db, User user){
@@ -103,6 +123,33 @@ public class DBHelper extends SQLiteOpenHelper {
                 null,
                 null);
     }
+    public Cursor getRegListCur(SQLiteDatabase db,String id){
+         final String MY_QUERY = "SELECT * FROM "+TABLE_NAME_EVENT+" e INNER JOIN "+TABLE_NAME_EVENTREG+" erg ON e._id=erg.event_id WHERE erg.user_id=?";
+
+        return db.rawQuery(MY_QUERY, new String[]{String.valueOf(id)});
+    }
+    public List<EventCoordinator.Event> getRegList(SQLiteDatabase db, String id){
+        List<EventCoordinator.Event> evt = new ArrayList<EventCoordinator.Event>();
+        Cursor c=getRegListCur(db,id);
+        while (c.moveToNext()){
+            EventCoordinator.Event event=new EventCoordinator.Event(
+                    c.getString(c.getColumnIndexOrThrow(DBConnect.DBEntity._ID)),
+                    c.getString(c.getColumnIndexOrThrow(DBConnect.DBEntity.EVENT_COL_NAME_ORGID)),
+                    c.getString(c.getColumnIndexOrThrow(DBConnect.DBEntity.EVENT_COL_NAME_STATUS)),
+                    c.getString(c.getColumnIndexOrThrow(DBConnect.DBEntity.EVENT_COL_NAME_ST_DATE)),
+                    c.getString(c.getColumnIndexOrThrow(DBConnect.DBEntity.EVENT_COL_NAME_ST_TIME)),
+                    c.getString(c.getColumnIndexOrThrow(DBConnect.DBEntity.EVENT_COL_NAME_END_DATE)),
+                    c.getString(c.getColumnIndexOrThrow(DBConnect.DBEntity.EVENT_COL_NAME_END_TIME)),
+                    c.getString(c.getColumnIndexOrThrow(DBConnect.DBEntity.EVENT_COL_NAME_TITLE)),
+                    c.getString(c.getColumnIndexOrThrow(DBConnect.DBEntity.EVENT_COL_NAME_DETAIL)));
+           evt.add(event);
+
+        }
+        c.close();
+        return evt;
+    }
+
+
     public Cursor getEventCursorPst(SQLiteDatabase db,String id){
         String[] projection = {
                 DBConnect.DBEntity._ID,
@@ -181,6 +228,11 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(DBConnect.DBEntity.EVENT_COL_NAME_DETAIL ,event.eventDetail);
         return db.insert(DBConnect.DBEntity.TABLE_NAME_EVENT, null, values);
 
+    }
+
+    public boolean eventDeReg(SQLiteDatabase db, String id, String userId) {
+
+        return db.delete(TABLE_NAME_EVENTREG, EVTREG_COL_NAME_EVENTID + "=?" +"and "+EVTREG_COL_NAME_USERID+"=? ;"  , new String[]{id,userId}) > 0;
     }
 }
 

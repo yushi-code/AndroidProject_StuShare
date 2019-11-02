@@ -8,15 +8,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class EventDetail extends AppCompatActivity {
-    private Button btnLogout,btnJoin;
+import static com.example.stu_share.ListJoinedEventActivity.evt;
+
+public class RegEventDetail extends AppCompatActivity {
+
+    private Button btnLogout,btnDeReg;
     private TextView txtEvtTitle,txtEvtDetail,txtStDate,txtStTime,txtEndTime,txtEndDate;
     DBHelper dbHelper = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_detail);
-        btnJoin=findViewById(R.id.btnReg);
+        btnDeReg=findViewById(R.id.btnReg);
         btnLogout=findViewById(R.id.btnLogout111);
         txtEvtTitle=findViewById(R.id.txtEventTitle);
         txtEvtDetail=findViewById(R.id.txtEvtDetail);
@@ -24,7 +27,7 @@ public class EventDetail extends AppCompatActivity {
         txtStTime=findViewById(R.id.txtStTime);
         txtEndDate=findViewById(R.id.txtEndDate);
         txtEndTime=findViewById(R.id.txtEndTime);
-
+        final String position=getIntent().getSerializableExtra("position").toString();
         final EventCoordinator.Event event=(EventCoordinator.Event)getIntent().getSerializableExtra("args");
         txtEvtTitle.setText(event.eventTitle);
         txtEvtDetail.setText(event.eventDetail);
@@ -32,13 +35,14 @@ public class EventDetail extends AppCompatActivity {
         txtStDate.setText(event.startDate);
         txtEndDate.setText(event.endDate);
         txtEndTime.setText(event.endTime);
-        btnJoin.setOnClickListener(new View.OnClickListener() {
+        btnDeReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //add to database table with event id and participante id
+                //delete from evenreg table
                 dbHelper = new DBHelper(getBaseContext());
                 final SQLiteDatabase db = dbHelper.getWritableDatabase();
-                dbHelper.eventReg(db,event.id,"2");
+                dbHelper.eventDeReg(db,event.id,"2");
+                evt.remove(Integer.valueOf(position));
             }
         });
     }

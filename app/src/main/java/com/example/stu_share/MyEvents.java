@@ -8,18 +8,18 @@ import android.view.View;
 import android.widget.Button;
 
 public class MyEvents extends AppCompatActivity {
-    private Button btnCreate, btnOwnedEvents, btnPstEvt,btnJoin;
+    private Button  btnOwnedEvents, btnPstEvt,btnJoin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_events);
-        btnCreate = findViewById(R.id.btnCreate);
+        /*btnCreate = findViewById(R.id.btnCreate);
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openCreateDescriptionActivity();
             }
-        });
+        });*/
         btnOwnedEvents = findViewById(R.id.btnOwnedEvents);
         btnOwnedEvents.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,7 +27,7 @@ public class MyEvents extends AppCompatActivity {
                 openOwnedEventActivity();
             }
         });
-        btnJoin = findViewById(R.id.btnJoin);
+        btnJoin = findViewById(R.id.btnReg);
         btnJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +59,7 @@ public class MyEvents extends AppCompatActivity {
         startActivity(intent);
     }
     public void openJoinActivity(){
-        Intent intent =new Intent(this, ListEvents.class);
+        Intent intent =new Intent(this, ListJoinedEventActivity.class);
         String[] tt=new String[]{"2","2"};
         intent.putExtra("args",tt);
         startActivity(intent);

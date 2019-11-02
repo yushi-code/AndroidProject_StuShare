@@ -2,30 +2,34 @@ package com.example.stu_share;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class ListEvents extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListJoinedEventActivity extends AppCompatActivity {
     ListView listView;
     DBHelper dbHelper=null;
+    public static  List<EventCoordinator.Event> evt = new ArrayList<EventCoordinator.Event>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_events);
+
+        setContentView(R.layout.activity_list_joined_event);
         dbHelper=new DBHelper(this);
         final SQLiteDatabase db = dbHelper.getReadableDatabase();
-        dbHelper.updateEventList(db,dbHelper.getEventCursorAct(db),"1");
+        evt=dbHelper.getRegList(db,"2");
+
         listView = (ListView) findViewById(R.id.listView);
-        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,EventCoordinator.EVENTS);
+        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,evt);
         listView.setAdapter(arrayAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -35,27 +39,12 @@ public class ListEvents extends AppCompatActivity {
                                     long arg3)
             {
                 EventCoordinator.Event tmp=(EventCoordinator.Event) adapter.getItemAtPosition(position);
-                Intent intent =new Intent(getBaseContext(), EventDetail.class);
+                Intent intent =new Intent(getBaseContext(), RegEventDetail.class);
                 Toast.makeText(getBaseContext(),"selected"+position,Toast.LENGTH_LONG);
                 intent.putExtra("args",tmp);
+                intent.putExtra("position",String.valueOf(position));
                 startActivity(intent);
             }
         });
-
-
-        /*listView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
-                EventCoordinator.Event tmp=(EventCoordinator.Event) parent.getItemAtPosition(position);
-                Intent intent =new Intent(getBaseContext(), EventDetail.class);
-                Toast.makeText(getBaseContext(),"selected"+position,Toast.LENGTH_LONG);
-                intent.putExtra("args",tmp);
-                //startActivity(intent);
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                Toast.makeText(getBaseContext(),"Nothing selected",Toast.LENGTH_LONG);
-            }
-        });*/
     }
 }
