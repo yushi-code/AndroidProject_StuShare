@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class CreateDescription extends AppCompatActivity {
-    private Button btnNextCreate;
+    private Button btnNextCreate, btnLogout;
     private EditText txtEvtTitle,txtEvtDetail;
 
     @Override
@@ -30,8 +30,20 @@ public class CreateDescription extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
     }
     public void openCreateActivity(){
 
+    }
+
+    public void logout(){
+        Intent intent =new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

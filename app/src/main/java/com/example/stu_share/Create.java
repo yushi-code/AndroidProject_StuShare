@@ -3,6 +3,7 @@ package com.example.stu_share;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,7 +19,7 @@ import java.util.Locale;
 
 public class Create extends AppCompatActivity {
     EditText txtStDate,txtStTime,txtEndTime,txtEndDate;
-    Button btnCreate;
+    Button btnCreate, btnLogout;
     DBHelper dbHelper = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,13 @@ public class Create extends AppCompatActivity {
         setContentView(R.layout.activity_create);
         dbHelper = new DBHelper(this);
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
+        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
         txtStDate=findViewById(R.id.txtStDate);
         txtStTime=findViewById(R.id.txtStTime);
         txtEndTime=findViewById(R.id.txtEndTime);
@@ -48,7 +56,7 @@ public class Create extends AppCompatActivity {
                 String myFormat = "MM/dd/yy";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.CANADA);
                 txtEndDate.setText(sdf.format(myCalendar.getTime()));
-            };
+            }
 
         };
 
@@ -106,5 +114,10 @@ public class Create extends AppCompatActivity {
         });
 
 
+    }
+
+    public void logout(){
+        Intent intent =new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

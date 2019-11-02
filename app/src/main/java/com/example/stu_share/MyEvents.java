@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MyEvents extends AppCompatActivity {
-    private Button  btnOwnedEvents, btnPstEvt,btnJoin,btnCreateEvent;
+    private Button  btnOwnedEvents, btnPstEvt,btnJoin,btnCreateEvent, btnLogout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +49,13 @@ public class MyEvents extends AppCompatActivity {
                 openPstEvtAct();
             }
         });
+        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
     }
 
     public void openOwnedEventActivity(){
@@ -71,6 +78,11 @@ public class MyEvents extends AppCompatActivity {
     }
     public void openCreateEvent(){
         Intent intent =new Intent(this, CreateDescription.class);
+        startActivity(intent);
+    }
+
+    public void logout(){
+        Intent intent =new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }
