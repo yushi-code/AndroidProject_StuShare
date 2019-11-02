@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         final String  txtE = txtEm.getText().toString();
         final String txtP = txtPswd.getText().toString();
         txtErr=findViewById(R.id.txtVErr);
+
+
         btnFgtPswd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
             }
         });
+        
         btnCreateAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +50,16 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openMainMenu();
+                if(txtE.equals("user")){
+                    openMainMenu();
+                }
+                else if ((txtE.toString()).equals("admin")){
+                    openAdminActivity();
+                }
+                else{
+                    openMainActivity();
+                }
+
             }
         });
     }
@@ -57,6 +69,15 @@ public class MainActivity extends AppCompatActivity {
     }
     public void openMainMenu(){
         Intent intent =new Intent(this, Menu.class);
+        startActivity(intent);
+    }
+
+    public void openAdminActivity(){
+        Intent intent =new Intent(this, AdminDashboardActivity.class);
+        startActivity(intent);
+    }
+    public void openMainActivity(){
+        Intent intent =new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
