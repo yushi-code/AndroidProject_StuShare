@@ -16,21 +16,14 @@
       <scope value="GLOBAL" />
       <destination value="FILE" />
       <format value="EXCEL" />
-      <charset value="GBK" />
+      <charset value="windows-1252" />
     </export-instructions>
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="ff45f2d4-d191-41bc-8bdd-2049383a7ecf">
-        <schema name="main" object-types="view, table" />
-      </connection>
-      <connection connection-id="a0c70a50-756b-423f-92e1-2987bdab48f8">
-        <schema name="main" object-types="view, table" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="ff45f2d4-d191-41bc-8bdd-2049383a7ecf">
