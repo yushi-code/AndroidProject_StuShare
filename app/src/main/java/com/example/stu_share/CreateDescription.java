@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class CreateDescription extends AppCompatActivity {
-    private Button btnNextCreate;
+    private Button btnNextCreate, btnHome2;
     private EditText txtEvtTitle,txtEvtDetail;
 
     @Override
@@ -30,8 +30,20 @@ public class CreateDescription extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnHome2 = findViewById(R.id.btnHome2);
+        btnHome2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenMenuActivity();
+            }
+        });
     }
     public void openCreateActivity(){
 
+    }
+    public void OpenMenuActivity(){
+        Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
     }
 }

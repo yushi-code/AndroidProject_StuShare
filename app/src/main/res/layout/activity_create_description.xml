@@ -7,6 +7,17 @@
     tools:context=".CreateDescription">
 
     <Button
+        android:id="@+id/btnHome2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/btnLogout6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

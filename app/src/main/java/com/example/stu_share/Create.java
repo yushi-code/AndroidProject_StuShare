@@ -3,6 +3,7 @@ package com.example.stu_share;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,7 +19,7 @@ import java.util.Locale;
 
 public class Create extends AppCompatActivity {
     EditText txtStDate,txtStTime,txtEndTime,txtEndDate;
-    Button btnCreate;
+    Button btnCreate, btnHome;
     DBHelper dbHelper = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +92,13 @@ public class Create extends AppCompatActivity {
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+        btnHome = findViewById(R.id.btnHome);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenMenuActivity();
+            }
+        });
         btnCreate=findViewById(R.id.btnCreate);
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,11 +108,18 @@ public class Create extends AppCompatActivity {
 
                 long id = dbHelper.insertEvent(db, event2);
                 dbHelper.updateEventList(db,dbHelper.getEventCursorAct(db),"1");
-                //Toast.makeText(getBaseContext(), "Word added with id = "+event2.toString()+"!"+txtStDate.getText().toString(),
-                       // Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "Word added with id = "+event2.toString()+"!"+txtStDate.getText().toString(),
+                       Toast.LENGTH_LONG).show();
             }
         });
 
 
+
+
+
+    }
+    public void OpenMenuActivity(){
+        Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
     }
 }
