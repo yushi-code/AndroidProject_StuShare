@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PastEvent"></activity>
+        <activity android:name=".EventDetail"></activity>
+        <activity android:name=".PastEvent" />
         <activity android:name=".ListEvents" />
         <activity android:name=".CreateDescription" />
         <activity android:name=".Create" />
