@@ -19,7 +19,8 @@ import java.util.Locale;
 
 public class Create extends AppCompatActivity {
     EditText txtStDate,txtStTime,txtEndTime,txtEndDate;
-    Button btnCreate, btnHome;
+
+    Button btnCreate, btnHome, btnLogout;
     DBHelper dbHelper = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,13 @@ public class Create extends AppCompatActivity {
         setContentView(R.layout.activity_create);
         dbHelper = new DBHelper(this);
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
+        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
         txtStDate=findViewById(R.id.txtStDate);
         txtStTime=findViewById(R.id.txtStTime);
         txtEndTime=findViewById(R.id.txtEndTime);
@@ -49,7 +57,7 @@ public class Create extends AppCompatActivity {
                 String myFormat = "MM/dd/yy";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.CANADA);
                 txtEndDate.setText(sdf.format(myCalendar.getTime()));
-            };
+            }
 
         };
 
@@ -120,6 +128,11 @@ public class Create extends AppCompatActivity {
     }
     public void OpenMenuActivity(){
         Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
+    }
+
+    public void logout(){
+        Intent intent =new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

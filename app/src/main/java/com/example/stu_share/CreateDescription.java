@@ -9,7 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class CreateDescription extends AppCompatActivity {
-    private Button btnNextCreate, btnHome2;
+
+    private Button btnNextCreate, btnHome2, btnLogout;
+
     private EditText txtEvtTitle,txtEvtDetail;
 
     @Override
@@ -31,19 +33,33 @@ public class CreateDescription extends AppCompatActivity {
             }
         });
 
+        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
+
         btnHome2 = findViewById(R.id.btnHome2);
         btnHome2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 OpenMenuActivity();
             }
-        });
+                });
     }
     public void openCreateActivity(){
 
     }
-    public void OpenMenuActivity(){
+
+    public void OpenMenuActivity() {
         Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
+    }
+
+    public void logout(){
+        Intent intent =new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }
