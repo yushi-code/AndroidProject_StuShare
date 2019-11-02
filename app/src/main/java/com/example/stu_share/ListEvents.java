@@ -2,6 +2,7 @@ package com.example.stu_share;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,7 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class ListEvents extends AppCompatActivity {
+public class ListEvents extends ListActivity {
     ListView listView;
     DBHelper dbHelper=null;
     @Override
@@ -42,7 +43,7 @@ public class ListEvents extends AppCompatActivity {
         });
 
 
-        listView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        /*listView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
                 EventCoordinator.Event tmp=(EventCoordinator.Event) parent.getItemAtPosition(position);
@@ -55,6 +56,6 @@ public class ListEvents extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
                 Toast.makeText(getBaseContext(),"Nothing selected",Toast.LENGTH_LONG);
             }
-        });
+        });*/
     }
 }
