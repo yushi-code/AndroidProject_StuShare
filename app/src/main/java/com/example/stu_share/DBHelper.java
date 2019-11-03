@@ -356,8 +356,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         Cursor c = db.query(DBConnect.DBEntity.TABLE_NAME_USER,
                 projection,
-                null,
-                null,
+                COLUMN_NAME_EMAIL+"=?",
+                new String[]{userEmail},
                 null,
                 null,
                 null);

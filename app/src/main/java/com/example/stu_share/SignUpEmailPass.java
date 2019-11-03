@@ -6,13 +6,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SignUpEmailPass extends AppCompatActivity {
     Button btnNext;
     EditText txtEm,txtRegPswd,txtRegpswd2;
-    public User user;
+    TextView test;
+    public User userReg=null;
     DBHelper dbHelper=null;
 
     @Override
@@ -20,29 +23,47 @@ public class SignUpEmailPass extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_email_pass);
         btnNext = findViewById(R.id.btnNext);
-        txtEm=findViewById(R.id.txtRegEm);
+        txtEm=findViewById(R.id.txtRegEm2);
         txtRegPswd=findViewById(R.id.txtRegPswd);
         txtRegpswd2=findViewById(R.id.txtRegPswdConf);
         dbHelper=new DBHelper(this);
+        test=findViewById(R.id.textView39);
         final SQLiteDatabase db = dbHelper.getReadableDatabase();
-        user=dbHelper.getUserObj(db,txtEm.getText().toString());
+
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!(user.email.equals(null)|user.email.equals(""))){
-
+                userReg=dbHelper.getUserObj(db,txtEm.getText().toString());
+                if(userReg!=null){
+                    Toast.makeText(getBaseContext(), "Account already exists! ",
+                            Toast.LENGTH_LONG).show();
+                }
+                else if(!checkEmailDomain(txtEm.getText().toString())){
+                    Toast.makeText(getBaseContext(), "It's not George Brown email! ",
+                            Toast.LENGTH_LONG).show();
+                }
+                else if(!txtRegPswd.getText().toString().equals(txtRegpswd2.getText().toString())){
+                    Toast.makeText(getBaseContext(), "Password doesn't match! ",
+                            Toast.LENGTH_LONG).show();
+                }
+                else{
                     Intent intent=new Intent(getBaseContext(),Signup.class);
-                    intent.putExtra("args",user);
+                    userReg=new User();
+                    userReg.setEmail(txtEm.getText().toString());
+                    userReg.setPassword(txtRegPswd.getText().toString());
+                    intent.putExtra("args",userReg);
                     startActivity(intent);
                 }
 
             }
         });
     }
-
-    public void openSignupActivity(){
-        Intent intent =new Intent(this, Signup.class);
-        intent.putExtra("args",user);
-        startActivity(intent);
+    public boolean checkEmailDomain(String em){
+        String[] result=null;
+        result=em.split("@");
+        if(result.length==2 && result[1].toLowerCase().equals("georgebrown.ca")){
+            return true;
+        }return false;
     }
+
 }
