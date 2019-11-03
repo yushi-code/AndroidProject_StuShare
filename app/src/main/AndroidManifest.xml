@@ -18,7 +18,7 @@
         <activity android:name=".UserList" />
         <activity android:name=".EditProfile" />
         <activity android:name=".JoinedDtl" />
-        <activity android:name=".AdminDashboardActivity" />
+        <activity android:name=".AdminDashboardActivity"/>
         <activity android:name=".PastEventDetail" />
         <activity android:name=".MyProfile" />
         <activity android:name=".PasswordReset" />
@@ -32,7 +32,7 @@
         <activity android:name=".Owned" />
         <activity android:name=".ViewEvents" />
         <activity android:name=".MyEvents" />
-        <activity android:name=".Menu" />
+        <activity android:name=".Menu"/>
         <activity android:name=".Signup2" />
         <activity android:name=".Signup" />
         <activity android:name=".MainActivity">
