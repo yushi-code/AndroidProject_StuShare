@@ -118,6 +118,7 @@ public class Create extends AppCompatActivity {
                 dbHelper.updateEventList(db,dbHelper.getEventCursorAct(db));
                 Toast.makeText(getBaseContext(), "Event added with\n "+event2.toString(),
                        Toast.LENGTH_LONG).show();
+                OpenMenuActivity();
             }
         });
 

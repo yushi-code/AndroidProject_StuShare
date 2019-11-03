@@ -11,9 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class OwnDetail extends AppCompatActivity {
-    private Button btnLogout, btnUpdate,btnTerminate;
+    private Button btnLogout, btnHome, btnUpdate,btnTerminate;
     private EditText txtEvtTitle, txtEvtDetail, txtStDate, txtStTime, txtEndTime, txtEndDate;
     DBHelper dbHelper = null;
 
@@ -22,7 +23,6 @@ public class OwnDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_own_detail);
         btnUpdate=findViewById(R.id.btnUpdateOwn);
-        btnLogout=findViewById(R.id.btnLogout10);
         btnTerminate=findViewById(R.id.btnTereminate);
         txtEvtTitle=findViewById(R.id.txtEventTitle);
         txtEvtDetail=findViewById(R.id.txtEvtDetail6);
@@ -52,6 +52,10 @@ public class OwnDetail extends AppCompatActivity {
                 final SQLiteDatabase db = dbHelper.getWritableDatabase();
                 dbHelper.updateEvent(db,event);
                 dbHelper.close();
+
+                Toast.makeText(getBaseContext(), "Event has been updated in your account",
+                        Toast.LENGTH_LONG).show();
+                OpenMenuActivity();
             }
         });
         btnTerminate.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +65,37 @@ public class OwnDetail extends AppCompatActivity {
                 final SQLiteDatabase db = dbHelper.getWritableDatabase();
                 event.setStatus("not active");
                 dbHelper.eventStatusChange(db,event);
+                Toast.makeText(getBaseContext(), "Event has been terminated from your account",
+                        Toast.LENGTH_LONG).show();
+                OpenMenuActivity();
+            }
+        });
+
+        btnHome = findViewById(R.id.btnHome);
+        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenMenuActivity();
             }
         });
     }
+
+    public void logout(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void OpenMenuActivity() {
+        Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
+    }
+
 }
