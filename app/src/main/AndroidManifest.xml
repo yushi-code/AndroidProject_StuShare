@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".EditProfile"></activity>
+        <activity android:name=".JoinedDtl"></activity>
+        <activity android:name=".PastEventDetail" />
         <activity android:name=".MyProfile" />
         <activity android:name=".PasswordReset" />
         <activity android:name=".RegEventDetail" />

@@ -4,28 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Menu"
+    tools:context=".AdminDashboardActivity"
     tools:layout_editor_absoluteY="81dp">
 
     <Button
-        android:id="@+id/btnMyProfile"
+        android:id="@+id/btnAdmProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="224dp"
-        android:layout_marginRight="224dp"
+        android:layout_marginEnd="242dp"
+        android:layout_marginRight="242dp"
         android:text="My Profile"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCrtEvt" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAdmPastEvent" />
 
     <Button
-        android:id="@+id/btnLogout"
+        android:id="@+id/btnAdminLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="295dp"
@@ -47,7 +47,7 @@
         android:layout_marginTop="80dp"
         android:layout_marginEnd="124dp"
         android:layout_marginRight="124dp"
-        android:text="Welcome Pawluk!"
+        android:text="Welcome Admin!"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -56,7 +56,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnMyEvents"
+        android:id="@+id/btnViewUsers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -64,7 +64,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="224dp"
         android:layout_marginRight="224dp"
-        android:text="My Events"
+        android:text="View Users"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -73,36 +73,37 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
-        android:id="@+id/btnViewEvents"
+        android:id="@+id/btnAdmViewCurEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="205dp"
-        android:layout_marginRight="205dp"
-        android:text="View Events"
+        android:layout_marginEnd="132dp"
+        android:layout_marginRight="132dp"
+        android:text="View Current Events"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMyEvents" />
+        app:layout_constraintTop_toBottomOf="@+id/btnViewUsers" />
 
     <Button
-        android:id="@+id/btnCrtEvt"
+        android:id="@+id/btnAdmPastEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="189dp"
-        android:layout_marginRight="189dp"
-        android:text="Create Events"
+        android:layout_marginEnd="165dp"
+        android:layout_marginRight="165dp"
+        android:text="View Past Events"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnViewEvents" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAdmViewCurEvent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

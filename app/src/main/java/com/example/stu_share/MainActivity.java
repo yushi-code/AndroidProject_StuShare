@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnCreateAcc = findViewById(R.id.btnReg);
+        btnCreateAcc = findViewById(R.id.btnReg2);
         btnFgtPswd=findViewById(R.id.btnResetPassword);
         txtEm=findViewById(R.id.txtRegEm);
         txtPswd=findViewById(R.id.txtPswd);

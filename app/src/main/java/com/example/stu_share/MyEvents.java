@@ -36,11 +36,11 @@ public class MyEvents extends AppCompatActivity {
                 openJoinActivity();
             }
         });
-        btnReg = findViewById(R.id.btnReg);
+        btnReg = findViewById(R.id.btnReg2);
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                openRegActivity();
+                openRegActivity();
             }
         });
         btnPstEvt = findViewById(R.id.btnPstEvt);
@@ -50,13 +50,20 @@ public class MyEvents extends AppCompatActivity {
                 openPstEvtAct();
             }
         });
-        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout = findViewById(R.id.btnLogout2);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 logout();
             }
         });
+    }
+
+    private void openRegActivity() {
+        Intent intent =new Intent(this, ListJoinedEventActivity.class);
+        String[] tt=new String[]{"2","2"};
+        intent.putExtra("args",tt);
+        startActivity(intent);
     }
 
     public void openOwnedEventActivity(){
@@ -72,7 +79,7 @@ public class MyEvents extends AppCompatActivity {
         startActivity(intent);
     }
     public void openJoinActivity(){
-        Intent intent =new Intent(this, ListJoinedEventActivity.class);
+        Intent intent =new Intent(this, ListEvents.class);
         String[] tt=new String[]{"2","2"};
         intent.putExtra("args",tt);
         startActivity(intent);

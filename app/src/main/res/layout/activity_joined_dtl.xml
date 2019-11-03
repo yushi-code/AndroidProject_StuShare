@@ -4,46 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EventDetail">
+    tools:context=".JoinedDtl">
 
     <TextView
-        android:id="@+id/txtEndTime"
+        android:id="@+id/txtEndTime99"
         android:layout_width="70dp"
         android:layout_height="20dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="175dp"
-        android:layout_marginRight="175dp"
         android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView139"
+        app:layout_constraintTop_toBottomOf="@+id/txtStTime99" />
+
+    <TextView
+        android:id="@+id/txtStDate99"
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/textView189"
+        app:layout_constraintTop_toTopOf="@+id/textView189" />
+
+    <TextView
+        android:id="@+id/txtStTime99"
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/textView139"
+        app:layout_constraintTop_toTopOf="@+id/textView189" />
+
+    <TextView
+        android:id="@+id/txtEndDate99"
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="6dp"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView139"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/txtStTime" />
-
-    <TextView
-        android:id="@+id/txtStDate"
-        android:layout_width="70dp"
-        android:layout_height="20dp"
-        android:textSize="16dp"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toTopOf="@+id/textView18" />
-
-    <TextView
-        android:id="@+id/txtStTime"
-        android:layout_width="70dp"
-        android:layout_height="20dp"
-        android:textSize="16dp"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toTopOf="@+id/textView18" />
-
-    <TextView
-        android:id="@+id/txtEndDate"
-        android:layout_width="70dp"
-        android:layout_height="20dp"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView13"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView19"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintStart_toEndOf="@+id/textView199"
+        app:layout_constraintTop_toBottomOf="@+id/textView189" />
 
     <Button
         android:id="@+id/btnLogout111"
@@ -62,7 +59,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/textView109"
         android:layout_width="wrap_content"
         android:layout_height="16dp"
         android:layout_marginStart="20dp"
@@ -73,49 +70,48 @@
         app:layout_constraintTop_toBottomOf="@+id/btnLogout111" />
 
     <TextView
-        android:id="@+id/txtEventTitle"
+        android:id="@+id/txtEventTitle99"
         android:layout_width="wrap_content"
         android:layout_height="26dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/textView109" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/textView129"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:text="Detail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEventTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/textView199" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/textView139"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:text="Time"
-        app:layout_constraintStart_toEndOf="@+id/txtStDate"
-        app:layout_constraintTop_toTopOf="@+id/textView18" />
+        app:layout_constraintStart_toEndOf="@+id/txtStDate99"
+        app:layout_constraintTop_toTopOf="@+id/txtStDate99" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/textView149"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:text="Time"
-        app:layout_constraintStart_toEndOf="@+id/txtEndDate"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintStart_toEndOf="@+id/txtEndDate99"
+        app:layout_constraintTop_toTopOf="@+id/textView199" />
 
     <TextView
-        android:id="@+id/txtEvtDetail"
+        android:id="@+id/txtEvtDetail9"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -124,12 +120,12 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/textView129" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/textView189"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -140,22 +136,22 @@
         app:layout_constraintTop_toBottomOf="@+id/btnLogout111" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/textView199"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:text="End"
-        app:layout_constraintStart_toStartOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintStart_toStartOf="@+id/textView189"
+        app:layout_constraintTop_toBottomOf="@+id/textView189" />
 
     <Button
-        android:id="@+id/btnReg2"
+        android:id="@+id/btnDereg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:text="Join"
+        android:text="DeRegister111"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEvtDetail" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEvtDetail9" />
 </androidx.constraintlayout.widget.ConstraintLayout>

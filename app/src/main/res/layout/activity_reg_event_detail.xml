@@ -54,7 +54,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="17dp"
         android:layout_marginRight="17dp"
-        android:text="LogOut1"
+        android:text="LogOut"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
