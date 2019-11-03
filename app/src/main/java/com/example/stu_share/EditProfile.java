@@ -6,43 +6,42 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
-public class MyProfile extends AppCompatActivity {
-    Button btnHome4, btnLogout4, btnEdit;
+public class EditProfile extends AppCompatActivity {
+    Button btnSubmit, btnHome7, btnLogout8;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_profile);
-        btnHome4 = findViewById(R.id.btnHome4);
-        btnLogout4 = findViewById(R.id.btnLogout4);
-        btnEdit = findViewById(R.id.btnEdit);
+        setContentView(R.layout.activity_edit_profile);
 
-        btnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openEditProfile();
-            }
-        });
+        btnSubmit = findViewById(R.id.btnSubmit);
+        btnHome7 = findViewById(R.id.btnHome7);
+        btnLogout8 = findViewById(R.id.btnLogout8);
 
-        btnLogout4.setOnClickListener(new View.OnClickListener() {
+        btnLogout8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 logout();
             }
         });
 
-        btnHome4.setOnClickListener(new View.OnClickListener() {
+        btnHome7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 OpenMenuActivity();
             }
         });
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getBaseContext(), "Profile has been updated",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
-    public void openEditProfile(){
-        Intent intent =new Intent(this, EditProfile.class);
-        startActivity(intent);
-    }
     public void OpenMenuActivity() {
         Intent intent = new Intent(this, Menu.class);
         startActivity(intent);
