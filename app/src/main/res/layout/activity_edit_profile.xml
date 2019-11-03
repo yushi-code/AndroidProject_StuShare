@@ -8,13 +8,13 @@
 
     <EditText
         android:id="@+id/editAnswer"
-        android:layout_width="wrap_content"
+        android:layout_width="280dp"
         android:layout_height="55dp"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:ems="10"
+        android:hint="Please enter new answer"
         android:inputType="textPersonName"
-        android:text="Please enter new question"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -32,13 +32,13 @@
 
     <EditText
         android:id="@+id/editQuestion"
-        android:layout_width="wrap_content"
+        android:layout_width="280dp"
         android:layout_height="55dp"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:ems="10"
+        android:hint="Please enter new question"
         android:inputType="textPersonName"
-        android:text="Please enter new question"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView38" />
 
@@ -55,7 +55,7 @@
 
     <TextView
         android:id="@+id/textView36"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
@@ -79,7 +79,7 @@
 
     <TextView
         android:id="@+id/textView35"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
@@ -129,10 +129,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="18dp"
         android:ems="10"
+        android:hint="First Name"
         android:inputType="textPersonName"
-        android:text="First Name"
+        app:layout_constraintBottom_toTopOf="@+id/textView36"
         app:layout_constraintStart_toEndOf="@+id/textView35"
         app:layout_constraintTop_toBottomOf="@+id/textView34" />
 
@@ -142,10 +143,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
+        android:hint="Last Name"
         android:inputType="textPersonName"
-        android:text="Last Name"
         app:layout_constraintStart_toEndOf="@+id/textView36"
-        app:layout_constraintTop_toBottomOf="@+id/editFirstName" />
+        app:layout_constraintTop_toBottomOf="@+id/textView35" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
