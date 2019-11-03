@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     public void openMainMenu(){
         if(txtEm.getText().toString().toLowerCase().equals("admin")){
             Intent intent =new Intent(this, AdminDashboardActivity.class);
-            User user =new User("1","david@georgebrown.ca","Password1","David","Shi","GBC","T127",
+             User  user =new User("1","david@georgebrown.ca","Password1","David","Shi","GBC","T127",
                     "2017","2020","what is my favourite car","Subaru","admin","active");
             intent.putExtra("user",user);
             startActivity(intent);
