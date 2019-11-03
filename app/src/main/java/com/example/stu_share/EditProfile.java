@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import static com.example.stu_share.AdminDashboardActivity.user;
+import static com.example.stu_share.Menu.user1;
 
 public class EditProfile extends AppCompatActivity {
     Button btnSubmit, btnHome7, btnLogout8;
@@ -17,8 +18,11 @@ public class EditProfile extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        user=(User)getIntent().getSerializableExtra("user");
+
+        super.onCreate(savedInstanceState);if(user==null){
+            user=user1;
+        }
+        //user=(User)getIntent().getSerializableExtra("user");
         setContentView(R.layout.activity_edit_profile);
         editFn=findViewById(R.id.editFirstName);
         editFn.setText(user.firstName);
@@ -48,12 +52,23 @@ public class EditProfile extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user.setFirstName(editFn.getText().toString());
-                user.setLastName(editLn.getText().toString());
-                user.setQuestion(editQ.getText().toString());
-                user.setAnswer(editA.getText().toString());
-                Toast.makeText(getBaseContext(), "Profile has been updated",
-                        Toast.LENGTH_LONG).show();
+                if(user.role.equals("admin")){
+                    user.setFirstName(editFn.getText().toString());
+                    user.setLastName(editLn.getText().toString());
+                    user.setQuestion(editQ.getText().toString());
+                    user.setAnswer(editA.getText().toString());
+                    Toast.makeText(getBaseContext(), "Profile has been updated",
+                            Toast.LENGTH_LONG).show();
+                }else{
+                    user=user1;
+                    user.setFirstName(editFn.getText().toString());
+                    user.setLastName(editLn.getText().toString());
+                    user.setQuestion(editQ.getText().toString());
+                    user.setAnswer(editA.getText().toString());
+                    Toast.makeText(getBaseContext(), "Profile has been updated",
+                            Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 

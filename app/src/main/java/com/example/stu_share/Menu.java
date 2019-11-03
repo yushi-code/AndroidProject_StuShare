@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class Menu extends AppCompatActivity {
         private Button btnMyEvents, btnViewEvents,btnCrtEvt, btnMyProfile, btnLogout;
-
+    public static User user1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +28,7 @@ public class Menu extends AppCompatActivity {
                 openViewEventsActivity();
             }
         });
+        user1=(User)getIntent().getSerializableExtra("user");
         btnCrtEvt=findViewById(R.id.btnCrtEvt);
         btnCrtEvt.setOnClickListener(new View.OnClickListener() {
             @Override
