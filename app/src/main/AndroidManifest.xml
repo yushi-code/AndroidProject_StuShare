@@ -9,11 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
 
-=======
         <activity android:name=".SignUpEmailPass"></activity>
->>>>>>> d15e0f3b78ff86fa080e1ea64d53cc348d9b5aa7
         <activity android:name=".ResetWithEmail" />
         <activity android:name=".ResetConfirm" />
         <activity android:name=".OwnDetail" />
