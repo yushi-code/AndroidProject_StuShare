@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0000FF"
+    android:background="#1796A7"
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="81dp">
 
@@ -14,14 +14,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="147dp"
         android:layout_marginLeft="147dp"
-        android:layout_marginTop="1dp"
         android:layout_marginEnd="184dp"
         android:layout_marginRight="184dp"
         android:ems="10"
         android:gravity="center"
         android:inputType="textPassword|textWebPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
@@ -89,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="208dp"
         android:layout_marginLeft="208dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="248dp"
         android:layout_marginRight="248dp"
         android:text="Login"
@@ -144,5 +143,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtWrong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginLeft="162dp"
+        android:layout_marginEnd="190dp"
+        android:layout_marginRight="190dp"
+        android:layout_marginBottom="1dp"
+        android:text="TextView"
+        android:textColor="#00E20B0B"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPswd" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

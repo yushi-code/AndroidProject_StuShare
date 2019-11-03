@@ -232,7 +232,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public boolean eventDeReg(SQLiteDatabase db, String id, String userId) {
 
-        return db.delete(TABLE_NAME_EVENTREG, "event_id= ? and user_id = ? ;"  , new String[]{"16",userId}) > 0;
+        return db.delete(TABLE_NAME_EVENTREG, "event_id= ? and user_id = ? ;"  , new String[]{id,userId}) > 0;
     }
 }
 

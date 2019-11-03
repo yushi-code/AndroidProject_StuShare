@@ -1,8 +1,10 @@
 package com.example.stu_share;
 
-public class User {
+import java.io.Serializable;
 
-    public final String email;
+public class User implements Serializable {
+    public final String id;
+    public  String email;
     public final String password;
     public final String firstName;
     public final String lastName;
@@ -15,9 +17,10 @@ public class User {
     public final String role;
     public final String status;
 
-    public User(String email,String pswd,String fn,String ln,String collegeCode,
+    public User(String id,String email,String pswd,String fn,String ln,String collegeCode,
                 String programCode,String registerYear,String expYear,String question,
                 String answer,String role,String status ){
+        this.id=id;
         this.email=email;
         this.password=pswd;
         firstName=fn;
@@ -32,51 +35,5 @@ public class User {
         this.status=status;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getCollegeCode() {
-        return collegeCode;
-    }
-
-    public String getRegisterYear() {
-        return registerYear;
-    }
-
-    public String getProgramCode() {
-        return programCode;
-    }
-
-    public String getExpireYear() {
-        return expireYear;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public String getStatus() {
-        return status;
-    }
 }

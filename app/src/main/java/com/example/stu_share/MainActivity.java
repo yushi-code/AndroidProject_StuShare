@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtEm,txtPswd;
     private TextView txtErr;
     DBHelper dbHelper=null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
             }
         });
+        txtErr=findViewById(R.id.txtWrong);
         btnCreateAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,11 +55,26 @@ public class MainActivity extends AppCompatActivity {
     }
     public void openSignupActivity(){
         Intent intent =new Intent(this, Signup.class);
+
         startActivity(intent);
     }
     public void openMainMenu(){
-        Intent intent =new Intent(this, Menu.class);
-        startActivity(intent);
+        if(txtEm.getText().toString().toLowerCase().equals("admin")){
+            Intent intent =new Intent(this, AdminDashboardActivity.class);
+            User user =new User("1","david@georgebrown.ca","Password1","David","Shi","GBC","T127",
+                    "2017","2020","what is my favourite car","Subaru","admin","active");
+            intent.putExtra("user",user);
+            startActivity(intent);
+        }else if(txtEm.getText().toString().toLowerCase().equals("user")){
+            Intent intent2 =new Intent(this, Menu.class);
+            User user =new User("1","dharam@georgebrown.ca","Password2","Dharam","KC","GBC","T127",
+                    "2017","2020","what is my favourite Teacher","Pawluck","user","active");
+            intent2.putExtra("user",user);
+            startActivity(intent2);
+        }else{
+            txtErr.setText("Something wrong with account, please try later");
+        }
+
     }
 
 }

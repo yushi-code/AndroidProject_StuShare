@@ -6,20 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".EditProfile">
 
+    <EditText
+        android:id="@+id/editAnswer"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Please enter new question"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="137dp"
-        android:layout_marginLeft="137dp"
-        android:layout_marginTop="46dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginLeft="136dp"
+        android:layout_marginTop="11dp"
         android:text="Submit"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editFirstName4" />
+        app:layout_constraintTop_toBottomOf="@+id/editAnswer" />
 
     <EditText
-        android:id="@+id/editFirstName4"
+        android:id="@+id/editQuestion"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
         android:layout_marginStart="30dp"
@@ -31,16 +43,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textView38" />
 
     <TextView
-        android:id="@+id/textView37"
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginTop="20dp"
-        android:text="Email"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:text="Security Answer"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView36" />
+        app:layout_constraintTop_toBottomOf="@+id/editQuestion" />
 
     <TextView
         android:id="@+id/textView36"
@@ -60,11 +71,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:text="Security Question"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView37" />
+        app:layout_constraintTop_toBottomOf="@+id/editLastName" />
 
     <TextView
         android:id="@+id/textView35"
@@ -126,7 +137,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView34" />
 
     <EditText
-        android:id="@+id/editFirstName2"
+        android:id="@+id/editLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -137,15 +148,4 @@
         app:layout_constraintStart_toEndOf="@+id/textView36"
         app:layout_constraintTop_toBottomOf="@+id/editFirstName" />
 
-    <EditText
-        android:id="@+id/editFirstName3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="email"
-        app:layout_constraintStart_toEndOf="@+id/textView37"
-        app:layout_constraintTop_toBottomOf="@+id/editFirstName2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
