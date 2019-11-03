@@ -41,7 +41,7 @@ public class PastEvent extends AppCompatActivity {
                                     long arg3)
             {
                 EventCoordinator.Event tmp=(EventCoordinator.Event) adapter.getItemAtPosition(position);
-                Intent intent =new Intent(getBaseContext(), EventDetail.class);
+                Intent intent =new Intent(getBaseContext(), PastEventDetail.class);
                 intent.putExtra("args",tmp);
                 startActivity(intent);
 
