@@ -8,12 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.List;
 
 public class UserList extends AppCompatActivity {
-
+    Button btnLogout;
     ListView listView;
     DBHelper dbHelper=null;
     public static List<User> userList;
@@ -21,6 +22,13 @@ public class UserList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
+        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
         dbHelper=new DBHelper(this);
         final SQLiteDatabase db = dbHelper.getReadableDatabase();
         userList=dbHelper.getUserList(db);
@@ -40,5 +48,9 @@ public class UserList extends AppCompatActivity {
 
             }
         });
+    }
+    public void logout(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
