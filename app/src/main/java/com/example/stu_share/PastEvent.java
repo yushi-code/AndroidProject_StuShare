@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 public class PastEvent extends AppCompatActivity {
-    private Button btnLogout;
+    private Button btnLogout, btnHome;
     ListView listView;
     DBHelper dbHelper=null;
     @Override
@@ -24,6 +24,13 @@ public class PastEvent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 logout();
+            }
+        });
+        btnHome = findViewById(R.id.btnHome);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenHome();
             }
         });
 
@@ -41,7 +48,7 @@ public class PastEvent extends AppCompatActivity {
                                     long arg3)
             {
                 EventCoordinator.Event tmp=(EventCoordinator.Event) adapter.getItemAtPosition(position);
-                Intent intent =new Intent(getBaseContext(), EventDetail.class);
+                Intent intent =new Intent(getBaseContext(), PastEventDetail.class);
                 intent.putExtra("args",tmp);
                 startActivity(intent);
 
@@ -49,6 +56,10 @@ public class PastEvent extends AppCompatActivity {
         });
     }
 
+    public void OpenHome(){
+        Intent intent =new Intent(this, Menu.class);
+        startActivity(intent);
+    }
     public void logout(){
         Intent intent =new Intent(this, MainActivity.class);
         startActivity(intent);
