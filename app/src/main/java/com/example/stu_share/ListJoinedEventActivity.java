@@ -22,7 +22,7 @@ public class ListJoinedEventActivity extends AppCompatActivity {
     Button btnLogout, btnHome;
     ListView listView11;
     DBHelper dbHelper=null;
-    TextView test;
+
     public static  List<EventCoordinator.Event> evt = new ArrayList<EventCoordinator.Event>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +53,8 @@ public class ListJoinedEventActivity extends AppCompatActivity {
         while(c.moveToNext()){
             k+=c.getString(c.getColumnIndexOrThrow(DBConnect.DBEntity.EVTREG_COL_NAME_EVENTID))+"\n";
         }
-        test=findViewById(R.id.txtTest);
-        test.setText(k);
+
+
         listView11.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -63,7 +63,7 @@ public class ListJoinedEventActivity extends AppCompatActivity {
             {
                 EventCoordinator.Event tmp=(EventCoordinator.Event) adapter.getItemAtPosition(position);
                 Intent intent1 =new Intent(getBaseContext(), JoinedDtl.class);
-                Toast.makeText(getBaseContext(),"selected"+position+"wwwwww",Toast.LENGTH_LONG);
+                //Toast.makeText(getBaseContext(),"selected"+position+"wwwwww",Toast.LENGTH_LONG);
                intent1.putExtra("args",tmp);
                 intent1.putExtra("position",String.valueOf(position));
                 startActivity(intent1);

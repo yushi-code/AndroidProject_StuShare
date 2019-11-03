@@ -3,6 +3,9 @@ package com.example.stu_share;
 import java.io.Serializable;
 
 public class User implements Serializable {
+    public User(){
+
+    }
     public void setId(String id) {
         this.id = id;
     }
