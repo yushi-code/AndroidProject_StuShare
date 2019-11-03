@@ -6,15 +6,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class EditProfile extends AppCompatActivity {
     Button btnSubmit, btnHome7, btnLogout8;
+    TextView editFn,editLn,editQ,editA;
+    User user=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        user=(User)getIntent().getSerializableExtra("user");
         setContentView(R.layout.activity_edit_profile);
-
+        editFn=findViewById(R.id.editFirstName);
+        editFn.setText(user.firstName);
+        editLn=findViewById(R.id.editLastName);
+        editLn.setText(user.lastName);
+        editQ=findViewById(R.id.editQuestion);
+        editQ.setText(user.question);
+        editA=findViewById(R.id.editAnswer);
+        editA.setText(user.answer);
         btnSubmit = findViewById(R.id.btnSubmit);
         btnHome7 = findViewById(R.id.btnHome7);
         btnLogout8 = findViewById(R.id.btnLogout8);
@@ -35,6 +46,7 @@ public class EditProfile extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //user=editFn.getText().toString();
                 Toast.makeText(getBaseContext(), "Profile has been updated",
                         Toast.LENGTH_LONG).show();
             }
