@@ -30,7 +30,7 @@ public class EventDetail extends AppCompatActivity {
         txtEndTime = findViewById(R.id.txtEndTime);
 
         final EventCoordinator.Event event = (EventCoordinator.Event) getIntent().getSerializableExtra("args");
-        txtEvtTitle.setText(event.id);
+        txtEvtTitle.setText(event.eventTitle);
         txtEvtDetail.setText(event.eventDetail);
         txtStTime.setText(event.startTime);
         txtStDate.setText(event.startDate);
