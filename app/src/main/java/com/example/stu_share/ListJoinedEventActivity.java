@@ -56,7 +56,7 @@ public class ListJoinedEventActivity extends AppCompatActivity {
             {
                 EventCoordinator.Event tmp=(EventCoordinator.Event) adapter.getItemAtPosition(position);
                 Intent intent1 =new Intent(getBaseContext(), JoinedDtl.class);
-                Toast.makeText(getBaseContext(),"selected"+position+"wwwwww",Toast.LENGTH_LONG);
+                //Toast.makeText(getBaseContext(),"selected"+position+"wwwwww",Toast.LENGTH_LONG);
                intent1.putExtra("args",tmp);
                 intent1.putExtra("position",String.valueOf(position));
                 startActivity(intent1);
