@@ -14,7 +14,7 @@ import android.widget.ListView;
 import java.util.List;
 
 public class UserList extends AppCompatActivity {
-    Button btnLogout;
+    Button btnLogout, btnHome;
     ListView listView;
     DBHelper dbHelper=null;
     public static List<User> userList;
@@ -27,6 +27,13 @@ public class UserList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 logout();
+            }
+        });
+        btnHome = findViewById(R.id.btnHome);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                home();
             }
         });
         dbHelper=new DBHelper(this);
@@ -51,6 +58,10 @@ public class UserList extends AppCompatActivity {
     }
     public void logout(){
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    public void home(){
+        Intent intent = new Intent(this, AdminDashboardActivity.class);
         startActivity(intent);
     }
 }
