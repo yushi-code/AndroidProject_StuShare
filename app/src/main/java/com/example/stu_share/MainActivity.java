@@ -67,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }else if(txtEm.getText().toString().toLowerCase().equals("user")){
             Intent intent2 =new Intent(this, Menu.class);
-            User user =new User("1","dharam@georgebrown.ca","Password2","Dharam","KC","GBC","T127",
+            User user1 =new User("1","dharam@georgebrown.ca","Password2","Dharam","KC","GBC","T127",
                     "2017","2020","what is my favourite Teacher","Pawluck","user","active");
-            intent2.putExtra("user",user);
+            intent2.putExtra("user",user1);
             startActivity(intent2);
         }else{
             txtErr.setText("Something wrong with account, please try later");
