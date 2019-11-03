@@ -8,21 +8,12 @@ import android.view.View;
 import android.widget.Button;
 
 public class AdminDashboardActivity extends AppCompatActivity {
-    Button profile,viewUser,viewEvents, btnLogout;
+    Button profile,viewUser,viewEvents;
     public static User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_dashboard);
-
-        btnLogout = findViewById(R.id.btnAdminLogout);
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logout();
-            }
-        });
-
         user=(User)getIntent().getSerializableExtra("user");
         profile = findViewById(R.id.btnAdmProfile);
         viewUser=findViewById(R.id.btnViewUsers);
@@ -51,10 +42,6 @@ public class AdminDashboardActivity extends AppCompatActivity {
     public void openMyProfileEvent(){
         Intent intent =new Intent(this, MyProfile.class);
         intent.putExtra("user",user);
-        startActivity(intent);
-    }
-    public void logout(){
-        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

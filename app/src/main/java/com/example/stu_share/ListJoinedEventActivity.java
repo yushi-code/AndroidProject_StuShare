@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListJoinedEventActivity extends AppCompatActivity {
-    Button btnLogout;
     ListView listView11;
     DBHelper dbHelper=null;
     TextView test;
@@ -28,15 +26,6 @@ public class ListJoinedEventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_joined_event);
-
-        btnLogout = findViewById(R.id.btnLogout);
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logout();
-            }
-        });
-
         dbHelper=new DBHelper(this);
         final SQLiteDatabase db = dbHelper.getReadableDatabase();
         evt=dbHelper.getRegList(db,"2");
@@ -65,9 +54,5 @@ public class ListJoinedEventActivity extends AppCompatActivity {
             }
         });
 
-    }
-    public void logout(){
-        Intent intent =new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 }
