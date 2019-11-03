@@ -2,6 +2,7 @@ package com.example.stu_share;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +13,7 @@ import android.widget.Toast;
 import static com.example.stu_share.ListJoinedEventActivity.evt;
 
 public class RegEventDetail extends AppCompatActivity {
-    private Button btnLogout, btnDeReg;
+    private Button btnLogout,  btnHome, btnDeReg;
     private TextView txtEvtTitle, txtEvtDetail, txtStDate, txtStTime, txtEndTime, txtEndDate;
     DBHelper dbHelper = null;
     @Override
@@ -23,7 +24,20 @@ public class RegEventDetail extends AppCompatActivity {
 
 
         btnDeReg = findViewById(R.id.btnReg123);
-        btnLogout = findViewById(R.id.btnLogout111);
+        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
+        btnHome = findViewById(R.id.btnHome);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenMenuActivity();
+            }
+        });
         txtEvtTitle = findViewById(R.id.txtEventTitle123);
         txtEvtDetail = findViewById(R.id.txtEvtDetail123);
         txtStDate = findViewById(R.id.txtStDate123);
@@ -56,4 +70,13 @@ public class RegEventDetail extends AppCompatActivity {
                 }
             }
 });
-}}
+}
+    public void logout(){
+        Intent intent =new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    public void OpenMenuActivity() {
+        Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
+    }
+}

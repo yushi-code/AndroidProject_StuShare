@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListJoinedEventActivity extends AppCompatActivity {
-    Button btnLogout;
+    Button btnLogout, btnHome;
     ListView listView11;
     DBHelper dbHelper=null;
 
@@ -33,6 +33,13 @@ public class ListJoinedEventActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 logout();
+            }
+        });
+        btnHome = findViewById(R.id.btnHome);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenMenuActivity();
             }
         });
         dbHelper=new DBHelper(this);
@@ -66,6 +73,10 @@ public class ListJoinedEventActivity extends AppCompatActivity {
     }
     public void logout(){
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    public void OpenMenuActivity() {
+        Intent intent = new Intent(this, Menu.class);
         startActivity(intent);
     }
 }
