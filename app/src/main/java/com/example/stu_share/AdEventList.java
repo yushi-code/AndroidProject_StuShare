@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 public class AdEventList extends AppCompatActivity {
-    Button btnLogout;
+    Button btnLogout, btnHome;
     ListView listView;
     DBHelper dbHelper=null;
     @Override
@@ -24,6 +24,13 @@ public class AdEventList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 logout();
+            }
+        });
+        btnHome = findViewById(R.id.btnHome);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                home();
             }
         });
         dbHelper=new DBHelper(this);
@@ -49,6 +56,10 @@ public class AdEventList extends AppCompatActivity {
     }
     public void logout(){
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    public void home(){
+        Intent intent = new Intent(this, AdminDashboardActivity.class);
         startActivity(intent);
     }
 }
