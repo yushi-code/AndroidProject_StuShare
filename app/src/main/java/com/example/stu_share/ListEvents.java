@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 public class ListEvents extends AppCompatActivity {
     ListView listView;
     DBHelper dbHelper=null;
+    Button btnHome, btnLogout12;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,5 +41,31 @@ public class ListEvents extends AppCompatActivity {
             }
         });
 
+        btnHome = findViewById(R.id.btnHome);
+        btnLogout12 = findViewById(R.id.btnLogout12);
+        btnLogout12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenMenuActivity();
+            }
+        });
+
+    }
+
+    public void logout(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void OpenMenuActivity() {
+        Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
     }
 }
