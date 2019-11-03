@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void openSignupActivity(){
-        Intent intent =new Intent(this, Signup.class);
+        Intent intent =new Intent(this, SignUpEmailPass.class);
 
         startActivity(intent);
     }
