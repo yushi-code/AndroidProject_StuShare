@@ -3,19 +3,72 @@ package com.example.stu_share;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    public final String id;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setCollegeCode(String collegeCode) {
+        this.collegeCode = collegeCode;
+    }
+
+    public void setRegisterYear(String registerYear) {
+        this.registerYear = registerYear;
+    }
+
+    public void setProgramCode(String programCode) {
+        this.programCode = programCode;
+    }
+
+    public void setExpireYear(String expireYear) {
+        this.expireYear = expireYear;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public  String id;
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public  String email;
-    public final String password;
-    public final String firstName;
-    public final String lastName;
-    public final String collegeCode;
-    public final String registerYear;
-    public final String programCode;
-    public final String expireYear;
-    public final String question;
-    public final String answer;
-    public final String role;
-    public final String status;
+    public  String password;
+    public  String firstName;
+    public  String lastName;
+    public  String collegeCode;
+    public  String registerYear;
+    public  String programCode;
+    public  String expireYear;
+    public  String question;
+    public  String answer;
+    public  String role;
+    public  String status;
 
     public User(String id,String email,String pswd,String fn,String ln,String collegeCode,
                 String programCode,String registerYear,String expYear,String question,

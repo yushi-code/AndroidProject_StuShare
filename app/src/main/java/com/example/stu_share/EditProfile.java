@@ -9,10 +9,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static com.example.stu_share.AdminDashboardActivity.user;
+
 public class EditProfile extends AppCompatActivity {
     Button btnSubmit, btnHome7, btnLogout8;
     TextView editFn,editLn,editQ,editA;
-    User user=null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +48,10 @@ public class EditProfile extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //user=editFn.getText().toString();
+                user.setFirstName(editFn.getText().toString());
+                user.setLastName(editLn.getText().toString());
+                user.setQuestion(editQ.getText().toString());
+                user.setAnswer(editA.getText().toString());
                 Toast.makeText(getBaseContext(), "Profile has been updated",
                         Toast.LENGTH_LONG).show();
             }

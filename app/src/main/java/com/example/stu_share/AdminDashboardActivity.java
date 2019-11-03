@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class AdminDashboardActivity extends AppCompatActivity {
     Button profile;
-    User user=null;
+    public static User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
