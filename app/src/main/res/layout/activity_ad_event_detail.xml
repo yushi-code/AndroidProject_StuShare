@@ -4,7 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EventDetail">
+    tools:context=".AdEventDetail">
+
+    <Button
+        android:id="@+id/btnSus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Suspend/Activate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEvtDetail" />
 
     <TextView
         android:id="@+id/txtEndTime"
@@ -54,7 +65,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="17dp"
         android:layout_marginRight="17dp"
-        android:text="Logut"
+        android:text="LogOut"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -88,10 +99,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="60dp"
         android:text="Detail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEventTitle" />
 
     <TextView
         android:id="@+id/textView13"
@@ -134,28 +145,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="70dp"
         android:text="Start"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/btnLogout111" />
 
     <TextView
         android:id="@+id/textView19"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
         android:text="End"
         app:layout_constraintStart_toStartOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/txtStDate" />
-
-    <Button
-        android:id="@+id/btnJoin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
-        android:text="Join"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEvtDetail" />
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

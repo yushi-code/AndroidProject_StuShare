@@ -8,29 +8,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 
-public class Owned extends AppCompatActivity {
-    private Button btnCancel, btnEdit, btnViewAttend, btnCheckIn, btnLogout;
+public class AdEventList extends AppCompatActivity {
     ListView listView;
     DBHelper dbHelper=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_owned);
-        btnLogout = findViewById(R.id.btnLogout);
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logout();
-            }
-        });
+        setContentView(R.layout.activity_ad_event_list);
         dbHelper=new DBHelper(this);
         final SQLiteDatabase db = dbHelper.getReadableDatabase();
-        String[] args=(String[])getIntent().getSerializableExtra("args");
-        dbHelper.updateEventList(db,dbHelper.getEventCursorOwn(db,args[0]));
-        listView = (ListView) findViewById(R.id.listV1);
+        dbHelper.updateEventList(db,dbHelper.getAllEvent(db));
+        listView = (ListView) findViewById(R.id.eventList);
         final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,EventCoordinator.EVENTS);
         listView.setAdapter(arrayAdapter);
 
@@ -41,16 +31,11 @@ public class Owned extends AppCompatActivity {
                                     long arg3)
             {
                 EventCoordinator.Event tmp=(EventCoordinator.Event) adapter.getItemAtPosition(position);
-                Intent intent =new Intent(getBaseContext(), OwnDetail.class);
+                Intent intent =new Intent(getBaseContext(), AdUserDetail.class);
                 intent.putExtra("args",tmp);
                 startActivity(intent);
 
             }
         });
-    }
-
-    public void logout(){
-        Intent intent =new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 }

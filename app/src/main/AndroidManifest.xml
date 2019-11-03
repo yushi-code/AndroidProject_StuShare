@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdminProfile"></activity>
+        <activity android:name=".ResetWithEmail"></activity>
+        <activity android:name=".ResetConfirm" />
+        <activity android:name=".OwnDetail" />
+        <activity android:name=".AdEventDetail" />
+        <activity android:name=".AdEventList" />
+        <activity android:name=".AdUserDetail" />
+        <activity android:name=".UserList" />
         <activity android:name=".EditProfile" />
         <activity android:name=".JoinedDtl" />
         <activity android:name=".AdminDashboardActivity" />

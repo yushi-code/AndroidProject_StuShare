@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnCreateAcc = findViewById(R.id.btnReg2);
+        btnCreateAcc = findViewById(R.id.btnReg);
         btnFgtPswd=findViewById(R.id.btnResetPassword);
         txtEm=findViewById(R.id.txtRegEm);
         txtPswd=findViewById(R.id.txtPswd);
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         btnFgtPswd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent intent =new Intent(getBaseContext(), PasswordReset.class);
+                    Intent intent =new Intent(getBaseContext(), ResetWithEmail.class);
                     startActivity(intent);
             }
         });
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openMainMenu();
+                openMainMenu(db);
             }
         });
     }
@@ -58,18 +58,20 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
-    public void openMainMenu(){
+    public void openMainMenu(SQLiteDatabase db){
         if(txtEm.getText().toString().toLowerCase().equals("admin")){
             Intent intent =new Intent(this, AdminDashboardActivity.class);
              User  user =new User("1","david@georgebrown.ca","Password1","David","Shi","GBC","T127",
                     "2017","2020","what is my favourite car","Subaru","admin","active");
             intent.putExtra("user",user);
+            dbHelper.insertUser(db,user);
             startActivity(intent);
         }else if(txtEm.getText().toString().toLowerCase().equals("user")){
             Intent intent2 =new Intent(this, Menu.class);
             User user1 =new User("1","dharam@georgebrown.ca","Password2","Dharam","KC","GBC","T127",
                     "2017","2020","what is my favourite Teacher","Pawluck","user","active");
             intent2.putExtra("user",user1);
+            dbHelper.insertUser(db,user1);
             startActivity(intent2);
         }else{
             txtErr.setText("Something wrong with account, please try later");

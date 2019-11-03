@@ -100,7 +100,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtPswd" />
 
     <Button
-        android:id="@+id/btnReg2"
+        android:id="@+id/btnReg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="127dp"
@@ -118,16 +118,16 @@
         android:id="@+id/btnResetPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginLeft="176dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="216dp"
-        android:layout_marginRight="216dp"
+        android:layout_marginStart="129dp"
+        android:layout_marginLeft="129dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="130dp"
+        android:layout_marginRight="130dp"
         android:text="Password Reset"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnReg2" />
+        app:layout_constraintTop_toBottomOf="@+id/btnReg" />
 
     <TextView
         android:id="@+id/txtVErr"
@@ -135,28 +135,28 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
         android:layout_marginLeft="176dp"
+        android:layout_marginTop="250dp"
         android:layout_marginEnd="368dp"
         android:layout_marginRight="368dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="328dp"
         android:textColor="#00EE0B0B"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtWrong"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginLeft="162dp"
-        android:layout_marginEnd="190dp"
-        android:layout_marginRight="190dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginLeft="140dp"
         android:layout_marginBottom="1dp"
         android:text="TextView"
         android:textColor="#00E20B0B"
         app:layout_constraintBottom_toTopOf="@+id/btnLogin"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPswd" />
 

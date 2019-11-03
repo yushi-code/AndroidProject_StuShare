@@ -7,16 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class EventDetail extends AppCompatActivity {
+public class AdEventDetail extends AppCompatActivity {
     private Button btnLogout,btnJoin;
     private TextView txtEvtTitle,txtEvtDetail,txtStDate,txtStTime,txtEndTime,txtEndDate;
     DBHelper dbHelper = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_detail);
-        btnJoin=findViewById(R.id.btnJoin);
+        setContentView(R.layout.activity_ad_event_detail);
+        btnJoin=findViewById(R.id.btnSus);
         btnLogout=findViewById(R.id.btnLogout111);
         txtEvtTitle=findViewById(R.id.txtEventTitle);
         txtEvtDetail=findViewById(R.id.txtEvtDetail);
@@ -38,8 +39,11 @@ public class EventDetail extends AppCompatActivity {
                 //add to database table with event id and participante id
                 dbHelper = new DBHelper(getBaseContext());
                 final SQLiteDatabase db = dbHelper.getWritableDatabase();
-                dbHelper.eventReg(db,event.id,"2");
+                dbHelper.eventStatusChange(db,event);
+                Toast.makeText(getBaseContext(), "",
+                        Toast.LENGTH_LONG).show();
             }
         });
     }
-}
+    }
+

@@ -29,21 +29,21 @@ public class MyEvents extends AppCompatActivity {
                 openOwnedEventActivity();
             }
         });
-        btnJoin = findViewById(R.id.btnJoin);
+        btnJoin = findViewById(R.id.btnJoinEvt);
         btnJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openJoinActivity();
             }
         });
-        btnReg = findViewById(R.id.btnReg2);
+        btnReg = findViewById(R.id.btnReg);
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openRegActivity();
             }
         });
-        btnPstEvt = findViewById(R.id.btnPstEvt);
+        btnPstEvt = findViewById(R.id.btnDeAct);
         btnPstEvt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

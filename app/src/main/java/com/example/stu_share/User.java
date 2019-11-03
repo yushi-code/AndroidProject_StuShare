@@ -70,9 +70,28 @@ public class User implements Serializable {
     public  String role;
     public  String status;
 
-    public User(String id,String email,String pswd,String fn,String ln,String collegeCode,
-                String programCode,String registerYear,String expYear,String question,
-                String answer,String role,String status ){
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id + '\n' +
+                ", email=" + email + '\n' +
+                ", password=" + password + '\n' +
+                ", firstName=" + firstName + '\n' +
+                ", lastName=" + lastName + '\n' +
+                ", collegeCode=" + collegeCode + '\n' +
+                ", registerYear=" + registerYear + '\n' +
+                ", programCode=" + programCode + '\n' +
+                ", expireYear=" + expireYear + '\n' +
+                ", question=" + question + '\n' +
+                ", answer=" + answer + '\n' +
+                ", role=" + role + '\n' +
+                ", status=" + status + '\n' +
+                '}';
+    }
+
+    public User(String id, String email, String pswd, String fn, String ln, String collegeCode,
+                String programCode, String registerYear, String expYear, String question,
+                String answer, String role, String status ){
         this.id=id;
         this.email=email;
         this.password=pswd;

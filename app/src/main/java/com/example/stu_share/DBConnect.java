@@ -25,7 +25,7 @@ public class DBConnect {
         public static final String SQL_CREATE_TABLE_USER = "CREATE TABLE "+
                 TABLE_NAME_USER + " ( "+
                 _ID + " INTEGER PRIMARY KEY, " +
-                COLUMN_NAME_EMAIL + " TEXT , "+
+                COLUMN_NAME_EMAIL + " TEXT unique, "+
                 COLUMN_NAME_PSWD + " TEXT , "+
                 COLUMN_NAME_FN + " TEXT , "+
                 COLUMN_NAME_LN + " TEXT , "+
