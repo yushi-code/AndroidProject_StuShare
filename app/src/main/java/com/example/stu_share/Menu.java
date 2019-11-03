@@ -66,6 +66,7 @@ public class Menu extends AppCompatActivity {
     }
     public void openMyProfileEvent(){
         Intent intent =new Intent(this, MyProfile.class);
+        intent.putExtra("user",user1);
         startActivity(intent);
     }
 

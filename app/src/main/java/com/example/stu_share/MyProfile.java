@@ -8,19 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import static com.example.stu_share.AdminDashboardActivity.user;
-import static com.example.stu_share.Menu.user1;
+
 
 public class MyProfile extends AppCompatActivity {
     Button btnHome4, btnLogout4, btnEdit;
     TextView txtFn,txtLn,txtEm,txtQ;
-
+    private User userTemp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(user1==null){
-            user1=user;
-        }
+        userTemp=(User)getIntent().getSerializableExtra("user");
         setContentView(R.layout.activity_my_profile);
         btnHome4 = findViewById(R.id.btnHome4);
         btnLogout4 = findViewById(R.id.btnLogout4);
@@ -30,10 +27,10 @@ public class MyProfile extends AppCompatActivity {
         txtLn=findViewById(R.id.txtLName);
         txtEm=findViewById(R.id.txtEmail);
         txtQ=findViewById(R.id.txtSecQues);
-        txtFn.setText(user1.firstName);
-        txtLn.setText(user1.lastName);
-        txtEm.setText(user1.email);
-        txtQ.setText(user1.question);
+        txtFn.setText(userTemp.firstName);
+        txtLn.setText(userTemp.lastName);
+        txtEm.setText(userTemp.email);
+        txtQ.setText(userTemp.question);
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,12 +55,12 @@ public class MyProfile extends AppCompatActivity {
 
     public void openEditProfile(){
         Intent intent =new Intent(this, EditProfile.class);
-        intent.putExtra("user",user1);
+        intent.putExtra("user",userTemp);
         startActivity(intent);
     }
     public void OpenMenuActivity() {
         Intent intent = new Intent(this, Menu.class);
-        intent.putExtra("user",user1);
+        intent.putExtra("user",userTemp);
         startActivity(intent);
     }
 

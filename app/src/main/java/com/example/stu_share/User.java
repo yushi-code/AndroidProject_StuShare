@@ -75,20 +75,20 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id + '\n' +
-                ", email=" + email + '\n' +
-                ", password=" + password + '\n' +
-                ", firstName=" + firstName + '\n' +
-                ", lastName=" + lastName + '\n' +
-                ", collegeCode=" + collegeCode + '\n' +
-                ", registerYear=" + registerYear + '\n' +
-                ", programCode=" + programCode + '\n' +
-                ", expireYear=" + expireYear + '\n' +
-                ", question=" + question + '\n' +
-                ", answer=" + answer + '\n' +
-                ", role=" + role + '\n' +
-                ", status=" + status + '\n' +
+        return "User Information \n" +
+                "id= " + id + '\t' +
+                ", email=" + email + '\t' +
+                ", password=" + password + '\t' +
+                ", firstName=" + firstName + '\t' +
+                ", lastName=" + lastName + '\t' +
+                ", collegeCode=" + collegeCode + '\t' +
+                ", registerYear=" + registerYear + '\t' +
+                ", programCode=" + programCode + '\t' +
+                ", expireYear=" + expireYear + '\t' +
+                ", question=" + question + '\t' +
+                ", answer=" + answer + '\t' +
+                ", role=" + role + '\t' +
+                ", status=" + status + '\t' +
                 '}';
     }
 

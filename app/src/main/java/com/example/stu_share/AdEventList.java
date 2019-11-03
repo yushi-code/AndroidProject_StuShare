@@ -47,7 +47,7 @@ public class AdEventList extends AppCompatActivity {
                                     long arg3)
             {
                 EventCoordinator.Event tmp=(EventCoordinator.Event) adapter.getItemAtPosition(position);
-                Intent intent =new Intent(getBaseContext(), AdUserDetail.class);
+                Intent intent =new Intent(getBaseContext(), AdEventDetail.class);
                 intent.putExtra("args",tmp);
                 startActivity(intent);
 

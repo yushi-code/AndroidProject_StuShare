@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class ResetWithEmail extends AppCompatActivity {
     Button btnNext;
@@ -21,15 +22,23 @@ public class ResetWithEmail extends AppCompatActivity {
         dbHelper=new DBHelper(this);
         email=findViewById(R.id.txtEm);
         btnNext=findViewById(R.id.btnNext);
+        dbHelper=new DBHelper(this);
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String userEmail=email.getText().toString();
-        final User userTemp=dbHelper.getUserObj(db,userEmail);
+        final String userEmail=email.getText().toString();
+
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getBaseContext(),PasswordReset.class);
-                intent.putExtra("args",userTemp);
-                startActivity(intent);
+                final User userTemp=dbHelper.getUserObj(db,email.getText().toString().toLowerCase());
+                if(userTemp!=null){
+                    Intent intent=new Intent(getBaseContext(),PasswordReset.class);
+                    intent.putExtra("args",userTemp);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(getBaseContext(), "Your email can't be found!",
+                            Toast.LENGTH_LONG).show();
+                }
+
             }
         });
     }

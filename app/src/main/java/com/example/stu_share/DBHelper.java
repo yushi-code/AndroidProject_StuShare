@@ -62,7 +62,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public long insertUser(SQLiteDatabase db, User user) {
 
         ContentValues values = new ContentValues();
-        values.put(DBConnect.DBEntity.COLUMN_NAME_EMAIL, user.email);
+        values.put(DBConnect.DBEntity.COLUMN_NAME_EMAIL, user.email.toLowerCase());
         values.put(DBConnect.DBEntity.COLUMN_NAME_PSWD, user.password);
         values.put(DBConnect.DBEntity.COLUMN_NAME_FN, user.firstName);
         values.put(DBConnect.DBEntity.COLUMN_NAME_LN, user.lastName);
@@ -70,7 +70,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(DBConnect.DBEntity.COLUMN_NAME_PC, user.programCode);
         values.put(DBConnect.DBEntity.COLUMN_NAME_RY, user.registerYear);
         values.put(DBConnect.DBEntity.COLUMN_NAME_EXP, user.expireYear);
-        values.put(DBConnect.DBEntity.COLUMN_NAME_STATUS, "what");
+        values.put(DBConnect.DBEntity.COLUMN_NAME_STATUS, "active");
         values.put(DBConnect.DBEntity.COLUMN_NAME_Q, user.question);
         values.put(DBConnect.DBEntity.COLUMN_NAME_A, user.answer);
         values.put(DBConnect.DBEntity.COLUMN_NAME_ROLE, "student");
@@ -356,7 +356,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         Cursor c = db.query(DBConnect.DBEntity.TABLE_NAME_USER,
                 projection,
-                COLUMN_NAME_EMAIL+"=?",
+                COLUMN_NAME_EMAIL+"= ? ",
                 new String[]{userEmail},
                 null,
                 null,
