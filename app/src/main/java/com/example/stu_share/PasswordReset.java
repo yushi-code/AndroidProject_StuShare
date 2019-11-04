@@ -37,6 +37,14 @@ public class PasswordReset extends AppCompatActivity {
                 }
             }
         });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getBaseContext(),MainActivity.class);
+                intent.putExtra("user",userPR);
+                startActivity(intent);
+            }
+        });
 
     }
 }

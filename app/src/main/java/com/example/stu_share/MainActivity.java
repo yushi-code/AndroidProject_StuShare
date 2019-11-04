@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         }else if(txtEm.getText().toString().toLowerCase().equals("user")){
             Intent intent2 =new Intent(this, Menu.class);
             User user1 =new User("1","dharam@georgebrown.ca","Password2","Dharam","KC","GBC","T127",
-                    "2017","2020","what is my favourite Teacher","Pawluck","user","active");
+                    "2017","2020","who is my favourite Teacher","Pawluk","user","active");
             intent2.putExtra("user",user1);
             dbHelper.insertUser(db,user1);
             startActivity(intent2);

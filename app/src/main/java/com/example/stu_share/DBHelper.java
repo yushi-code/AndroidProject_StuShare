@@ -167,7 +167,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return db.query(DBConnect.DBEntity.TABLE_NAME_EVENT,
                 projection,
-                "status=? and end_date>? ",
+                "status=? and end_date>=? ",
                 new String[]{"active", dateToday},
                 null,
                 null,
