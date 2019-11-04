@@ -11,7 +11,7 @@ import android.widget.EditText;
 public class CreateDescription extends AppCompatActivity {
 
     private Button btnNextCreate, btnHome2, btnLogout;
-
+    private User user;
     private EditText txtEvtTitle,txtEvtDetail;
 
     @Override
@@ -20,6 +20,7 @@ public class CreateDescription extends AppCompatActivity {
         setContentView(R.layout.activity_create_description);
         txtEvtDetail=findViewById(R.id.txtEvtDetail);
         txtEvtTitle=findViewById(R.id.txtEvtTitle);
+        user= (User)getIntent().getSerializableExtra("user");
         btnNextCreate = findViewById(R.id.btnNextCreate);
         btnNextCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,6 +29,7 @@ public class CreateDescription extends AppCompatActivity {
                 event.setEventTitle(txtEvtTitle.getText().toString());
                 event.setEventDetail(txtEvtDetail.getText().toString());
                 Intent intent =new Intent(getBaseContext(), Create.class);
+                intent.putExtra("user",user);
                 intent.putExtra("event",event);
                 startActivity(intent);
             }
@@ -55,11 +57,13 @@ public class CreateDescription extends AppCompatActivity {
 
     public void OpenMenuActivity() {
         Intent intent = new Intent(this, Menu.class);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
 
     public void logout(){
         Intent intent =new Intent(this, MainActivity.class);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
 }

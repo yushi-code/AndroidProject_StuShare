@@ -17,12 +17,15 @@ public class UserList extends AppCompatActivity {
     Button btnLogout, btnHome;
     ListView listView;
     DBHelper dbHelper=null;
+    private User user2,user1;
+
     public static List<User> userList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
         btnLogout = findViewById(R.id.btnLogout);
+        user1=(User)getIntent().getSerializableExtra("user");
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,6 +54,7 @@ public class UserList extends AppCompatActivity {
                 User user2=(User) adapter.getItemAtPosition(position);
                 Intent intent =new Intent(getBaseContext(), AdUserDetail.class);
                 intent.putExtra("args",user2);
+                intent.putExtra("user",user1);
                 startActivity(intent);
 
             }
@@ -58,10 +62,12 @@ public class UserList extends AppCompatActivity {
     }
     public void logout(){
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("user",user1);
         startActivity(intent);
     }
     public void home(){
         Intent intent = new Intent(this, AdminDashboardActivity.class);
+        intent.putExtra("user",user1);
         startActivity(intent);
     }
 }

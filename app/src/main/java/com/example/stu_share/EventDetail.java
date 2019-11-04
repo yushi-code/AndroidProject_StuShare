@@ -13,6 +13,7 @@ import android.widget.Toast;
 public class EventDetail extends AppCompatActivity {
     private Button btnLogout, btnJoin, btnLogout2, btnHome3;
     private TextView txtEvtTitle, txtEvtDetail, txtStDate, txtStTime, txtEndTime, txtEndDate;
+    private User user;
     DBHelper dbHelper = null;
 
     @Override
@@ -28,7 +29,7 @@ public class EventDetail extends AppCompatActivity {
         txtStTime = findViewById(R.id.txtStTime);
         txtEndDate = findViewById(R.id.txtEndDate);
         txtEndTime = findViewById(R.id.txtEndTime);
-
+        user=(User)getIntent().getSerializableExtra("user");
         final EventCoordinator.Event event = (EventCoordinator.Event) getIntent().getSerializableExtra("args");
         txtEvtTitle.setText(event.eventTitle);
         txtEvtDetail.setText(event.eventDetail);
@@ -45,6 +46,10 @@ public class EventDetail extends AppCompatActivity {
                 dbHelper.eventReg(db, event.id, "2");
                 Toast.makeText(getBaseContext(), "you have successfully joined the event",
                         Toast.LENGTH_LONG).show();
+                Intent intent=new Intent(getBaseContext(),Menu.class);
+                intent.putExtra("event",event);
+                intent.putExtra("user",user);
+                startActivity(intent);
             }
         });
 
@@ -70,6 +75,7 @@ public class EventDetail extends AppCompatActivity {
 
     public void OpenMenuActivity() {
         Intent intent = new Intent(this, Menu.class);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
 }

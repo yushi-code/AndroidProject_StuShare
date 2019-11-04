@@ -9,6 +9,7 @@ import android.widget.Button;
 
 public class MyEvents extends AppCompatActivity {
     private Button  btnOwnedEvents, btnPstEvt,btnJoin,btnCreateEvent,btnHome, btnLogout,btnReg;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +58,7 @@ public class MyEvents extends AppCompatActivity {
                 logout();
             }
         });
-
+        user=(User)getIntent().getSerializableExtra("user");
         btnHome = findViewById(R.id.btnHome);
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +72,7 @@ public class MyEvents extends AppCompatActivity {
         Intent intent =new Intent(this, ListJoinedEventActivity.class);
         String[] tt=new String[]{"2","2"};
         intent.putExtra("args",tt);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
 
@@ -78,31 +80,37 @@ public class MyEvents extends AppCompatActivity {
         Intent intent =new Intent(this, Owned.class);
         String[] tt=new String[]{"2","2"};
         intent.putExtra("args",tt);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
     public void openPstEvtAct(){
         Intent intent =new Intent(this, PastEvent.class);
         String[] tt=new String[]{"2","2"};
         intent.putExtra("args",tt);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
     public void openJoinActivity(){
         Intent intent =new Intent(this, ListEvents.class);
         String[] tt=new String[]{"2","2"};
         intent.putExtra("args",tt);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
     public void openCreateEvent(){
         Intent intent =new Intent(this, CreateDescription.class);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
 
     public void logout(){
         Intent intent =new Intent(this, MainActivity.class);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
     public void OpenMenuActivity() {
         Intent intent = new Intent(this, Menu.class);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
 }

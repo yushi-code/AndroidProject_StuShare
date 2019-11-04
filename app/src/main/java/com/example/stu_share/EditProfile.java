@@ -15,14 +15,13 @@ import static com.example.stu_share.Menu.user1;
 public class EditProfile extends AppCompatActivity {
     Button btnSubmit, btnHome7, btnLogout8;
     TextView editFn,editLn,editQ,editA;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState);if(user==null){
-            user=user1;
-        }
-        //user=(User)getIntent().getSerializableExtra("user");
+        super.onCreate(savedInstanceState);
+        user=(User)getIntent().getSerializableExtra("user");
         setContentView(R.layout.activity_edit_profile);
         editFn=findViewById(R.id.editFirstName);
         editFn.setText(user.firstName);
@@ -59,6 +58,9 @@ public class EditProfile extends AppCompatActivity {
                     user.setAnswer(editA.getText().toString());
                     Toast.makeText(getBaseContext(), "Profile has been updated",
                             Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getBaseContext(), AdminDashboardActivity.class);
+                    intent.putExtra("user",user);
+                    startActivity(intent);
                 }else{
                     user=user1;
                     user.setFirstName(editFn.getText().toString());
@@ -67,6 +69,9 @@ public class EditProfile extends AppCompatActivity {
                     user.setAnswer(editA.getText().toString());
                     Toast.makeText(getBaseContext(), "Profile has been updated",
                             Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getBaseContext(), Menu.class);
+                    intent.putExtra("user",user);
+                    startActivity(intent);
                 }
 
             }
@@ -76,11 +81,13 @@ public class EditProfile extends AppCompatActivity {
 
     public void OpenMenuActivity() {
         Intent intent = new Intent(this, Menu.class);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
 
     public void logout(){
         Intent intent =new Intent(this, MainActivity.class);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
 }

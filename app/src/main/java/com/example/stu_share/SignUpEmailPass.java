@@ -27,7 +27,6 @@ public class SignUpEmailPass extends AppCompatActivity {
         txtRegPswd=findViewById(R.id.txtRegPswd);
         txtRegpswd2=findViewById(R.id.txtRegPswdConf);
         dbHelper=new DBHelper(this);
-        test=findViewById(R.id.textView39);
         final SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         btnNext.setOnClickListener(new View.OnClickListener() {

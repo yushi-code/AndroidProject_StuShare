@@ -16,6 +16,7 @@ public class ListEvents extends AppCompatActivity {
     ListView listView;
     DBHelper dbHelper=null;
     Button btnHome, btnLogout12;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,7 @@ public class ListEvents extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
         final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,EventCoordinator.EVENTS);
         listView.setAdapter(arrayAdapter);
-
+        user=(User)getIntent().getSerializableExtra("user");
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -36,6 +37,7 @@ public class ListEvents extends AppCompatActivity {
                 EventCoordinator.Event tmp=(EventCoordinator.Event) adapter.getItemAtPosition(position);
                 Intent intent =new Intent(getBaseContext(), EventDetail.class);
                 intent.putExtra("args",tmp);
+                intent.putExtra("user",user);
                 startActivity(intent);
 
             }
@@ -61,11 +63,13 @@ public class ListEvents extends AppCompatActivity {
 
     public void logout(){
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
 
     public void OpenMenuActivity() {
         Intent intent = new Intent(this, Menu.class);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
 }

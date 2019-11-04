@@ -15,6 +15,7 @@ public class AdEventList extends AppCompatActivity {
     Button btnLogout, btnHome;
     ListView listView;
     DBHelper dbHelper=null;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +37,7 @@ public class AdEventList extends AppCompatActivity {
         dbHelper=new DBHelper(this);
         final SQLiteDatabase db = dbHelper.getReadableDatabase();
         dbHelper.updateEventList(db,dbHelper.getAllEvent(db));
+        user=(User)getIntent().getSerializableExtra("user");
         listView = (ListView) findViewById(R.id.eventList);
         final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,EventCoordinator.EVENTS);
         listView.setAdapter(arrayAdapter);
@@ -49,6 +51,7 @@ public class AdEventList extends AppCompatActivity {
                 EventCoordinator.Event tmp=(EventCoordinator.Event) adapter.getItemAtPosition(position);
                 Intent intent =new Intent(getBaseContext(), AdEventDetail.class);
                 intent.putExtra("args",tmp);
+                intent.putExtra("user",user);
                 startActivity(intent);
 
             }

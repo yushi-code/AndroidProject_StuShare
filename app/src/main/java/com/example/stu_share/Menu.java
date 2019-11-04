@@ -54,14 +54,17 @@ public class Menu extends AppCompatActivity {
     }
     public void openMyEventsActivity(){
         Intent intent =new Intent(this, MyEvents.class);
+        intent.putExtra("user",user1);
         startActivity(intent);
     }
     public void openViewEventsActivity(){
         Intent intent =new Intent(this, ListEvents.class);
+        intent.putExtra("user",user1);
         startActivity(intent);
     }
     public void openCreateEvent(){
         Intent intent =new Intent(this, CreateDescription.class);
+        intent.putExtra("user",user1);
         startActivity(intent);
     }
     public void openMyProfileEvent(){
@@ -72,6 +75,7 @@ public class Menu extends AppCompatActivity {
 
     public void logout(){
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("user",user1);
         startActivity(intent);
     }
 }

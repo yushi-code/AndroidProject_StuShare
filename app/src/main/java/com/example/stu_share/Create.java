@@ -19,7 +19,7 @@ import java.util.Locale;
 
 public class Create extends AppCompatActivity {
     EditText txtStDate,txtStTime,txtEndTime,txtEndDate;
-
+    private User user;
     Button btnCreate, btnHome, btnLogout;
     DBHelper dbHelper = null;
     @Override
@@ -38,6 +38,7 @@ public class Create extends AppCompatActivity {
         txtStDate=findViewById(R.id.txtStDate);
         txtStTime=findViewById(R.id.txtStTime);
         txtEndTime=findViewById(R.id.txtEndTime);
+        user=(User)getIntent().getSerializableExtra("user");
          final EventCoordinator.Event event1=(EventCoordinator.Event)getIntent().getSerializableExtra("event");
         final Calendar myCalendar = Calendar.getInstance();
         final Calendar myCalendar1 = Calendar.getInstance();
@@ -129,6 +130,7 @@ public class Create extends AppCompatActivity {
     }
     public void OpenMenuActivity(){
         Intent intent = new Intent(this, Menu.class);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
 

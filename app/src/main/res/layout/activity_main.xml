@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1796A7"
+    android:background="@drawable/background"
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="81dp">
 
@@ -52,7 +52,7 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="277dp"
         android:layout_marginRight="277dp"
-        android:text="Email"
+        android:text="Enter 'user' or 'admin'"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#FFF"
         android:textSize="24sp"

@@ -35,6 +35,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getBaseContext(),AdEventList.class);
+                intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
@@ -42,6 +43,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent=new Intent(getBaseContext(),UserList.class);
+            intent.putExtra("user",user);
             startActivity(intent);
         }
         });
@@ -53,6 +55,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
     }
     public void logout(){
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
 }
