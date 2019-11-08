@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnCreateAcc, btnLogin,btnFgtPswd;
+    private Button btnLogin1;
     private EditText txtEm,txtPswd;
     private TextView txtErr;
     DBHelper dbHelper=null;
