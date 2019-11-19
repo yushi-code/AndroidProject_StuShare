@@ -26,7 +26,7 @@ import java.util.List;
 public class UserList extends AppCompatActivity {
     Button btnLogout, btnHome;
     ListView listView;
-    DBHelper dbHelper=null;
+    //DBHelper dbHelper=null;
     private User user2,user1;
 
     public static List<User> userList;
@@ -52,9 +52,9 @@ public class UserList extends AppCompatActivity {
                 home();
             }
         });
-        dbHelper=new DBHelper(this);
-        final SQLiteDatabase db = dbHelper.getReadableDatabase();
-        userList=dbHelper.getUserList(db);
+        //dbHelper=new DBHelper(this);
+        //final SQLiteDatabase db = dbHelper.getReadableDatabase();
+        //userList=dbHelper.getUserList(db);
 
 
         final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,userList);
