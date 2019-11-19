@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -21,6 +22,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserList extends AppCompatActivity {
@@ -28,6 +30,7 @@ public class UserList extends AppCompatActivity {
     ListView listView;
     //DBHelper dbHelper=null;
     private User user2,user1;
+    TextView txt;
 
     public static List<User> userList;
     @Override
@@ -57,8 +60,8 @@ public class UserList extends AppCompatActivity {
         //userList=dbHelper.getUserList(db);
 
 
-        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,userList);
-        listView.setAdapter(arrayAdapter);
+        /*final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,stock);
+        listView.setAdapter(arrayAdapter);*/
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -130,13 +133,27 @@ public class UserList extends AppCompatActivity {
 
     private void loadIntoListView(String json) throws JSONException {
         JSONArray jsonArray = new JSONArray(json);
+        List<User> userL = new ArrayList<User>();
         String[] stocks = new String[jsonArray.length()];
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
+            User user1=new User();
+
+            //please keep adding all the information to user1 objects!!!!!!!!
+
+
+
+
+            
+            user1.setFirstName( obj.getString("first_name"));
+            user1.setEmail( obj.getString("email"));
+            userL.add(user1);
             stocks[i] = obj.getString("first_name") + " " + obj.getString("email");
+
         }
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, stocks);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, userL);
         listView.setAdapter(arrayAdapter);
+
     }
 }
 

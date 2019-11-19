@@ -20,6 +20,30 @@ import static com.example.stu_share.DBConnect.DBEntity.TABLE_NAME_EVENT;
 import static com.example.stu_share.DBConnect.DBEntity.TABLE_NAME_EVENTREG;
 
 public class DBHelper extends SQLiteOpenHelper {
+
+    public List<User> jsonPaserUser(String s){
+        List<User> userL = new ArrayList<User>();
+
+return userL;
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //To be deleted
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "stushare.db";
     public static final Date today = new Date();
