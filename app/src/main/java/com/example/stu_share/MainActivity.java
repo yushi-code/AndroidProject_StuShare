@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnCreateAcc, btnLogin,btnFgtPswd;
     private EditText txtEm,txtPswd;
     private TextView txtErr;
-    DBHelper dbHelper=null;
+    //DBHelper dbHelper=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         btnFgtPswd=findViewById(R.id.btnResetPassword);
         txtEm=findViewById(R.id.txtRegEm);
         txtPswd=findViewById(R.id.txtPswd);
-        dbHelper=new DBHelper(this);
-        final SQLiteDatabase db = dbHelper.getWritableDatabase();
+        //dbHelper=new DBHelper(this);
+        //final SQLiteDatabase db = dbHelper.getWritableDatabase();
         final String  txtE = txtEm.getText().toString();
         final String txtP = txtPswd.getText().toString();
         txtErr=findViewById(R.id.txtVErr);
@@ -49,16 +49,24 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openMainMenu(db);
+                openMainMenu();
             }
         });
     }
+    /*
+    *
+    *
+    * response = httpClient.execute(targetHost, targetGet);
+HttpEntity entity = response.getEntity();
+String htmlResponse = EntityUtils.toString(entity);
+    *
+    * */
     public void openSignupActivity(){
         Intent intent =new Intent(this, SignUpEmailPass.class);
 
         startActivity(intent);
     }
-    public void openMainMenu(SQLiteDatabase db){
+    public void openMainMenu(){
         if(txtEm.getText().toString().toLowerCase().equals("admin")){
             Intent intent =new Intent(this, AdminDashboardActivity.class);
              User  user =new User("1","david@georgebrown.ca","Password1","David","Shi","GBC","T127",
