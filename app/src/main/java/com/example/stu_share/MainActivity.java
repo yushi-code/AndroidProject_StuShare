@@ -1,21 +1,13 @@
 package com.example.stu_share;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -24,14 +16,11 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.LongSummaryStatistics;
 
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
-
+import com.google.gson.GsonBuilder;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -39,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtEm, txtPswd;
     private TextView txtErr,txtShow;
     private User user=new User();
+    private String userString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +45,12 @@ public class MainActivity extends AppCompatActivity {
         final String txtE = txtEm.getText().toString();
         final String txtP = txtPswd.getText().toString();
         txtErr = findViewById(R.id.txtVErr);
+        String msgError=(String)getIntent().getSerializableExtra("msgErr");
+        txtErr.setText(msgError);
+        user=(User)getIntent().getSerializableExtra("user");
+        if(user!=null){
+            txtShow.setText(user.toString());
+        }
         btnFgtPswd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +69,9 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendPost();
+                user=sendPost();
+
+                txtShow.setText(userString);
             }
         });
     }
@@ -83,13 +81,13 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
-    public void sendPost() {
+    public User sendPost() {
+
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     URL url = new URL("https://f9team1.gblearn.com/stu_share/user_login.php");
-                    //URL url = new URL("https://webhook.site/547e2577-2b3b-4183-9b81-a6b3ac5c985f");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("POST");
                     conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
@@ -98,16 +96,18 @@ public class MainActivity extends AppCompatActivity {
                     conn.setDoInput(true);
 
                     JSONObject jsonParam = new JSONObject();
-                    //jsonParam.put("timestamp", 1488873360);
                     jsonParam.put("email", txtEm.getText().toString());
                     jsonParam.put("name", "asdasdadsasdads");
 
-
+                    user=(User) getIntent().getSerializableExtra("user");
+                    if(user!=null){
+                        txtShow.setText(user.toString());
+                    }
                     Log.i("JSON", jsonParam.toString());
                     DataOutputStream os = new DataOutputStream(conn.getOutputStream());
                     BufferedWriter writer = new BufferedWriter(
                             new OutputStreamWriter(os, "UTF-8"));
-                    //os.writeBytes(URLEncoder.encode(jsonParam.toString(), "UTF-8"));
+
                     os.writeBytes(jsonParam.toString());
 
                     os.flush();
@@ -127,17 +127,48 @@ public class MainActivity extends AppCompatActivity {
                     }
                     Log.d("TAG", "Server Response is: " + total.toString() + ": " );
 
-                    /*if(!total.equals(null)){
-                        txtShow.setText(total.toString());
-                    }*/
-                    
-                    Gson g = new Gson();
-                     user = g.fromJson(total.toString(),User.class);
+
+                    String regex = "\\[|\\]";
+                    String total1 = total.toString().replaceAll(regex, "");
+                    userString=total1;
+                    Gson g = new GsonBuilder()
+                            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                            .create();
+                    User user1 = g.fromJson(total1,User.class);
+
+
+                    if(user1==null){
+                        Intent i=new Intent(getBaseContext(),MainActivity.class);
+
+                        i.putExtra("msgErr","Can't login,user name not found.");
+                        startActivity(i);
+                    }else if(txtPswd.getText().toString().equals(user1.password)){
+                        Log.d("JSON",user1.toString()+"usertoString!");
+                        if(user1.role.equals("admin")){
+                            Intent i=new Intent(getBaseContext(),AdminDashboardActivity.class);
+                            i.putExtra("user",user1);
+                            startActivity(i);
+                        }else{
+                            Intent i=new Intent(getBaseContext(),Menu.class);
+                            i.putExtra("user",user1);
+                            startActivity(i);
+                        }
+
+                    }else{
+                        Intent i=new Intent(getBaseContext(),MainActivity.class);
+                        i.putExtra("msgErr","\"Paassword wrong!\"");
+                        startActivity(i);
+                    }
+
+
+
+
+
                               /*  JSONArray jsonArray = new JSONArray(total);
 
                                 String[] stocks = new String[jsonArray.length()];
                                 JSONObject obj=jsonArray.getJSONObject(0);
-                                Log.d("JSON",obj.getString("email"));
+
 
                                     user.setId( obj.getString("_id"));
                                     user.setEmail(obj.getString("email"));
@@ -157,33 +188,31 @@ public class MainActivity extends AppCompatActivity {
 
 
 */
+                              user=user1;
                     conn.disconnect();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
             }
         });
-
         thread.start();
 
-        txtShow.setText(user.toString());
+
+
+        return user;
     }
 
     private void register(String username, String password) {
 
         if(txtEm.getText().toString().toLowerCase().equals("admin")){
             Intent intent =new Intent(this, AdminDashboardActivity.class);
-             User  user =new User("1","david@georgebrown.ca","Password1","David","Shi","GBC","T127",
-                    "2017","2020","what is my favourite car","Subaru","admin","active");
-            intent.putExtra("user",user);
-            //dbHelper.insertUser(db,user);
+
             startActivity(intent);
         }else if(txtEm.getText().toString().toLowerCase().equals("user")){
             Intent intent2 =new Intent(this, Menu.class);
-            User user1 =new User("1","dharam@georgebrown.ca","Password2","Dharam","KC","GBC","T127",
-                    "2017","2020","who is my favourite Teacher","Pawluk","user","active");
-            intent2.putExtra("user",user1);
-            //dbHelper.insertUser(db,user1);
+
+
             startActivity(intent2);
         }else{
             txtErr.setText("Something wrong with account, please try later");

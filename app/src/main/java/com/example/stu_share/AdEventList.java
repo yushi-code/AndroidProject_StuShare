@@ -58,7 +58,7 @@ public class AdEventList extends AppCompatActivity {
 //        dbHelper=new DBHelper(this);
 //        final SQLiteDatabase db = dbHelper.getReadableDatabase();
 //        dbHelper.updateEventList(db,dbHelper.getAllEvent(db));
-//        user=(User)getIntent().getSerializableExtra("user");
+      user=(User)getIntent().getSerializableExtra("user");
         listView = (ListView) findViewById(R.id.eventList);
 //        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,EventCoordinator.EVENTS);
 //
