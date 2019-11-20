@@ -3,9 +3,22 @@ package com.example.stu_share;
 import java.io.Serializable;
 
 public class User implements Serializable {
+    public String getEmail() {
+        return email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
     public User(){
 
     }
+
     public void setId(String id) {
         this.id = id;
     }

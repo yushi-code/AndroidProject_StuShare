@@ -5,4 +5,5 @@ $user_password = "Stushare127";
 $db_name = "f9team1_stushare";
 
 $con = mysqli_connect($host, $user_name,$user_password, $db_name);
+
 ?>

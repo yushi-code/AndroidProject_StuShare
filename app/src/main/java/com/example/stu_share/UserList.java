@@ -135,20 +135,29 @@ public class UserList extends AppCompatActivity {
         JSONArray jsonArray = new JSONArray(json);
         List<User> userL = new ArrayList<User>();
         String[] stocks = new String[jsonArray.length()];
+        String[] userShort = new String[jsonArray.length()];
+
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
             User user1=new User();
 
             //please keep adding all the information to user1 objects!!!!!!!!
-
-
-
-
-            
-            user1.setFirstName( obj.getString("first_name"));
+            user1.setId( obj.getString("_id"));
             user1.setEmail( obj.getString("email"));
+            user1.setPassword(obj.getString("password"));
+            user1.setFirstName( obj.getString("first_name"));
+            user1.setLastName(obj.getString("last_name"));
+            user1.setCollegeCode( obj.getString("college_code"));
+            user1.setProgramCode( obj.getString("program_code"));
+            user1.setRegisterYear(obj.getString("registered_year"));
+            user1.setExpireYear( obj.getString("exprire_year"));
+            user1.setStatus( obj.getString("status"));
+            user1.setQuestion(obj.getString("question"));
+            user1.setAnswer( obj.getString("answer"));
+            user1.setRole( obj.getString("role"));
             userL.add(user1);
-            stocks[i] = obj.getString("first_name") + " " + obj.getString("email");
+            userShort[i] = user1.getFirstName() + " " + user1.getLastName();
+            stocks[i] = user1.getFirstName() ;
 
         }
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, userL);
