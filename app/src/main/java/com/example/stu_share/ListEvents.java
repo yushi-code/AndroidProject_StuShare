@@ -29,6 +29,7 @@ public class ListEvents extends AppCompatActivity {
     DBHelper dbHelper=null;
     Button btnHome, btnLogout12;
     private User user;
+    private static final String REGISTER_URL="http://f9044421.gblearn.com/api/init.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

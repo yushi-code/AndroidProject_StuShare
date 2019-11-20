@@ -7,7 +7,7 @@
 	
 	$sql = "SELECT * FROM user WHERE email='$username'";
 	$check = mysqli_fetch_array(mysqli_query($con,$sql));
-
+    echo $sql;
 	if ($result = mysqli_query($con, $sql)){
 		 
 		 $resultArray = array();
