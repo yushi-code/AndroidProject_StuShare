@@ -71,7 +71,7 @@ public class MyEvents extends AppCompatActivity {
     private void openRegActivity() {
         Intent intent =new Intent(this, ListJoinedEventActivity.class);
         String[] tt=new String[]{"2","2"};
-        intent.putExtra("args",tt);
+        //intent.putExtra("args",tt);
         intent.putExtra("user",user);
         startActivity(intent);
     }
@@ -79,21 +79,21 @@ public class MyEvents extends AppCompatActivity {
     public void openOwnedEventActivity(){
         Intent intent =new Intent(this, Owned.class);
         String[] tt=new String[]{"2","2"};
-        intent.putExtra("args",tt);
+        //intent.putExtra("args",tt);
         intent.putExtra("user",user);
         startActivity(intent);
     }
     public void openPstEvtAct(){
         Intent intent =new Intent(this, PastEvent.class);
         String[] tt=new String[]{"2","2"};
-        intent.putExtra("args",tt);
+        //intent.putExtra("args",tt);
         intent.putExtra("user",user);
         startActivity(intent);
     }
     public void openJoinActivity(){
         Intent intent =new Intent(this, ListEvents.class);
         String[] tt=new String[]{"2","2"};
-        intent.putExtra("args",tt);
+        //intent.putExtra("args",tt);
         intent.putExtra("user",user);
         startActivity(intent);
     }

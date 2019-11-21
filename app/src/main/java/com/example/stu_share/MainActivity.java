@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
 
                     JSONObject jsonParam = new JSONObject();
                     jsonParam.put("email", txtEm.getText().toString());
-                    jsonParam.put("name", "asdasdadsasdads");
 
                     user=(User) getIntent().getSerializableExtra("user");
                     if(user!=null){
@@ -107,9 +106,7 @@ public class MainActivity extends AppCompatActivity {
                     DataOutputStream os = new DataOutputStream(conn.getOutputStream());
                     BufferedWriter writer = new BufferedWriter(
                             new OutputStreamWriter(os, "UTF-8"));
-
                     os.writeBytes(jsonParam.toString());
-
                     os.flush();
                     os.close();
                     conn.connect();
@@ -145,49 +142,20 @@ public class MainActivity extends AppCompatActivity {
                     }else if(txtPswd.getText().toString().equals(user1.password)){
                         Log.d("JSON",user1.toString()+"usertoString!");
                         if(user1.role.equals("admin")){
-                            Intent i=new Intent(getBaseContext(),AdminDashboardActivity.class);
-                            i.putExtra("user",user1);
-                            startActivity(i);
-                        }else{
-                            Intent i=new Intent(getBaseContext(),Menu.class);
-                            i.putExtra("user",user1);
-                            startActivity(i);
-                        }
-
+                        Intent i=new Intent(getBaseContext(),AdminDashboardActivity.class);
+                        i.putExtra("user",user1);
+                        startActivity(i);
                     }else{
-                        Intent i=new Intent(getBaseContext(),MainActivity.class);
-                        i.putExtra("msgErr","\"Paassword wrong!\"");
+                        Intent i=new Intent(getBaseContext(),Menu.class);
+                        i.putExtra("user",user1);
                         startActivity(i);
                     }
 
-
-
-
-
-                              /*  JSONArray jsonArray = new JSONArray(total);
-
-                                String[] stocks = new String[jsonArray.length()];
-                                JSONObject obj=jsonArray.getJSONObject(0);
-
-
-                                    user.setId( obj.getString("_id"));
-                                    user.setEmail(obj.getString("email"));
-                                    user.setPassword(obj.getString("password"));
-
-                                    user.setFirstName(obj.getString("first_name"));
-                                    user.setLastName(obj.getString("last_name"));
-                                    user.setCollegeCode(obj.getString("college_code"));
-
-                                    user.setProgramCode(obj.getString("program_code"));
-                                    user.setRegisterYear(obj.getString("registered_year"));
-                                    user.setExpireYear(obj.getString("expire_year"));
-                                    user.setStatus(obj.getString("status"));
-                                    user.setQuestion(obj.getString("question"));
-                                    user.setAnswer(obj.getString("answer"));
-                                    user.setRole(obj.getString("role"));
-
-
-*/
+                }else{
+                    Intent i=new Intent(getBaseContext(),MainActivity.class);
+                    i.putExtra("msgErr","\"Paassword wrong!\"");
+                    startActivity(i);
+                }
                               user=user1;
                     conn.disconnect();
                 } catch (Exception e) {

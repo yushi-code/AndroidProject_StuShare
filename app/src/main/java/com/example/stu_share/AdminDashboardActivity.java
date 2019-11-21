@@ -49,6 +49,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
         });
         }
     public void openMyProfileEvent(){
+
         Intent intent =new Intent(this, MyProfile.class);
         intent.putExtra("user",user);
         startActivity(intent);

@@ -8,7 +8,7 @@
     $eventID = $_GET['eventID'];
     
 	
-	$sql = "delete from eventreg where event_id=$eventID and user_id=$userID";
+	$sql = "delete from event_reg where event_id=$eventID and user_id=$userID";
 	$check = mysqli_fetch_array(mysqli_query($con,$sql));
 
 	if ($result = mysqli_query($con, $sql)){

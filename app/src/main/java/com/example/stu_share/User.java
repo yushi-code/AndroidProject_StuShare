@@ -20,7 +20,7 @@ public class User implements Serializable {
     }
 
     public void setId(String id) {
-        this._id = id;
+        this.id = id;
     }
 
     public void setPassword(String password) {
@@ -67,7 +67,7 @@ public class User implements Serializable {
         this.status = status;
     }
 
-    public  String _id;
+    public  String id;
 
     public void setEmail(String email) {
         this.email = email;
@@ -95,7 +95,7 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User Information \n" +
-                "id= " + _id + '\t' +
+                "id= " + id + '\t' +
                 ", email=" + email + '\t' +
                 ", password=" + password + '\t' +
                 ", firstName=" + firstName + '\t' +
@@ -114,7 +114,7 @@ public class User implements Serializable {
     public User(String id, String email, String pswd, String fn, String ln, String collegeCode,
                 String programCode, String registerYear, String expYear, String question,
                 String answer, String role, String status ){
-        this._id=id;
+        this.id=id;
         this.email=email;
         this.password=pswd;
         firstName=fn;

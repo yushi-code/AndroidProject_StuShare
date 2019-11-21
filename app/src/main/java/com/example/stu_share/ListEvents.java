@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,19 +29,15 @@ import java.util.List;
 
 public class ListEvents extends AppCompatActivity {
     ListView listView;
-    DBHelper dbHelper=null;
+
     Button btnHome, btnLogout12;
     private User user;
-    private static final String REGISTER_URL="http://f9044421.gblearn.com/api/init.php";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_events);
-
         downloadJSON("https://f9team1.gblearn.com/stu_share/EventView_Status_Active.php");
-//        dbHelper=new DBHelper(this);
-//        final SQLiteDatabase db = dbHelper.getReadableDatabase();
-//        dbHelper.updateEventList(db,dbHelper.getEventCursorAct(db));
         listView = (ListView) findViewById(R.id.listView);
 //        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,EventCoordinator.EVENTS);
 //        listView.setAdapter(arrayAdapter);
@@ -125,6 +122,7 @@ public class ListEvents extends AppCompatActivity {
                     while ((json = bufferedReader.readLine()) != null) {
                         sb.append(json + "\n");
                     }
+                    Log.d("LIST",sb.toString());
                     return sb.toString().trim();
                 } catch (Exception e) {
                     return null;
@@ -143,23 +141,19 @@ public class ListEvents extends AppCompatActivity {
             JSONObject obj = jsonArray.getJSONObject(i);
             EventCoordinator.Event event1 = new EventCoordinator.Event();
 
-            event1.setId( obj.getString("_id"));
-            event1.setOrgID(obj.getString("organizer_id"));
+            event1.setId( obj.getString("id"));
+            event1.setOrgID(obj.getString("organizerId"));
             event1.setStatus(obj.getString("status"));
 
-            event1.setStartDate(obj.getString("start_date"));
-            event1.setStartTime(obj.getString("start_time"));
-            event1.setEndDate(obj.getString("end_date"));
+            event1.setStartDate(obj.getString("startDate"));
+            event1.setStartTime(obj.getString("startTime"));
+            event1.setEndDate(obj.getString("endDate"));
 
-            event1.setEndTime(obj.getString("end_time"));
+            event1.setEndTime(obj.getString("endTime"));
             event1.setEventTitle(obj.getString("title"));
             event1.setEventDetail(obj.getString("detail"));
 
             eventL.add(event1);
-            //userShort[i] = user1.getFirstName() + " " + user1.getLastName();
-
-            // stocks[i] = user1.getFirstName() ;
-            //stocks[i] = obj.getString("title") + " " + obj.getString("detail");
 
         }
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, eventL);
