@@ -1,29 +1,18 @@
 
 <?php
 
-	require 'connection.php'	       
-  
-	$username = $_GET['email'];
-	
-	$sql = "SELECT * FROM user WHERE email='$username'";
-	$check = mysqli_fetch_array(mysqli_query($con,$sql));
+	require 'connection.php';
+    $nameJ=json_decode(file_get_contents('php://input'));
+     $userID=$nameJ->{'userId'};
+     $firstname=$nameJ->{'firstname'};
+     $lastname=$nameJ->{'lastname'};
+     $question=$nameJ->{'question'};
+     $answer=$nameJ->{'answer'};
+	$sql = "UPDATE `user` SET `firstName` =` $firstname `,`lastName` = ``$lastname`,`question`= ``$question`, `answer` = ``$answer` WHERE `user`.`id` = ``$userID`;";
 
-	if ($result = mysqli_query($con, $sql)){
+ mysqli_query($con, $sql);
 		 
-		 $resultArray = array();
-		 $tempArray = array();
-		 
-		
-		 while($row = $result->fetch_object())
-		 {
-		
-		 $tempArray = $row;
-			 array_push($resultArray, $tempArray);
-		 }
-		 
-		
-		 echo json_encode($resultArray);
-	}
+		echo $sql;
 	 
 	
 	mysqli_close($con);

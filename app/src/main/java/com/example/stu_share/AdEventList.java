@@ -139,15 +139,15 @@ public class AdEventList extends AppCompatActivity {
             JSONObject obj = jsonArray.getJSONObject(i);
             EventCoordinator.Event event1 = new EventCoordinator.Event();
 
-            event1.setId( obj.getString("_id"));
-            event1.setOrgID(obj.getString("organizer_id"));
+            event1.setId( obj.getString("id"));
+            event1.setOrgID(obj.getString("organizerId"));
             event1.setStatus(obj.getString("status"));
 
-            event1.setStartDate(obj.getString("start_date"));
-            event1.setStartTime(obj.getString("start_time"));
-            event1.setEndDate(obj.getString("end_date"));
+            event1.setStartDate(obj.getString("startDate"));
+            event1.setStartTime(obj.getString("startTime"));
+            event1.setEndDate(obj.getString("endDate"));
 
-            event1.setEndTime(obj.getString("end_time"));
+            event1.setEndTime(obj.getString("endTime"));
             event1.setEventTitle(obj.getString("title"));
             event1.setEventDetail(obj.getString("detail"));
 

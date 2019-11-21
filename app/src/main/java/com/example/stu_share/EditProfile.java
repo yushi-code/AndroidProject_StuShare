@@ -112,6 +112,7 @@ public class EditProfile extends AppCompatActivity {
                     conn.setDoInput(true);
 
                     JSONObject jsonParam = new JSONObject();
+                    jsonParam.put("userId", user.id);
                     jsonParam.put("firstname", user.firstName);
                     jsonParam.put("lastname", user.lastName);
                     jsonParam.put("question", user.question);
@@ -146,7 +147,9 @@ public class EditProfile extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }});}
+            }});
+        thread.start();
+    }
                 public void OpenMenuActivity () {
                     Intent intent = new Intent(this, Menu.class);
                     intent.putExtra("user", user);
