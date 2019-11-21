@@ -170,23 +170,7 @@ public class MainActivity extends AppCompatActivity {
 
         return user;
     }
-
-    private void register(String username, String password) {
-
-        if(txtEm.getText().toString().toLowerCase().equals("admin")){
-            Intent intent =new Intent(this, AdminDashboardActivity.class);
-
-            startActivity(intent);
-        }else if(txtEm.getText().toString().toLowerCase().equals("user")){
-            Intent intent2 =new Intent(this, Menu.class);
-
-
-            startActivity(intent2);
-        }else{
-            txtErr.setText("Something wrong with account, please try later");
-        }
-
-    }}
+   }
 
 
 

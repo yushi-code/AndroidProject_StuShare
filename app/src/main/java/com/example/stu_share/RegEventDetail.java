@@ -15,7 +15,7 @@ import static com.example.stu_share.ListJoinedEventActivity.evt;
 public class RegEventDetail extends AppCompatActivity {
     private Button btnLogout,  btnHome, btnDeReg;
     private TextView txtEvtTitle, txtEvtDetail, txtStDate, txtStTime, txtEndTime, txtEndDate;
-    DBHelper dbHelper = null;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +44,7 @@ public class RegEventDetail extends AppCompatActivity {
         txtStTime = findViewById(R.id.txtStTime123);
         txtEndDate = findViewById(R.id.txtEndDate123);
         txtEndTime = findViewById(R.id.txtEndTime123);
-        final String position = getIntent().getSerializableExtra("position").toString();
+        final User user = (User) getIntent().getSerializableExtra("user");
         final EventCoordinator.Event event = (EventCoordinator.Event) getIntent().getSerializableExtra("args");
         txtEvtTitle.setText(event.eventTitle);
         txtEvtDetail.setText(event.eventDetail);
@@ -55,22 +55,16 @@ public class RegEventDetail extends AppCompatActivity {
         btnDeReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                deRegEvent(event.id,user.id);
                 //delete from evenreg table
-                dbHelper = new DBHelper(getBaseContext());
-                final SQLiteDatabase db = dbHelper.getWritableDatabase();
-                if(dbHelper.eventDeReg(db, event.id, "2")){
-                    evt.remove(Integer.valueOf(position));
-                    Toast.makeText(getBaseContext(),"selected"+position,Toast.LENGTH_LONG);
 
-                }
-                else {
-                    evt.remove(Integer.valueOf(position));
-                    Toast.makeText(getBaseContext(),"Not"+position,Toast.LENGTH_LONG);
-
-                }
             }
 });
 }
+
+    private void deRegEvent(String id, String id1) {
+    }
+
     public void logout(){
         Intent intent =new Intent(this, MainActivity.class);
         startActivity(intent);

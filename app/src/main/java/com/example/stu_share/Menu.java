@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -55,6 +56,7 @@ public class Menu extends AppCompatActivity {
     public void openMyEventsActivity(){
         Intent intent =new Intent(this, MyEvents.class);
         intent.putExtra("user",user1);
+        Log.d("TAG","Menu to MyEvent"+user1.id);
         startActivity(intent);
     }
     public void openViewEventsActivity(){

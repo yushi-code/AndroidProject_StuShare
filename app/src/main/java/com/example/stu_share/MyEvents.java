@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -88,6 +89,7 @@ public class MyEvents extends AppCompatActivity {
         String[] tt=new String[]{"2","2"};
         //intent.putExtra("args",tt);
         intent.putExtra("user",user);
+        Log.d("TAG","MyEvent to Regged event"+user.id);
         startActivity(intent);
     }
     public void openJoinActivity(){

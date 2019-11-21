@@ -35,7 +35,7 @@ import java.net.URL;
 public class EventDetail extends AppCompatActivity {
     private Button btnLogout, btnJoin, btnLogout2, btnHome3;
     private TextView txtEvtTitle, txtEvtDetail, txtStDate, txtStTime, txtEndTime, txtEndDate;
-    private User user;
+    private User user2;
     DBHelper dbHelper = null;
 
     @Override
@@ -51,7 +51,7 @@ public class EventDetail extends AppCompatActivity {
         txtStTime = findViewById(R.id.txtStTime);
         txtEndDate = findViewById(R.id.txtEndDate);
         txtEndTime = findViewById(R.id.txtEndTime);
-        user=(User)getIntent().getSerializableExtra("user");
+        user2=(User)getIntent().getSerializableExtra("user");
         final EventCoordinator.Event event = (EventCoordinator.Event) getIntent().getSerializableExtra("args");
         txtEvtTitle.setText(event.eventTitle);
         txtEvtDetail.setText(event.eventDetail);
@@ -100,7 +100,7 @@ public class EventDetail extends AppCompatActivity {
                     conn.setDoInput(true);
 
                     JSONObject jsonParam = new JSONObject();
-                    jsonParam.put("userId", user.id);
+                    jsonParam.put("userId", user2.id);
                     final EventCoordinator.Event event = (EventCoordinator.Event) getIntent().getSerializableExtra("args");
                     jsonParam.put("eventId", event.id);
 
@@ -150,7 +150,7 @@ public class EventDetail extends AppCompatActivity {
 
     public void OpenMenuActivity() {
         Intent intent = new Intent(this, Menu.class);
-        intent.putExtra("user",user);
+        intent.putExtra("user",user2);
         startActivity(intent);
     }
 }

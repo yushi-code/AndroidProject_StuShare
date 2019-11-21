@@ -31,7 +31,7 @@ public class ListEvents extends AppCompatActivity {
     ListView listView;
 
     Button btnHome, btnLogout12;
-    private User user;
+    private User user3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class ListEvents extends AppCompatActivity {
 //        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,EventCoordinator.EVENTS);
 //        listView.setAdapter(arrayAdapter);
 
-        user=(User)getIntent().getSerializableExtra("user");
+        user3=(User)getIntent().getSerializableExtra("user");
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -52,7 +52,7 @@ public class ListEvents extends AppCompatActivity {
                 EventCoordinator.Event event2=(EventCoordinator.Event) adapter.getItemAtPosition(position);
                 Intent intent =new Intent(getBaseContext(), EventDetail.class);
                 intent.putExtra("args",event2);
-                intent.putExtra("user",user);
+                intent.putExtra("user",user3);
                 startActivity(intent);
 
             }
@@ -78,13 +78,13 @@ public class ListEvents extends AppCompatActivity {
 
     public void logout(){
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("user",user);
+        intent.putExtra("user",user3);
         startActivity(intent);
     }
 
     public void OpenMenuActivity() {
         Intent intent = new Intent(this, Menu.class);
-        intent.putExtra("user",user);
+        intent.putExtra("user",user3);
         startActivity(intent);
     }
 
@@ -136,7 +136,7 @@ public class ListEvents extends AppCompatActivity {
     private void loadIntoListView(String json) throws JSONException {
         JSONArray jsonArray = new JSONArray(json);
         List<EventCoordinator.Event> eventL = new ArrayList<EventCoordinator.Event>();
-        String[] stocks = new String[jsonArray.length()];
+
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
             EventCoordinator.Event event1 = new EventCoordinator.Event();
