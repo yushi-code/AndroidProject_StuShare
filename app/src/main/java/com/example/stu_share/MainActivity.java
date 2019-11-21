@@ -5,9 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,6 +21,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
@@ -124,15 +130,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     Log.d("TAG", "Server Response is: " + total.toString() + ": " );
 
-
-                    String regex = "\\[|\\]";
-                    String total1 = total.toString().replaceAll(regex, "");
-                    userString=total1;
-                    Gson g = new GsonBuilder()
-                            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-                            .create();
-                    User user1 = g.fromJson(total1,User.class);
-
+                    User user1=jsonToUser(total.toString().trim(),user);
 
                     if(user1==null){
                         Intent i=new Intent(getBaseContext(),MainActivity.class);
@@ -168,6 +166,29 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        return user;
+    }
+    private User jsonToUser(String json,User user) throws JSONException {
+        JSONArray jsonArray = new JSONArray(json);
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject obj = jsonArray.getJSONObject(i);
+             user = new User();
+
+            user.setId( obj.getString("id"));
+            user.setEmail(obj.getString("email"));
+            user.setPassword(obj.getString("password"));
+            user.setFirstName(obj.getString("firstName"));
+            user.setLastName(obj.getString("lastName"));
+            user.setCollegeCode(obj.getString("collegeCode"));
+            user.setProgramCode(obj.getString("programCode"));
+            user.setRegisterYear(obj.getString("registeredYear"));
+            user.setExpireYear(obj.getString("expireYear"));
+            user.setStatus(obj.getString("status"));
+            user.setQuestion(obj.getString("question"));
+            user.setAnswer(obj.getString("answer"));
+            user.setRole(obj.getString("role"));
+
+        }
         return user;
     }
    }

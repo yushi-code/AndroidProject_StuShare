@@ -66,6 +66,7 @@ public class ListJoinedEventActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView2323);
         downloadJSON("https://f9team1.gblearn.com/stu_share/EventsRegistered.php");
         final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,evt);
+        listView.setAdapter(arrayAdapter);
         user=(User)getIntent().getSerializableExtra("user");
         Log.d("TAG","LISTJOINEVENT"+user.id);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -157,7 +158,7 @@ public class ListJoinedEventActivity extends AppCompatActivity {
             JSONObject obj = jsonArray.getJSONObject(i);
             EventCoordinator.Event event1 = new EventCoordinator.Event();
 
-            event1.setId( obj.getString("id"));
+            event1.setId( obj.getString("eventId"));
             event1.setOrgID(obj.getString("organizerId"));
             event1.setStatus(obj.getString("status"));
 

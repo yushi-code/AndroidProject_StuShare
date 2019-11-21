@@ -16,7 +16,7 @@ public class EditProfile extends AppCompatActivity {
     Button btnSubmit, btnHome7, btnLogout8;
     TextView editFn,editLn,editQ,editA;
     private User user;
-
+    private final String urlWebService="https://f9team1.gblearn.com/stu_share/EventsRegistered.php"
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -58,6 +58,7 @@ public class EditProfile extends AppCompatActivity {
                     user.setAnswer(editA.getText().toString());
                     Toast.makeText(getBaseContext(), "Profile has been updated",
                             Toast.LENGTH_LONG).show();
+                    updateUser(user,)
                     Intent intent = new Intent(getBaseContext(), AdminDashboardActivity.class);
                     intent.putExtra("user",user);
                     startActivity(intent);
