@@ -8,12 +8,7 @@
      $lastname=$nameJ->{'lastname'};
      $question=$nameJ->{'question'};
      $answer=$nameJ->{'answer'};
-	$sql = "UPDATE `user` SET `firstName` =` $firstname `,`lastName` = ``$lastname`,`question`= ``$question`, `answer` = ``$answer` WHERE `user`.`id` = ``$userID`;";
-
+	$sql = "UPDATE `user` SET `firstName` = '$firstname', `lastName` = '$lastname ', `question` = '$question ', `answer` = '$answer ' WHERE `user`.`id` = '$userID';";
  mysqli_query($con, $sql);
-		 
-		echo $sql;
-	 
-	
 	mysqli_close($con);
 ?>
