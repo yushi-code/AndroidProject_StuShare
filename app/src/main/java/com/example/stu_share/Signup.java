@@ -13,6 +13,7 @@ public class Signup extends AppCompatActivity {
     private Button btnNext;
     private EditText txtFn,txtLn,txtQ,txtA;
     private User userReg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +28,7 @@ public class Signup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (txtFn.getText().toString().equals("") || txtLn.getText().toString().equals("") || txtQ.getText().toString().equals("") || txtA.getText().toString().equals("")
-                        || txtFn.getText().toString().equals(null) || txtLn.getText().toString().equals(null) || txtQ.getText().toString().equals(null) || txtA.getText().toString().equals(null)) {
+                        || txtFn.getText().toString().equals("") || txtLn.getText().toString().equals("") || txtQ.getText().toString().equals("") || txtA.getText().toString().equals("")) {
                     Toast.makeText(getBaseContext(), "Can't leave fields empty! ",
                             Toast.LENGTH_LONG).show();
                 } else {
@@ -42,8 +43,6 @@ public class Signup extends AppCompatActivity {
                 }
             }
         });
-
     }
-
 
 }
