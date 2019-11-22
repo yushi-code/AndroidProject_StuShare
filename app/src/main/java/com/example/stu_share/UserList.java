@@ -55,13 +55,7 @@ public class UserList extends AppCompatActivity {
                 home();
             }
         });
-        //dbHelper=new DBHelper(this);
-        //final SQLiteDatabase db = dbHelper.getReadableDatabase();
-        //userList=dbHelper.getUserList(db);
 
-
-        /*final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,stock);
-        listView.setAdapter(arrayAdapter);*/
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -100,7 +94,7 @@ public class UserList extends AppCompatActivity {
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
                 try {
                     loadIntoListView(s);
                 } catch (JSONException e) {
