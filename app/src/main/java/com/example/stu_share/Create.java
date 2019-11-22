@@ -78,7 +78,7 @@ public class Create extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month = month + 1;
-                String date = month + "/" + dayOfMonth + "/" + year;
+                String date = ""+year +month +dayOfMonth;
                 startDisplayDate.setText(date);
             }
         };
@@ -104,7 +104,7 @@ public class Create extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month = month + 1;
-                String date = month + "/" + dayOfMonth + "/" + year;
+                String date =""+year +month +dayOfMonth;
                 endDisplayDate.setText(date);
             }
         };
@@ -142,7 +142,7 @@ public class Create extends AppCompatActivity {
                 updateLabel();
             }
             private void updateLabel() {
-                String myFormat = "MM/dd/yy";
+                String myFormat = "yyMMdd";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.CANADA);
                 txtEndDate.setText(sdf.format(myCalendar.getTime()));
             }
@@ -171,7 +171,7 @@ public class Create extends AppCompatActivity {
                 updateLabel();
             }
             private void updateLabel() {
-                String myFormat = "MM/dd/yy";
+                String myFormat = "yyMMdd";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.CANADA);
                 txtStDate.setText(sdf.format(myCalendar1.getTime()));
                 txtEndDate.setText(sdf.format(myCalendar.getTime()));

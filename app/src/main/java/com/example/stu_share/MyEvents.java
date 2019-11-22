@@ -94,7 +94,7 @@ public class MyEvents extends AppCompatActivity {
     }
     public void openJoinActivity(){
         Intent intent =new Intent(this, ListEvents.class);
-        String[] tt=new String[]{"2","2"};
+        //String[] tt=new String[]{"2","2"};
         //intent.putExtra("args",tt);
         intent.putExtra("user",user);
         startActivity(intent);

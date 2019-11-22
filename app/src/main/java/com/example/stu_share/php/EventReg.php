@@ -11,7 +11,7 @@
     
 	$sql = "INSERT INTO `event_reg` (`id`, `eventId`, `userId`, `status`) VALUES (NULL, '$eventID', '$userID', 'registered');";
     echo $sql;
-
+	
     mysqli_query($con, $sql);
 
 

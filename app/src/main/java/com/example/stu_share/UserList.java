@@ -142,15 +142,15 @@ public class UserList extends AppCompatActivity {
             User user1=new User();
 
             //please keep adding all the information to user1 objects!!!!!!!!
-            user1.setId( obj.getString("_id"));
+            user1.setId( obj.getString("id"));
             user1.setEmail( obj.getString("email"));
             user1.setPassword(obj.getString("password"));
-            user1.setFirstName( obj.getString("first_name"));
-            user1.setLastName(obj.getString("last_name"));
-            user1.setCollegeCode( obj.getString("college_code"));
-            user1.setProgramCode( obj.getString("program_code"));
-            user1.setRegisterYear(obj.getString("registered_year"));
-            user1.setExpireYear( obj.getString("exprire_year"));
+            user1.setFirstName( obj.getString("firstName"));
+            user1.setLastName(obj.getString("lastName"));
+            user1.setCollegeCode( obj.getString("collegeCode"));
+            user1.setProgramCode( obj.getString("programCode"));
+            user1.setRegisterYear(obj.getString("registeredYear"));
+            user1.setExpireYear( obj.getString("expireYear"));
             user1.setStatus( obj.getString("status"));
             user1.setQuestion(obj.getString("question"));
             user1.setAnswer( obj.getString("answer"));

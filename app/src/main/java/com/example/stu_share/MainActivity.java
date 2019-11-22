@@ -32,7 +32,7 @@ import com.google.gson.GsonBuilder;
 public class MainActivity extends AppCompatActivity {
     private Button btnCreateAcc, btnLogin, btnFgtPswd;
     private EditText txtEm, txtPswd;
-    private TextView txtErr,txtShow;
+    private TextView txtErr;
     private User user=new User();
     private String userString;
 
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         btnFgtPswd = findViewById(R.id.btnResetPassword);
         txtEm = findViewById(R.id.txtRegEm);
         txtPswd = findViewById(R.id.txtPswd);
-        txtShow=findViewById(R.id.txtShow);
+
         final String txtEmail = txtEm.getText().toString();
         final String txtPassword = txtPswd.getText().toString();
         final String txtE = txtEm.getText().toString();
@@ -54,9 +54,7 @@ public class MainActivity extends AppCompatActivity {
         String msgError=(String)getIntent().getSerializableExtra("msgErr");
         txtErr.setText(msgError);
         user=(User)getIntent().getSerializableExtra("user");
-        if(user!=null){
-            txtShow.setText(user.toString());
-        }
+
         btnFgtPswd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,15 +74,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user=sendPost();
-
-                txtShow.setText(userString);
             }
         });
     }
 
     public void openSignupActivity() {
         Intent intent = new Intent(this, SignUpEmailPass.class);
-
         startActivity(intent);
     }
     public User sendPost() {
@@ -105,9 +100,7 @@ public class MainActivity extends AppCompatActivity {
                     jsonParam.put("email", txtEm.getText().toString());
 
                     user=(User) getIntent().getSerializableExtra("user");
-                    if(user!=null){
-                        txtShow.setText(user.toString());
-                    }
+
                     Log.i("JSON", jsonParam.toString());
                     DataOutputStream os = new DataOutputStream(conn.getOutputStream());
                     BufferedWriter writer = new BufferedWriter(

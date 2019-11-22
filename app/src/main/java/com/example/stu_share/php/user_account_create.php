@@ -1,42 +1,44 @@
 <?php
+    
+    $host = "gblearn.com";
+    $user_name = "f9team1_f9team1";
+    $user_password = "Stushare127";
+    $db_name = "f9team1_stushare";
 
-	require 'connection.php';
-	       
-    $fname = $_GET['fname'];	
-	$lname = $_GET['lname'];	
-	$email = $_GET['email'];
+    $con = mysqli_connect($host, $user_name,$user_password, $db_name);
+    
+// 	require 'user_email_pass.php';
+	
+	$email = $_GET['email'];    	
 	$password = $_GET['password'];
-	$college_code = $_GET['college_code'];	
-	$program_code = $_GET['program_code'];	
-	$registered_year = $_GET['registered_year'];
-	$graduation_year = $_GET['graduation_year'];	
+	$firstName = $_GET['firstName'];	
+	$lastName = $_GET['lastName'];
+	$collegeCode =$_GET['collegeCode'];
+	$programCode = $_GET['programCode'];	
+	$registeredYear = $_GET['registeredYear'];
+	$exprireYear = $_GET['exprireYear'];
+	$status = $_GET['status'];
 	$question = $_GET['question'];	
 	$answer = $_GET['answer'];
+	$role = $_GET['role'];
 	
-	
-		if($fname == '' || $lname == '' || $email == '' ||
-		   $password =='' ||$college_code == '' || $program_code == '' || $registered_year == '' ||
-		   $graduation_year == '' || $status == '' || $question == '' || $answer == '')
-		{	
-			echo 'please fill all values';
-		}
-		else{
-			$sql = "SELECT * FROM user WHERE email='$email'";
-	        $check = mysqli_fetch_array(mysqli_query($con,$sql));
-			if(isset($check)){
-				echo 'username or email already exist';
-			}else{
-				$sql = "INSERT INTO user (email,password,first_name,last_name,college_code,program_code,registered_year,expire_year,status,question,answer,role)
-						VALUES('$email','$password','$fname','$lname','$college_code','program_code','$registered_year','$graduation_year','Active','$question','$answer','Student')";
-				if(mysqli_query($con,$sql)){
-					echo 'successfully registered';	
-				}
-				else{				
-					echo 'oops! Please try again!';		
-				}
+// 		if($pass=="no")
+// 		{	
+// 			echo 'The email already exists.';
+// 		}
+// 		else{
+			$sql = "INSERT INTO user(email, password, firstName, lastName,
+			collegeCode, programCode, registeredYear, exprireYear, status, question, answer, role) VALUES ('$email','$password','$firstName','$lastName','$collegeCode','$programCode','$registeredYear','$exprireYear','$status','$question','$answer','$role')";
+			
+			if(mysqli_query($con,$sql)){
+				echo 'successfully registered';	
 			}
+			else{				
+				echo 'oops! Please try again!';		
+			}
+// 		}
 			
 	        mysqli_close($con);
-		}		
+		
 		
 ?>

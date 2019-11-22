@@ -41,7 +41,7 @@ import static com.example.stu_share.R.id.listView2323;
 public class ListJoinedEventActivity extends AppCompatActivity {
     Button btnLogout, btnHome;
     ListView listView;
-    private User user;
+    private User user ;
 
     public static  List<EventCoordinator.Event> evt = new ArrayList<EventCoordinator.Event>();
     @Override
@@ -62,12 +62,11 @@ public class ListJoinedEventActivity extends AppCompatActivity {
                 OpenMenuActivity();
             }
         });
-        //sendPost(evt);
+        user=(User)getIntent().getSerializableExtra("user");
         listView = (ListView) findViewById(R.id.listView2323);
         downloadJSON("https://f9team1.gblearn.com/stu_share/EventsRegistered.php");
         final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,evt);
         listView.setAdapter(arrayAdapter);
-        user=(User)getIntent().getSerializableExtra("user");
         Log.d("TAG","LISTJOINEVENT"+user.id);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {

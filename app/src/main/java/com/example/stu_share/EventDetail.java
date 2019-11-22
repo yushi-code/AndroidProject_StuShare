@@ -36,7 +36,7 @@ public class EventDetail extends AppCompatActivity {
     private Button btnLogout, btnJoin, btnLogout2, btnHome3;
     private TextView txtEvtTitle, txtEvtDetail, txtStDate, txtStTime, txtEndTime, txtEndDate;
     private User user2;
-    DBHelper dbHelper = null;
+    //DBHelper dbHelper = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

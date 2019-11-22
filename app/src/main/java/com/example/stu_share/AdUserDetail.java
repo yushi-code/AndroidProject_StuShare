@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class AdUserDetail extends AppCompatActivity {
     TextView txtDetail;
     Button btnDeact,btnLogout,btnAct, btnHome;
-    DBHelper dbHelper = null;
+    //DBHelper dbHelper = null;
     private User userDetail;
     private User user;
     @Override
@@ -38,9 +38,7 @@ public class AdUserDetail extends AppCompatActivity {
         btnAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbHelper = new DBHelper(getBaseContext());
-                final SQLiteDatabase db = dbHelper.getWritableDatabase();
-                dbHelper.updateUserStatus(db,userDetail.email,"active");
+
                 Toast.makeText(getBaseContext(), "User is activated!",
                         Toast.LENGTH_LONG).show();
                 Intent intent =new Intent(getBaseContext(),AdminDashboardActivity.class);
@@ -51,9 +49,7 @@ public class AdUserDetail extends AppCompatActivity {
         btnDeact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbHelper = new DBHelper(getBaseContext());
-                final SQLiteDatabase db = dbHelper.getWritableDatabase();
-                dbHelper.updateUserStatus(db,userDetail.email,"suspended");
+
                 Toast.makeText(getBaseContext(), "User is suspended!",
                         Toast.LENGTH_LONG).show();
                 Intent intent =new Intent(getBaseContext(),AdminDashboardActivity.class);
