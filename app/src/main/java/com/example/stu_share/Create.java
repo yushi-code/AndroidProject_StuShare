@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -28,7 +30,11 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Create extends AppCompatActivity {
-
+    TimePickerDialog timePickerSt,timePickerEnd;
+    Calendar calendar;
+    int currentHour;
+    int currentMinute;
+    String amPm;
     private static final String TAG = "Create";
     CreateDescription createDescription;
     private TextView txtStDate;
@@ -54,7 +60,42 @@ public class Create extends AppCompatActivity {
 
         txtStDate=findViewById(R.id.txtStDate);
         txtStTime=findViewById(R.id.txtStTime);
+        txtStTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calendar = Calendar.getInstance();
+                currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+                currentMinute = calendar.get(Calendar.MINUTE);
+
+                timePickerSt = new TimePickerDialog(Create.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+                        txtStTime.setText(String.format("%02d:%02d", hourOfDay, minutes) );
+                    }
+                }, currentHour, currentMinute, false);
+
+                timePickerSt.show();
+            }
+        });
         txtEndTime=findViewById(R.id.txtEndTime);
+        txtEndTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calendar = Calendar.getInstance();
+                currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+                currentMinute = calendar.get(Calendar.MINUTE);
+
+                timePickerEnd = new TimePickerDialog(Create.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+
+                        txtEndTime.setText(String.format("%02d:%02d", hourOfDay, minutes) );
+                    }
+                }, currentHour, currentMinute, false);
+
+                timePickerEnd.show();
+            }
+        });
         txtEndDate= findViewById(R.id.txtEndDate);
 
         startDisplayDate.setOnClickListener(new View.OnClickListener() {
