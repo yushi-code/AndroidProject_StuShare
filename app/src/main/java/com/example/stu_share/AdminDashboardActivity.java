@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class AdminDashboardActivity extends AppCompatActivity {
-    Button profile,viewUser,viewEvents, btnLogout;
+    Button profile,viewUser,viewEvents, btnLogout, btnMessageCenter;
     public static User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,15 @@ public class AdminDashboardActivity extends AppCompatActivity {
             intent.putExtra("user",user);
             startActivity(intent);
         }
+        });
+        btnMessageCenter = findViewById(R.id.btnAdminMessageCenter);
+        btnMessageCenter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), MessageListActivity.class);
+//              intent.putExtra("args", userReg);
+                startActivity(intent);
+            }
         });
         }
     public void openMyProfileEvent(){

@@ -43,6 +43,15 @@ public class Signup extends AppCompatActivity {
                 }
             }
         });
+        Button btnCanel = findViewById(R.id.btnSignupCancel);
+        btnCanel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+//              intent.putExtra("args", userReg);
+                startActivity(intent);
+            }
+        });
     }
 
 }

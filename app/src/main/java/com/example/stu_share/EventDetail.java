@@ -70,6 +70,22 @@ public class EventDetail extends AppCompatActivity {
 
             }
         });
+        Button btnEmail = findViewById(R.id.btnEmail);
+        btnEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(),EmailActivity.class);
+                startActivity(intent);
+            }
+        });
+        Button btnMessage = findViewById(R.id.btnMessage);
+        btnMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(),MessageActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
