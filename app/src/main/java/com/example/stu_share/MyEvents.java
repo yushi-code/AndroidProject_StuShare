@@ -111,7 +111,7 @@ public class MyEvents extends AppCompatActivity {
         startActivity(intent);
     }
     public void OpenMenuActivity() {
-        Intent intent = new Intent(this, Menu.class);
+        Intent intent = new Intent(this, EventMenu.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }

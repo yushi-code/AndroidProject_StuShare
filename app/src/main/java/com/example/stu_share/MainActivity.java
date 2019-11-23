@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                         i.putExtra("user",user1);
                         startActivity(i);
                     }else{
-                        Intent i=new Intent(getBaseContext(), Menu.class);
+                        Intent i=new Intent(getBaseContext(), MainMenu.class);
                         i.putExtra("user",user1);
                         startActivity(i);
                     }

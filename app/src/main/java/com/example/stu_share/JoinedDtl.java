@@ -42,7 +42,7 @@ public class JoinedDtl extends AppCompatActivity {
 
                 Toast.makeText(getBaseContext(), "Deregister successfully!",
                         Toast.LENGTH_LONG).show();
-                Intent intent=new Intent(getBaseContext(),Menu.class);
+                Intent intent=new Intent(getBaseContext(),EventMenu.class);
                 intent.putExtra("user",user);
                 intent.putExtra("event",event);
                 startActivity(intent);

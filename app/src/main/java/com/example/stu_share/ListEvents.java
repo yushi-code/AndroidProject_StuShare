@@ -3,7 +3,6 @@ package com.example.stu_share;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,8 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,7 +35,7 @@ public class ListEvents extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_events);
         downloadJSON("https://f9team1.gblearn.com/stu_share/EventView_Status_Active.php");
-        listView = (ListView) findViewById(R.id.listView);
+        listView = (ListView) findViewById(R.id.listview);
 //        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,EventCoordinator.EVENTS);
 //        listView.setAdapter(arrayAdapter);
 
@@ -84,7 +81,7 @@ public class ListEvents extends AppCompatActivity {
     }
 
     public void OpenMenuActivity() {
-        Intent intent = new Intent(this, Menu.class);
+        Intent intent = new Intent(this, EventMenu.class);
         intent.putExtra("user",user3);
         startActivity(intent);
     }

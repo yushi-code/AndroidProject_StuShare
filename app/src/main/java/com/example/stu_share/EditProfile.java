@@ -26,8 +26,8 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-import static com.example.stu_share.AdminDashboardActivity.user;
-import static com.example.stu_share.Menu.user1;
+
+
 
 public class EditProfile extends AppCompatActivity {
     Button btnSubmit, btnHome7, btnLogout8;
@@ -80,7 +80,7 @@ public class EditProfile extends AppCompatActivity {
                     intent.putExtra("user",user);
                     startActivity(intent);
                 }else{
-                    user=user1;
+
                     user.setFirstName(editFn.getText().toString());
                     user.setLastName(editLn.getText().toString());
                     user.setQuestion(editQ.getText().toString());
@@ -88,7 +88,7 @@ public class EditProfile extends AppCompatActivity {
                     Toast.makeText(getBaseContext(), "Profile has been updated",
                             Toast.LENGTH_LONG).show();
                     updateUser(user,urlWebService);
-                    Intent intent = new Intent(getBaseContext(), Menu.class);
+                    Intent intent = new Intent(getBaseContext(), EventMenu.class);
                     intent.putExtra("user",user);
                     startActivity(intent);
                 }
@@ -151,7 +151,7 @@ public class EditProfile extends AppCompatActivity {
         thread.start();
     }
                 public void OpenMenuActivity () {
-                    Intent intent = new Intent(this, Menu.class);
+                    Intent intent = new Intent(this, EventMenu.class);
                     intent.putExtra("user", user);
                     startActivity(intent);
                 }

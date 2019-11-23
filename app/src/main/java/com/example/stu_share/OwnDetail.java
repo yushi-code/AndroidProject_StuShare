@@ -223,7 +223,7 @@ public class OwnDetail extends AppCompatActivity {
     }
 
     public void OpenMenuActivity() {
-        Intent intent = new Intent(this, Menu.class);
+        Intent intent = new Intent(this, EventMenu.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }

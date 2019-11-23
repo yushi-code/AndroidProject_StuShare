@@ -255,7 +255,7 @@ public class PastEvent extends AppCompatActivity {
     }
 
     public void OpenHome(){
-        Intent intent =new Intent(this, Menu.class);
+        Intent intent =new Intent(this, EventMenu.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }

@@ -8,13 +8,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-public class Menu extends AppCompatActivity {
+public class EventMenu extends AppCompatActivity {
         private Button btnMyEvents, btnViewEvents,btnCrtEvt, btnMyProfile, btnLogout;
     public static User user1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_event_menu);
         btnMyEvents = findViewById(R.id.btnMyEvents);
         btnMyEvents.setOnClickListener(new View.OnClickListener() {
             @Override
