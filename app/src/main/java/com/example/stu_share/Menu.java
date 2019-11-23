@@ -51,6 +51,16 @@ public class Menu extends AppCompatActivity {
                 logout();
             }
         });
+        Button btnMessageCenter=findViewById(R.id.btnStdMessageCenter);
+        btnMessageCenter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), MessageListActivity.class);
+//              intent.putExtra("args", userReg);
+                startActivity(intent);
+            }
+        });
+
 
     }
     public void openMyEventsActivity(){

@@ -57,6 +57,16 @@ public class Signup2 extends AppCompatActivity {
                 logout();
             }
         });
+
+        Button btnCancel=findViewById(R.id.btnSignup2Cancel);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+//              intent.putExtra("args", userReg);
+                startActivity(intent);
+            }
+        });
     }
 
     private void createUserAccount() {
