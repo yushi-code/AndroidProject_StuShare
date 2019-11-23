@@ -51,7 +51,7 @@ public class EventMenu extends AppCompatActivity {
                 logout();
             }
         });
-        Button btnMessageCenter=findViewById(R.id.btnStdMessageCenter);
+        Button btnMessageCenter=findViewById(R.id.btnMessageCenter);
         btnMessageCenter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

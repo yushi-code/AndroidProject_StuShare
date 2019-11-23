@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CarList">
+    tools:context=".CarCurrentList">
 
     <Button
-        android:id="@+id/btnHome6"
+        android:id="@+id/btnHome5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Home"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnLogout12"
+        android:id="@+id/btnLogout5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Logout"
@@ -30,15 +30,12 @@
 
     <ListView
         android:id="@+id/listCar1"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnHome6" />
-
+        app:layout_constraintTop_toBottomOf="@+id/btnHome5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

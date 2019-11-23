@@ -20,23 +20,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnMyProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:text="My Profile"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCrtEvt" />
-
-    <Button
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -116,7 +99,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnViewEvents" />
 
     <Button
-        android:id="@+id/btnStdMessageCenter"
+        android:id="@+id/btnMessageCenter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -128,5 +111,5 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMyProfile" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCrtEvt" />
 </androidx.constraintlayout.widget.ConstraintLayout>
