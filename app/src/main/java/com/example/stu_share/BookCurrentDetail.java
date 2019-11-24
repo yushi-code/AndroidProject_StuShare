@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class BookCurrentDetail extends AppCompatActivity {
-    private EditText title, author, edition, isbn, price, description;
+    private EditText title, author, edition, isbn, details;
     private Button home,logout,terminate,update;
 
     @Override
@@ -18,12 +18,11 @@ public class BookCurrentDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_current_detail);
 
-        title=findViewById(R.id.txtCarTitle);
-        author=findViewById(R.id.txtCarDate);
-        edition=findViewById(R.id.txtCarBrand);
-        isbn=findViewById(R.id.txtCarModel);
-        price=findViewById(R.id.txtCarYear2);
-        description=findViewById(R.id.txtCarMileage);
+        title=findViewById(R.id.txtTitle);
+        author=findViewById(R.id.txtAuthor);
+        edition=findViewById(R.id.txtEdition);
+        isbn=findViewById(R.id.txtISBN);
+        details=findViewById(R.id.txtDetail);
 
 
         final BookCoordinator.Book book=(BookCoordinator.Book)getIntent().getSerializableExtra("book");
@@ -45,7 +44,7 @@ public class BookCurrentDetail extends AppCompatActivity {
             public void onClick(View v) {
 
                 Toast.makeText(getBaseContext(),"Your information has been updated!",Toast.LENGTH_LONG);
-                Intent i=new Intent(getBaseContext(),CarMenu.class);
+                Intent i=new Intent(getBaseContext(),BookMenu.class);
                 startActivity(i);
             }
         });
@@ -54,6 +53,7 @@ public class BookCurrentDetail extends AppCompatActivity {
         author.setText(book.author);
         edition.setText(book.edition);
         isbn.setText(book.isbn);
+        details.setText(book.details);
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
