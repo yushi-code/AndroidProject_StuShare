@@ -18,7 +18,7 @@ public class MyProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         userTemp=(User)getIntent().getSerializableExtra("user");
-        setContentView(R.layout.activity_my_profile);
+        setContentView(R.layout.activity_profile_my_profile);
         btnHome4 = findViewById(R.id.btnHome4);
         btnLogout4 = findViewById(R.id.btnLogout4);
         btnEdit = findViewById(R.id.btnEdit);

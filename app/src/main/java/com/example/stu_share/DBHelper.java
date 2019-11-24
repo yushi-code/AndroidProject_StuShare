@@ -1,26 +1,9 @@
 package com.example.stu_share;
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import static android.provider.BaseColumns._ID;
-import static com.example.stu_share.DBConnect.DBEntity.COLUMN_NAME_EMAIL;
-import static com.example.stu_share.DBConnect.DBEntity.EVTREG_COL_NAME_EVENTID;
-import static com.example.stu_share.DBConnect.DBEntity.EVTREG_COL_NAME_USERID;
-import static com.example.stu_share.DBConnect.DBEntity.TABLE_NAME_EVENT;
-import static com.example.stu_share.DBConnect.DBEntity.TABLE_NAME_EVENTREG;
-
-public class DBHelper extends SQLiteOpenHelper {
-
+public class DBHelper
+        //extends SQLiteOpenHelper
+{
+/*
     public List<User> jsonPaserUser(String s){
         List<User> userL = new ArrayList<User>();
 
@@ -28,20 +11,6 @@ return userL;
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     //To be deleted
     public static final int DATABASE_VERSION = 1;
@@ -412,6 +381,8 @@ return userL;
         return db.update(DBConnect.DBEntity.TABLE_NAME_USER, values, COLUMN_NAME_EMAIL + "=?", new String[]{user.email});
 
     }
+
+ */
 }
 
 

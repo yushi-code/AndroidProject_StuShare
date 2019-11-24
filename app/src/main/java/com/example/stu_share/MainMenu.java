@@ -71,7 +71,7 @@ public class MainMenu extends AppCompatActivity {
         buttonMessageCenter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(getBaseContext(),MessageListActivity.class);
+                Intent i= new Intent(getBaseContext(), MessageList.class);
 //                i.putExtra("user",user);
                 startActivity(i);
             }
@@ -88,7 +88,7 @@ public class MainMenu extends AppCompatActivity {
         buttonContactUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(getBaseContext(),MessageActivity.class);
+                Intent i= new Intent(getBaseContext(), MessageCreate.class);
                 i.putExtra("user",user);
                 i.putExtra("id","admin");
                 startActivity(i);

@@ -33,7 +33,7 @@ public class EmailActivity extends AppCompatActivity {
         buttonCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), ListEvents.class);
+                Intent intent = new Intent(getBaseContext(), EventList.class);
 //              intent.putExtra("args", userReg);
                 startActivity(intent);
             }

@@ -1,9 +1,7 @@
 package com.example.stu_share;
 
-import android.provider.BaseColumns;
-
 public class DBConnect {
-
+/*
     private DBConnect(){};
 
     public static class DBEntity
@@ -81,5 +79,8 @@ public class DBConnect {
                 +" ; \nDROP TABLE IF EXISTS " + TABLE_NAME_EVENT
                 +" ; \nDROP TABLE IF EXISTS " + TABLE_NAME_EVENTREG+" ; ";
     }
+
+
+ */
 }
 

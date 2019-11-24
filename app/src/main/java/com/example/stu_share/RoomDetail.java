@@ -44,7 +44,7 @@ public class RoomDetail extends AppCompatActivity {
         message.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(getBaseContext(),MessageActivity.class);
+                Intent i=new Intent(getBaseContext(), MessageCreate.class);
                 startActivity(i);
             }
         });

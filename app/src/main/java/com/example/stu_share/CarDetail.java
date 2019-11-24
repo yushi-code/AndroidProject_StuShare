@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import android.widget.EditText;
 import android.widget.TextView;
 
 
@@ -45,7 +44,7 @@ public class CarDetail extends AppCompatActivity {
         message.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(getBaseContext(),MessageActivity.class);
+                Intent i=new Intent(getBaseContext(), MessageCreate.class);
                 startActivity(i);
             }
         });

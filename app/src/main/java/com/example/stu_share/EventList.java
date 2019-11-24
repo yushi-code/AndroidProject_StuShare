@@ -3,14 +3,14 @@ package com.example.stu_share;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.os.AsyncTask;
-
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -24,39 +24,23 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdEventList extends AppCompatActivity {
-    Button btnLogout, btnHome;
+public class EventList extends AppCompatActivity {
     ListView listView;
-    DBHelper dbHelper=null;
-    private User user;
+
+    Button btnHome, btnLogout12;
+    private User user3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_event_list);
-
-        downloadJSON("https://f9team1.gblearn.com/stu_share/read_all_events.php");
-        btnLogout = findViewById(R.id.btnLogout);
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logout();
-            }
-        });
-        btnHome = findViewById(R.id.btnHome);
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                home();
-            }
-        });
-//        dbHelper=new DBHelper(this);
-//        final SQLiteDatabase db = dbHelper.getReadableDatabase();
-//        dbHelper.updateEventList(db,dbHelper.getAllEvent(db));
-      user=(User)getIntent().getSerializableExtra("user");
-        listView = (ListView) findViewById(R.id.eventList);
+        setContentView(R.layout.activity_event_list);
+        downloadJSON("https://f9team1.gblearn.com/stu_share/EventView_Status_Active.php");
+        listView = (ListView) findViewById(R.id.listview);
 //        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,EventCoordinator.EVENTS);
-//
+//        listView.setAdapter(arrayAdapter);
 
+        user3=(User)getIntent().getSerializableExtra("user");
+        Log.d("MYMENU","my menu user ID"+user3.id);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -64,21 +48,41 @@ public class AdEventList extends AppCompatActivity {
                                     long arg3)
             {
                 EventCoordinator.Event event2=(EventCoordinator.Event) adapter.getItemAtPosition(position);
-                Intent intent =new Intent(getBaseContext(), AdEventDetail.class);
+                Intent intent =new Intent(getBaseContext(), EventDetail.class);
                 intent.putExtra("args",event2);
-                intent.putExtra("user",user);
+                intent.putExtra("user",user3);
                 startActivity(intent);
 
             }
         });
+
+        btnHome = findViewById(R.id.btnHome);
+        btnLogout12 = findViewById(R.id.btnLogout12);
+        btnLogout12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenMenuActivity();
+            }
+        });
+
     }
+
     public void logout(){
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("user",user3);
         startActivity(intent);
     }
-    public void home(){
-        Intent intent = new Intent(this, AdminDashboardActivity.class);
-        intent.putExtra("user",user);
+
+    public void OpenMenuActivity() {
+        Intent intent = new Intent(this, EventMenu.class);
+        intent.putExtra("user",user3);
         startActivity(intent);
     }
 
@@ -91,7 +95,6 @@ public class AdEventList extends AppCompatActivity {
                 super.onPreExecute();
             }
 
-
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
@@ -102,7 +105,6 @@ public class AdEventList extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-
 
             @Override
             protected String doInBackground(Void... voids) {
@@ -116,6 +118,7 @@ public class AdEventList extends AppCompatActivity {
                     while ((json = bufferedReader.readLine()) != null) {
                         sb.append(json + "\n");
                     }
+                    Log.d("LIST",sb.toString());
                     return sb.toString().trim();
                 } catch (Exception e) {
                     return null;
@@ -129,7 +132,7 @@ public class AdEventList extends AppCompatActivity {
     private void loadIntoListView(String json) throws JSONException {
         JSONArray jsonArray = new JSONArray(json);
         List<EventCoordinator.Event> eventL = new ArrayList<EventCoordinator.Event>();
-        String[] stocks = new String[jsonArray.length()];
+
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
             EventCoordinator.Event event1 = new EventCoordinator.Event();
@@ -147,17 +150,9 @@ public class AdEventList extends AppCompatActivity {
             event1.setEventDetail(obj.getString("detail"));
 
             eventL.add(event1);
-            //userShort[i] = user1.getFirstName() + " " + user1.getLastName();
-
-           // stocks[i] = user1.getFirstName() ;
-            //stocks[i] = obj.getString("title") + " " + obj.getString("detail");
-
         }
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, eventL);
         listView.setAdapter(arrayAdapter);
     }
 
-
 }
-
-

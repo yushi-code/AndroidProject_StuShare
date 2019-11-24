@@ -1,12 +1,12 @@
 package com.example.stu_share;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class EventMenu extends AppCompatActivity {
         private Button btnMyEvents, btnViewEvents,btnCrtEvt, btnHome, btnLogout;
@@ -57,7 +57,7 @@ public class EventMenu extends AppCompatActivity {
         btnMessageCenter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), MessageListActivity.class);
+                Intent intent = new Intent(getBaseContext(), MessageList.class);
 //              intent.putExtra("args", userReg);
                 startActivity(intent);
             }
@@ -66,18 +66,18 @@ public class EventMenu extends AppCompatActivity {
 
     }
     public void openMyEventsActivity(){
-        Intent intent =new Intent(this, MyEvents.class);
+        Intent intent =new Intent(this, EventMyEvents.class);
         intent.putExtra("user",user1);
         Log.d("TAG","Menu to MyEvent"+user1.id);
         startActivity(intent);
     }
     public void openViewEventsActivity(){
-        Intent intent =new Intent(this, ListEvents.class);
+        Intent intent =new Intent(this, EventList.class);
         intent.putExtra("user",user1);
         startActivity(intent);
     }
     public void openCreateEvent(){
-        Intent intent =new Intent(this, CreateDescription.class);
+        Intent intent =new Intent(this, EventCreateDescription.class);
         intent.putExtra("user",user1);
         startActivity(intent);
     }
