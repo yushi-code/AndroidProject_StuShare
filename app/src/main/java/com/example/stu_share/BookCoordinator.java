@@ -16,11 +16,15 @@ public class BookCoordinator {
         public String edition;
         public String isbn;
         public String details;
+        public String price;
         public String created;
         public String status;
 
+
+
+
         public Book(String id, String ownerId, String title, String author, String edition,
-                    String isbn, String details, String created, String status){
+                    String isbn, String details, String price, String created, String status){
             this.id = id;
             this.ownerId = ownerId;
             this.title = title;
@@ -28,6 +32,7 @@ public class BookCoordinator {
             this.edition = edition;
             this.isbn = isbn;
             this.details = details;
+            this.price = price;
             this.created = created;
             this.status = status;
         }
@@ -56,6 +61,13 @@ public class BookCoordinator {
         }
         public String getStatus(){
             return status;
+        }
+        public String getPrice() {
+            return price;
+        }
+
+        public void setPrice(String price) {
+            this.price = price;
         }
 
 

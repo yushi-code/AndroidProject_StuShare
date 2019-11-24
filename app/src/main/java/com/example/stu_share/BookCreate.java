@@ -12,7 +12,7 @@ import android.widget.Toast;
 import static com.example.stu_share.BookCoordinator.BOOK_LIST;
 
 public class BookCreate extends AppCompatActivity {
-    private EditText txtTitle, txtAuthor, txtEdition, txtISBN, txtDetails;
+    private EditText txtTitle, txtAuthor, txtEdition, txtISBN, txtDetails, txtPrice;
     private Button btnHome, btnLogout, btnSubmit;
 
     @Override
@@ -25,6 +25,7 @@ public class BookCreate extends AppCompatActivity {
         txtEdition=findViewById(R.id.txtEdition);
         txtISBN=findViewById(R.id.txtISBN);
         txtDetails=findViewById(R.id.txtDetails);
+        txtPrice = findViewById(R.id.txtPrice2);
 
         btnHome=findViewById(R.id.btnHome);
         btnHome.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +43,7 @@ public class BookCreate extends AppCompatActivity {
                 BookCoordinator.Book temp=new BookCoordinator.Book("1","1",
                         txtTitle.getText().toString(),txtAuthor.getText().toString(),
                         txtEdition.getText().toString(),txtISBN.getText().toString(),
-                        txtDetails.getText().toString(), "today", "active");
+                        txtDetails.getText().toString(), txtPrice.getText().toString(), "today", "active");
                 BOOK_LIST.add(temp);
                 Toast.makeText(BookCreate.this,
                         "You car share information has been recorded!",
