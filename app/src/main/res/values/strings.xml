@@ -2,4 +2,7 @@
     <string name="app_name">Stu-Share</string>
     <string name="Logout">Logout</string>
     <string name="Home">Home</string>
+    <string name="myBooks">My Books</string>
+    <string name="viewBooks">View Books</string>
+    <string name="createBooks">Create Books</string>
 </resources>
