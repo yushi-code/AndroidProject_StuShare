@@ -136,21 +136,7 @@ public class CarCoordinator {
 
         @Override
         public String toString() {
-            return "Car{" +
-                    "id='" + id + '\'' +
-                    ", ownerId='" + ownerId + '\'' +
-                    ", title='" + title + '\'' +
-                    ", availableDate='" + availableDate + '\'' +
-                    ", brand='" + brand + '\'' +
-                    ", model='" + model + '\'' +
-                    ", year='" + year + '\'' +
-                    ", mileage='" + mileage + '\'' +
-                    ", location='" + location + '\'' +
-                    ", detail='" + detail + '\'' +
-                    ", price='" + price + '\'' +
-                    ", status='" + status + '\'' +
-                    ", created='" + created + '\'' +
-                    '}';
+            return title  ;
         }
     }
 }

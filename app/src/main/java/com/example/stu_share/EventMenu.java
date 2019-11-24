@@ -9,12 +9,13 @@ import android.view.View;
 import android.widget.Button;
 
 public class EventMenu extends AppCompatActivity {
-        private Button btnMyEvents, btnViewEvents,btnCrtEvt, btnMyProfile, btnLogout;
+        private Button btnMyEvents, btnViewEvents,btnCrtEvt, btnHome, btnLogout;
     public static User user1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_menu);
+        btnHome=findViewById(R.id.btnMainMenu1);
         btnMyEvents = findViewById(R.id.btnMyEvents);
         btnMyEvents.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,11 +38,12 @@ public class EventMenu extends AppCompatActivity {
                 openCreateEvent();
             }
         });
-        btnMyProfile = findViewById(R.id.btnMyProfile);
-        btnMyProfile.setOnClickListener(new View.OnClickListener() {
+        btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openMyProfileEvent();
+                Intent i = new Intent(getBaseContext(),MainMenu.class);
+                i.putExtra("user",user1);
+                startActivity(i);
             }
         });
         btnLogout = findViewById(R.id.btnLogout);
@@ -79,11 +81,7 @@ public class EventMenu extends AppCompatActivity {
         intent.putExtra("user",user1);
         startActivity(intent);
     }
-    public void openMyProfileEvent(){
-        Intent intent =new Intent(this, MyProfile.class);
-        intent.putExtra("user",user1);
-        startActivity(intent);
-    }
+
 
     public void logout(){
         Intent intent = new Intent(this, MainActivity.class);

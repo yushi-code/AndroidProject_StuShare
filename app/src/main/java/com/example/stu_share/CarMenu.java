@@ -7,10 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 
 public class CarMenu extends AppCompatActivity {
     private Button buttonMyCars,buttonViewCars,buttonCreateCars,buttonMessageCenter,buttonMain,buttonLogout;
@@ -20,7 +16,7 @@ public class CarMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_menu);
 
-        buttonCreateCars=findViewById(R.id.btnCreateCar);
+        buttonCreateCars=findViewById(R.id.btnCrtCars);
         buttonCreateCars.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +48,7 @@ public class CarMenu extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        buttonMain=findViewById(R.id.btnMainMenu);
+        buttonMain=findViewById(R.id.btnMainMenu1);
         buttonMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
