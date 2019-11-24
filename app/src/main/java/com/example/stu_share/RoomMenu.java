@@ -29,7 +29,7 @@ public class RoomMenu extends AppCompatActivity {
         buttonMessageCenter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(getBaseContext(),MessageListActivity.class);
+                Intent i= new Intent(getBaseContext(), MessageList.class);
                 startActivity(i);
             }
         });

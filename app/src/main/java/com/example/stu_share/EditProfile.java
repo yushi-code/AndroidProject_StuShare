@@ -39,7 +39,7 @@ public class EditProfile extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         user=(User)getIntent().getSerializableExtra("user");
-        setContentView(R.layout.activity_edit_profile);
+        setContentView(R.layout.activity_profile_edit);
         editFn=findViewById(R.id.editFirstName);
         editFn.setText(user.firstName);
         editLn=findViewById(R.id.editLastName);

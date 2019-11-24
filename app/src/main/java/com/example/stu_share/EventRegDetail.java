@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,72 +23,57 @@ import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
 
-public class AdEventDetail extends AppCompatActivity {
-    private Button btnLogout,btnJoin, btnHome;
-    private TextView txtEvtTitle,txtEvtDetail,txtStDate,txtStTime,txtEndTime,txtEndDate;
-   // DBHelper dbHelper = null;
+public class EventRegDetail extends AppCompatActivity {
+    private Button btnLogout,  btnHome, btnDeReg;
+    private TextView txtEvtTitle, txtEvtDetail, txtStDate, txtStTime, txtEndTime, txtEndDate;
     private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_event_detail);
-        btnJoin=findViewById(R.id.btnSus);
-        btnLogout=findViewById(R.id.btnLogout111);
-        txtEvtTitle=findViewById(R.id.txtEventTitle);
-        txtEvtDetail=findViewById(R.id.txtEvtDetail);
-        txtStDate=findViewById(R.id.txtStDate);
-        txtStTime=findViewById(R.id.txtStTime);
-        txtEndDate=findViewById(R.id.txtEndDate);
-        txtEndTime=findViewById(R.id.txtEndTime);
-        user=(User)getIntent().getSerializableExtra("user");
-        final EventCoordinator.Event event=(EventCoordinator.Event)getIntent().getSerializableExtra("args");
-        txtEvtTitle.setText(event.eventTitle);
-        txtEvtDetail.setText(event.eventDetail);
-        txtStTime.setText(event.startTime);
-        txtStDate.setText(event.startDate);
-        txtEndDate.setText(event.endDate);
-        txtEndTime.setText(event.endTime);
+        setContentView(R.layout.activity_event_reg_detail);
+
+
+
+        btnDeReg = findViewById(R.id.btnReg123);
+        btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent=new Intent(getBaseContext(),AdminDashboardActivity.class);
-//                intent.putExtra("user",user);
-//                startActivity(intent);
-                Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                intent.putExtra("user",user);
-                startActivity(intent);
+                logout();
             }
         });
-        btnJoin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //add to database table with event id and participante id
-                //dbHelper = new DBHelper(getBaseContext());
-                //final SQLiteDatabase db = dbHelper.getWritableDatabase();
-                //dbHelper.eventStatusChange(db,event);
-
-                Toast.makeText(getBaseContext(), "you have successfully suspended the event",
-                        Toast.LENGTH_LONG).show();
-                update("https://f9team1.gblearn.com/stu_share/EventSuspended.php");
-                update("https://f9team1.gblearn.com/stu_share/eventRegDeleteByAdmin.php");
-                //Intent intent=new Intent(getBaseContext(),AdminDashboardActivity.class);
-                //intent.putExtra("user",user);
-                //startActivity(intent);
-            }
-        });
-
-
-        btnHome = findViewById(R.id.btnHome8);
+        btnHome = findViewById(R.id.btnHome);
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 OpenMenuActivity();
             }
         });
-    }
+        txtEvtTitle = findViewById(R.id.txtEventTitle123);
+        txtEvtDetail = findViewById(R.id.txtEvtDetail123);
+        txtStDate = findViewById(R.id.txtStDate123);
+        txtStTime = findViewById(R.id.txtStTime123);
+        txtEndDate = findViewById(R.id.txtEndDate123);
+        txtEndTime = findViewById(R.id.txtEndTime123);
+        final User user = (User) getIntent().getSerializableExtra("user");
+        final EventCoordinator.Event event = (EventCoordinator.Event) getIntent().getSerializableExtra("args");
+        txtEvtTitle.setText(event.eventTitle);
+        txtEvtDetail.setText(event.eventDetail);
+        txtStTime.setText(event.startTime);
+        txtStDate.setText(event.startDate);
+        txtEndDate.setText(event.endDate);
+        txtEndTime.setText(event.endTime);
+        btnDeReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deRegEvent(event.id,user.id,"https://f9team1.gblearn.com/stu_share/EventDeReg.php");
+                //delete from evenreg table
 
-    private void update(final String urlWebService) {
+            }
+});
+}
 
+    private void deRegEvent(final String eventid, final String userid, final String urlWebService) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -103,9 +87,9 @@ public class AdEventDetail extends AppCompatActivity {
                     conn.setDoInput(true);
 
                     JSONObject jsonParam = new JSONObject();
-                    //jsonParam.put("userId", user2.id);
+                    jsonParam.put("userId", userid);
                     final EventCoordinator.Event event = (EventCoordinator.Event) getIntent().getSerializableExtra("args");
-                    jsonParam.put("eventId", event.id);
+                    jsonParam.put("eventId", eventid);
 
                     Log.i("JSON", jsonParam.toString());
                     DataOutputStream os = new DataOutputStream(conn.getOutputStream());
@@ -142,14 +126,16 @@ public class AdEventDetail extends AppCompatActivity {
             }
         });
         thread.start();
-
-
-
     }
-    public void OpenMenuActivity(){
-        Intent intent = new Intent(this, AdminDashboardActivity.class);
+
+    public void logout(){
+        Intent intent =new Intent(this, MainActivity.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    public void OpenMenuActivity() {
+        Intent intent = new Intent(this, EventMenu.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }
 }
-

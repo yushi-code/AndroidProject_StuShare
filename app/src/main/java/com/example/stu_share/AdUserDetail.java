@@ -3,7 +3,6 @@ package com.example.stu_share;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,7 +30,7 @@ public class AdUserDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ad_user_detail);
+        setContentView(R.layout.activity_admin_user_detail);
         userDetail=(User)getIntent().getSerializableExtra("args");
         user=(User)getIntent().getSerializableExtra("user");
         txtDetail=findViewById(R.id.txtAcctDerail);
