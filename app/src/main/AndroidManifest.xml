@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BookCreate"></activity>
+        <activity android:name=".BookPastList"></activity>
+        <activity android:name=".BookPastDetail" />
+        <activity android:name=".BookDetail" />
+        <activity android:name=".BookCurrentDetail" />
+        <activity android:name=".BookCreate" />
         <activity android:name=".BookCurrentList" />
         <activity android:name=".BookList" />
         <activity android:name=".BookMyMenu" />
