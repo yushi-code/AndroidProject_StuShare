@@ -95,7 +95,6 @@ public class ListEvents extends AppCompatActivity {
                 super.onPreExecute();
             }
 
-
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
@@ -106,7 +105,6 @@ public class ListEvents extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-
 
             @Override
             protected String doInBackground(Void... voids) {
@@ -152,7 +150,6 @@ public class ListEvents extends AppCompatActivity {
             event1.setEventDetail(obj.getString("detail"));
 
             eventL.add(event1);
-
         }
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, eventL);
         listView.setAdapter(arrayAdapter);
