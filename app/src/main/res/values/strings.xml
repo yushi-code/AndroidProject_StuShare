@@ -16,4 +16,7 @@
     <string name="bookEdition">Book Edition</string>
     <string name="isbn">ISBN Number</string>
     <string name="numberISBN">Book ISBN Number</string>
+    <string name="viewCurBook">View Current Book Postings</string>
+    <string name="viewPastBook">View Past Book Postings</string>
+    <string name="createBook">Create Book Posting</string>
 </resources>
