@@ -16,12 +16,14 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        createCars();
+
+        final User user=(User)getIntent().getSerializableExtra("user");
         buttonBooks=findViewById(R.id.btnBooks);
         buttonBooks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Intent i= new Intent(getBaseContext(),BookMenu.class);
+                //i.putExtra("user",user);
                 //startActivity(i);
             }
         });
@@ -29,8 +31,11 @@ public class MainMenu extends AppCompatActivity {
         buttonRooms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent i= new Intent(getBaseContext(),RoomMenu.class);
-                //startActivity(i);
+
+                Intent i= new Intent(getBaseContext(),RoomMenu.class);
+               i.putExtra("user",user);
+                startActivity(i);
+
             }
         });
         buttonEvents=findViewById(R.id.btnEvents);
@@ -38,14 +43,16 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getBaseContext(),EventMenu.class);
+                i.putExtra("user",user);
                 startActivity(i);
             }
         });
         buttonCars=findViewById(R.id.btnCars);
-        buttonBooks.setOnClickListener(new View.OnClickListener() {
+        buttonCars.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getBaseContext(),CarMenu.class);
+                i.putExtra("user",user);
                 startActivity(i);
             }
         });
@@ -54,6 +61,7 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getBaseContext(),MyProfile.class);
+                i.putExtra("user",user);
                 startActivity(i);
             }
         });
@@ -62,6 +70,7 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getBaseContext(),MessageListActivity.class);
+                i.putExtra("user",user);
                 startActivity(i);
             }
         });
@@ -78,6 +87,7 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getBaseContext(),MessageActivity.class);
+                i.putExtra("user",user);
                 i.putExtra("id","admin");
                 startActivity(i);
             }
@@ -85,40 +95,5 @@ public class MainMenu extends AppCompatActivity {
 
     }
 
-    private void createCars() {
-         CarCoordinator.Car car1=new CarCoordinator.Car("1","Dharam KC","A brand new Jeep checrokee for rent!","2019-12-25",
-                "Jeep","Cherokee","2019","0","Casa Loma Campus",
-                "Nice to have ,greate deal for GBC studeents, 50% discount with valid student ID","$20,000","active","2019-11-23 18:04:00");
-       CarCoordinator.Car car2=new CarCoordinator.Car("2","Harmanpreet Kaur","Looking for ride share from Vancouver to Toronto","2019-12-20",
-                "Tesla","Model X","2020","10","Vancouver City Hall",
-                "Electric SUV with blazing fast speed, environmental friendly","$20","active","2019-11-23 18:04:00");
-         CarCoordinator.Car car3=new CarCoordinator.Car("3","Yu Shi","7 sets caravan for sale","2019-12-25",
-                "Dodge","Caravan","2016","80,000","At your choice",
-                "7 seats caravan good for car pool","$12,000","active","2019-11-23 18:04:00");
-        CarCoordinator.Car car4=new CarCoordinator.Car("1","Ayusha","Looking for lunxury ride ,please contact","2019-12-23",
-                "Any","Any","2019","0","St James Campus",
-                "Looking for a ride to GTA,Please contact ayusha@georgebrown.ca","$10","active","2019-11-23 18:04:00");
 
-
-        CarCoordinator.Car pastcar1=new CarCoordinator.Car("1","Dharam KC","A brand new Jeep checrokee for rent!","2018-12-25",
-                "Jeep","Cherokee","2019","0","Casa Loma Campus",
-                "Nice to have ,greate deal for GBC studeents, 50% discount with valid student ID","$20,000","active","2018-11-23 18:04:00");
-         CarCoordinator.Car pastcar2=new CarCoordinator.Car("2","Harmanpreet Kaur","Looking for ride share from Vancouver to Toronto","2018-12-20",
-                "Tesla","Model X","2020","10","Vancouver City Hall",
-                "Electric SUV with blazing fast speed, environmental friendly","$20","active","2018-11-23 18:04:00");
-         CarCoordinator.Car pastcar3=new CarCoordinator.Car("3","Yu Shi","7 sets caravan for sale","2018-12-25",
-                "Dodge","Caravan","2016","80,000","At your choice",
-                "7 seats caravan good for car pool","$12,000","active","2018-11-23 18:04:00");
-        CarCoordinator.Car pastcar4=new CarCoordinator.Car("1","Ayusha","Looking for lunxury ride ,please contact","2018-12-23",
-                "Any","Any","2019","0","St James Campus",
-                "Looking for a ride to GTA,Please contact ayusha@georgebrown.ca","$10","active","2018-11-23 18:04:00");
-        CAR_LIST.add(car1);
-        CAR_LIST.add(car2);
-        CAR_LIST.add(car3);
-        CAR_LIST.add(car4);
-        CAR_PAST_LIST.add(pastcar1);
-        CAR_PAST_LIST.add(pastcar2);
-        CAR_PAST_LIST.add(pastcar3);
-        CAR_PAST_LIST.add(pastcar4);
-    }
 }

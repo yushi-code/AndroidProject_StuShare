@@ -8,21 +8,43 @@
     tools:layout_editor_absoluteY="81dp">
 
     <Button
+        android:id="@+id/btnViewCarShares"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="View Ride-Share"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnViewBooks" />
+
+    <Button
+        android:id="@+id/btnRentalRoom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="View Rooms for Share"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnViewCarShares" />
+
+    <Button
         android:id="@+id/btnAdmProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="41dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
         android:text="My Profile"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnViewCurEvent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRentalRoom" />
 
     <Button
         android:id="@+id/btnAdminLogout"
@@ -40,7 +62,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="80dp"
         android:text="Welcome Admin!"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
@@ -53,17 +74,12 @@
         android:id="@+id/btnViewUsers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginTop="25dp"
         android:text="View Users"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -71,34 +87,26 @@
         android:id="@+id/btnViewCurEvent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="41dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="41dp"
+        android:layout_marginTop="10dp"
         android:text="View Events"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnAdmProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnViewUsers" />
 
     <Button
-        android:id="@+id/btnAdminMessageCenter"
+        android:id="@+id/btnViewBooks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="41dp"
-        android:layout_marginEnd="30dp"
-        android:text="Message Center"
+        android:layout_marginTop="10dp"
+        android:text="View Books"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAdmProfile" />
+        app:layout_constraintTop_toBottomOf="@+id/btnViewCurEvent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
