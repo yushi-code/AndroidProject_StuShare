@@ -76,7 +76,7 @@ public class EditProfile extends AppCompatActivity {
                     Toast.makeText(getBaseContext(), "Profile has been updated",
                             Toast.LENGTH_LONG).show();
                     updateUser(user,urlWebService);
-                    Intent intent = new Intent(getBaseContext(), AdminDashboardActivity.class);
+                    Intent intent = new Intent(getBaseContext(), AdminDashboard.class);
                     intent.putExtra("user",user);
                     startActivity(intent);
                 }else{

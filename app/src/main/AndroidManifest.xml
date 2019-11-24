@@ -62,7 +62,7 @@
         <activity android:name=".AdminUserList" />
         <activity android:name=".EditProfile" />
         <activity android:name=".EventJoinedDetail" />
-        <activity android:name=".AdminDashboardActivity" />
+        <activity android:name=".AdminDashboard" />
         <activity android:name=".EventPastDetail" />
         <activity android:name=".MyProfile" />
         <activity android:name=".ResetPassword" />

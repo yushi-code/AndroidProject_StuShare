@@ -77,7 +77,7 @@ public class AdEventList extends AppCompatActivity {
         startActivity(intent);
     }
     public void home(){
-        Intent intent = new Intent(this, AdminDashboardActivity.class);
+        Intent intent = new Intent(this, AdminDashboard.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }
