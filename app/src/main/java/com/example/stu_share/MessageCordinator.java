@@ -8,9 +8,10 @@ public class MessageCordinator {
     public final static List<Message> MESSAGE_LIST=new ArrayList<Message>();
 
     public static class Message implements Serializable {
-        public String id, title, detail, receiver_email, sender_email, type, status;
+        public int id;
+        public String title, detail, receiver_email, sender_email, type, status;
 
-        public Message(String id, String title, String detail, String receiver_email, String sender_email, String type,  String status){
+        public Message(int id, String title, String detail, String receiver_email, String sender_email, String type,  String status){
             this.id = id;
             this.title = title;
             this.detail = detail;
@@ -19,12 +20,16 @@ public class MessageCordinator {
             this.type = type;
             this.status = status;
         }
+        public Message(int id, String title){
+            this.id = id;
+            this.title = title;
+        }
 
-        public String getId() {
+        public int getId() {
             return id;
         }
 
-        public void setId(String id) {
+        public void setId(int id) {
             this.id = id;
         }
 

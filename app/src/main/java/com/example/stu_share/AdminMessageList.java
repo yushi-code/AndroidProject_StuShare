@@ -20,7 +20,7 @@ public class AdminMessageList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_message_list);
 
-        msgListView=findViewById(R.id.messageList);
+        msgListView=findViewById(R.id.adminMessageList);
         final ArrayAdapter arrayAdapter_msg = new ArrayAdapter(this, android.R.layout.simple_list_item_1,MESSAGE_LIST);
         msgListView.setAdapter(arrayAdapter_msg);
         msgListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

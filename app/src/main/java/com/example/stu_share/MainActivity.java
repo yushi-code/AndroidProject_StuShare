@@ -26,6 +26,7 @@ import java.net.URL;
 import static com.example.stu_share.CarCoordinator.CAR_LIST;
 import static com.example.stu_share.CarCoordinator.CAR_PAST_LIST;
 
+import static com.example.stu_share.MessageCordinator.MESSAGE_LIST;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnCreateAcc, btnLogin, btnFgtPswd;
@@ -133,11 +134,13 @@ public class MainActivity extends AppCompatActivity {
                         if(user1.role.equals("admin")){
                         Intent i=new Intent(getBaseContext(), AdminDashboardActivity.class);
                         createCars();
+                        createMessageList();
                         i.putExtra("user",user1);
                         startActivity(i);
                     }else{
                         Intent i=new Intent(getBaseContext(), MainMenu.class);
                         createCars();
+                        createMessageList();
                         i.putExtra("user",user1);
                         startActivity(i);
                     }
@@ -196,6 +199,17 @@ public class MainActivity extends AppCompatActivity {
         CAR_PAST_LIST.add(pastcar2);
         CAR_PAST_LIST.add(pastcar3);
         CAR_PAST_LIST.add(pastcar4);
+    }
+
+    private void createMessageList() {
+        MessageCordinator.Message message1=new MessageCordinator.Message(1,"Android Programming Book for Sell");
+        MessageCordinator.Message message2=new MessageCordinator.Message(2,"Come Learn Resume Writing!");
+        MessageCordinator.Message message3=new MessageCordinator.Message(3,"Ride-share Available from Scarborough!");
+        MessageCordinator.Message message4=new MessageCordinator.Message(4,"Looking for Rental Room Share?");
+        MESSAGE_LIST.add(message1);
+        MESSAGE_LIST.add(message2);
+        MESSAGE_LIST.add(message3);
+        MESSAGE_LIST.add(message4);
     }
     private User jsonToUser(String json, User user) throws JSONException {
         JSONArray jsonArray = new JSONArray(json);

@@ -21,8 +21,8 @@ public class MessageListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_message_list);
 
         messageList=findViewById(R.id.messageList);
-        final ArrayAdapter arrayAdapter_msg = new ArrayAdapter(this, android.R.layout.simple_list_item_1,MESSAGE_LIST);
-        messageList.setAdapter(arrayAdapter_msg);
+        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,MESSAGE_LIST);
+        messageList.setAdapter(arrayAdapter);
         messageList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View v, int position,
