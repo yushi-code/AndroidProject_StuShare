@@ -27,6 +27,15 @@
         <activity android:name=".CarList" />
         <activity android:name=".MyCars" />
         <activity android:name=".CarMenu" />
+        <activity android:name=".RoomCurrentDetail" />
+        <activity android:name=".RoomCurrentList" />
+        <activity android:name=".RoomPastDetails" />
+        <activity android:name=".RoomPastList" />
+        <activity android:name=".RoomMyMenu" />
+        <activity android:name=".RoomCreate" />
+        <activity android:name=".RoomDetail" />
+        <activity android:name=".RoomList" />
+        <activity android:name=".RoomMenu" />
         <activity android:name=".SignUpEmailPass" />
         <activity android:name=".ResetWithEmail" />
         <activity android:name=".ResetConfirm" />
