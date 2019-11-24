@@ -8,7 +8,8 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MessageListActivity extends AppCompatActivity {
-
+    Button msgHome;
+    Button msgLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,5 +37,7 @@ public class MessageListActivity extends AppCompatActivity {
                 startActivity(intent);
 
 
+                }
+        });
     }
 }
