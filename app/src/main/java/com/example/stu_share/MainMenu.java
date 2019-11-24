@@ -19,14 +19,13 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
 
         final User user=(User)getIntent().getSerializableExtra("user");
-
         buttonBooks=findViewById(R.id.btnBooks);
         buttonBooks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(getBaseContext(),BookMenu.class);
-                i.putExtra("user",user);
-                startActivity(i);
+                //Intent i= new Intent(getBaseContext(),BookMenu.class);
+                //i.putExtra("user",user);
+                //startActivity(i);
             }
         });
         buttonRooms=findViewById(R.id.btnRooms);

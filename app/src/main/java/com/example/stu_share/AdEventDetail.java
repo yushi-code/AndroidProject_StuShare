@@ -1,7 +1,5 @@
 package com.example.stu_share;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -52,7 +52,7 @@ public class AdEventDetail extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent=new Intent(getBaseContext(),AdminDashboardActivity.class);
+//                Intent intent=new Intent(getBaseContext(),AdminDashboard.class);
 //                intent.putExtra("user",user);
 //                startActivity(intent);
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
@@ -72,7 +72,7 @@ public class AdEventDetail extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
                 update("https://f9team1.gblearn.com/stu_share/EventSuspended.php");
                 update("https://f9team1.gblearn.com/stu_share/eventRegDeleteByAdmin.php");
-                //Intent intent=new Intent(getBaseContext(),AdminDashboardActivity.class);
+                //Intent intent=new Intent(getBaseContext(),AdminDashboard.class);
                 //intent.putExtra("user",user);
                 //startActivity(intent);
             }
@@ -147,7 +147,7 @@ public class AdEventDetail extends AppCompatActivity {
 
     }
     public void OpenMenuActivity(){
-        Intent intent = new Intent(this, AdminDashboardActivity.class);
+        Intent intent = new Intent(this, AdminDashboard.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }

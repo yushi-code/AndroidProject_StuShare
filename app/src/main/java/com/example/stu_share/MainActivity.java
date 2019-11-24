@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                     }else if(txtPswd.getText().toString().equals(user1.password)){
                         Log.d("JSON",user1.toString()+"usertoString!");
                         if(user1.role.equals("admin")){
-                        Intent i=new Intent(getBaseContext(), AdminDashboardActivity.class);
+                        Intent i=new Intent(getBaseContext(), AdminDashboard.class);
                         createCars();
                         createMessageList();
                         createRooms();
