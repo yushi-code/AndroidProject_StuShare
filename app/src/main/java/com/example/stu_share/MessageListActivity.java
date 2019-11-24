@@ -55,7 +55,9 @@ public class MessageListActivity extends AppCompatActivity {
                 startActivity(intent);
 
 
+
             }
+
         });
     }
 }

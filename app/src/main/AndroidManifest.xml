@@ -16,6 +16,16 @@
         <activity android:name=".AdminMessageList" />
         <activity android:name=".MessageSentDetailActivity" />
         <activity android:name=".ReceivedMessageDetailActivity" />
+        <activity android:name=".BookPastList"></activity>
+        <activity android:name=".BookPastDetail" />
+        <activity android:name=".BookDetail" />
+        <activity android:name=".BookCurrentDetail" />
+        <activity android:name=".BookCreate" />
+        <activity android:name=".BookCurrentList" />
+        <activity android:name=".BookList" />
+        <activity android:name=".BookMyMenu" />
+        <activity android:name=".RoomMenu" />
+        <activity android:name=".BookMenu" />
         <activity android:name=".CarCurrentDDetail" />
         <activity android:name=".CarCurrentList" />
         <activity android:name=".CarPastDetail" />

@@ -2,6 +2,7 @@ package com.example.stu_share;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,10 +10,12 @@ import android.widget.Button;
 
 public class RoomMenu extends AppCompatActivity {
     private Button buttonMyRooms,buttonViewRooms,buttonCreateRooms,buttonMessageCenter,buttonMain,buttonLogout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_menu);
+
 
         buttonCreateRooms=findViewById(R.id.btnCrtRooms);
         buttonCreateRooms.setOnClickListener(new View.OnClickListener() {
@@ -62,5 +65,6 @@ public class RoomMenu extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
     }
 }
