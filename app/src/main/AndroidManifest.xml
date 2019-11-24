@@ -12,8 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RoomMenu"></activity>
-        <activity android:name=".bookMenu" />
+        <activity android:name=".BookCreate"></activity>
+        <activity android:name=".BookCurrentList" />
+        <activity android:name=".BookList" />
+        <activity android:name=".BookMyMenu" />
+        <activity android:name=".RoomMenu" />
+        <activity android:name=".BookMenu" />
         <activity android:name=".CarCurrentDDetail" />
         <activity android:name=".CarCurrentList" />
         <activity android:name=".CarPastDetail" />
