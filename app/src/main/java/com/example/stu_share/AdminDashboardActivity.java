@@ -47,7 +47,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
             startActivity(intent);
         }
         });
-        btnMessageCenter = findViewById(R.id.btnAdminMessageCenter);
+        btnMessageCenter = findViewById(R.id.btnViewBooks);
         btnMessageCenter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

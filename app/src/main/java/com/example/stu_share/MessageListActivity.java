@@ -8,12 +8,13 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MessageListActivity extends AppCompatActivity {
-    Button msgHome, msgLogout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_list);
+
 
         msgHome = findViewById(R.id.btnMsgHome);
         msgLogout = findViewById(R.id.btnMsgLogout);
@@ -34,7 +35,6 @@ public class MessageListActivity extends AppCompatActivity {
 //              intent.putExtra("args", userReg);
                 startActivity(intent);
 
-            }
-        });
+
     }
 }
