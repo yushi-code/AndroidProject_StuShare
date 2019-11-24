@@ -69,6 +69,14 @@
         <activity android:name=".EventRegDetail" />
         <activity android:name=".EventListJoined" />
         <activity android:name=".EventDetail" />
+        <activity android:name=".PastEvent" />
+        <activity android:name=".ListEvents" />
+        <activity android:name=".CreateDescription" />
+        <activity android:name=".Create" />
+        <activity android:name=".Owned" />
+        <activity android:name=".MyEvents" />
+        <activity android:name=".MessageActivity" />
+        <activity android:name=".MessageListActivity" />
         <activity android:name=".EventPastList" />
         <activity android:name=".EventList" />
         <activity android:name=".EventCreateDescription" />
