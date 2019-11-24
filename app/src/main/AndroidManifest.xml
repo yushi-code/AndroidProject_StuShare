@@ -53,6 +53,16 @@
         <activity android:name=".MyEvents" />
         <activity android:name=".MessageActivity" />
         <activity android:name=".MessageListActivity" />
+        <activity android:name=".RoomCreate" />
+        <activity android:name=".RoomCurrentDetail" />
+        <activity android:name=".RoomCurrentList" />
+        <activity android:name=".RoomDetail" />
+        <activity android:name=".RoomList" />
+        <activity android:name=".RoomMenu" />
+        <activity android:name=".RoomMyMenu" />
+        <activity android:name=".RoomPastDetails" />
+        <activity android:name=".RoomPastList" />
+
         <activity android:name=".Signup2" />
         <activity android:name=".Signup" />
         <activity android:name=".SplashActivity">
