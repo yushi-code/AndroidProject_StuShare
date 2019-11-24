@@ -25,6 +25,8 @@ import java.net.URL;
 
 import static com.example.stu_share.CarCoordinator.CAR_LIST;
 import static com.example.stu_share.CarCoordinator.CAR_PAST_LIST;
+import static com.example.stu_share.RoomCoordinator.ROOM_LIST;
+import static com.example.stu_share.RoomCoordinator.ROOM_PAST_LIST;
 
 import static com.example.stu_share.MessageCordinator.MESSAGE_LIST;
 
@@ -135,11 +137,13 @@ public class MainActivity extends AppCompatActivity {
                         Intent i=new Intent(getBaseContext(), AdminDashboardActivity.class);
                         createCars();
                         createMessageList();
+                        createRooms();
                         i.putExtra("user",user1);
                         startActivity(i);
                     }else{
                         Intent i=new Intent(getBaseContext(), MainMenu.class);
                         createCars();
+                        createRooms();
                         createMessageList();
                         i.putExtra("user",user1);
                         startActivity(i);
@@ -199,6 +203,52 @@ public class MainActivity extends AppCompatActivity {
         CAR_PAST_LIST.add(pastcar2);
         CAR_PAST_LIST.add(pastcar3);
         CAR_PAST_LIST.add(pastcar4);
+    }
+
+    private void createRooms() {
+        RoomCoordinator.Room room1 =new RoomCoordinator.Room("1", "Yi Shi", "Renting a room", "2019-12-20", "2",
+                "10","Basement","offering", "yes","spadiana",
+                "Looking for a roommate to share a room in two bedroom basement", "1000", "active","2019-11-23 18:04:00");
+
+        RoomCoordinator.Room room2 =new RoomCoordinator.Room("2", "Dharam KC", "Want a room", "2019-12-25", "3",
+                "12","Apartment","wanting", "yes","yonge and bloor",
+                "Want a roommate to share a room in two bedroom apartment", "800", "active","2019-11-20 10:04:00");
+
+        RoomCoordinator.Room room3 =new RoomCoordinator.Room("3", "Ayusha", "Renting a room", "2019-12-1", "1",
+                "0","Basement","offering", "yes","scarborough",
+                "Looking for a roommate to share a room in two bedroom apartment", "1000", "active","2019-11-22 16:04:00");
+
+        RoomCoordinator.Room room4 =new RoomCoordinator.Room("4", "Harmanpreet Kaur", "Renting a room", "2019-12-20", "2",
+                "10","Basement","offering", "yes","mississauga",
+                "Looking for a roommate to share a room in one bedroom basement", "1000", "active","2019-11-23 18:04:00");
+
+
+        RoomCoordinator.Room pastroom1 =new RoomCoordinator.Room("1", "Yi Shi", "(Past)Renting a room", "2019-12-20", "2",
+                "10","Basement","offering", "yes","spadiana",
+                "Looking for a roommate to share a room in two bedroom basement", "1000", "active","2019-11-23 18:04:00");
+
+        RoomCoordinator.Room pastroom2 =new RoomCoordinator.Room("2", "Dharam KC", "(Past)Want a room", "2019-12-25", "3",
+                "12","Apartment","wanting", "yes","yonge and bloor",
+                "Want a roommate to share a room in two bedroom apartment", "800", "active","2019-11-20 10:04:00");
+
+        RoomCoordinator.Room pastroom3 =new RoomCoordinator.Room("3", "Ayusha", "(Past)Renting a room", "2019-12-1", "1",
+                "0","Basement","offering", "yes","scarborough",
+                "Looking for a roommate to share a room in two bedroom apartment", "1000", "active","2019-11-22 16:04:00");
+
+        RoomCoordinator.Room pastroom4 =new RoomCoordinator.Room("4", "Harmanpreet Kaur", "(Past)Renting a room", "2019-12-20", "2",
+                "10","Basement","offering", "yes","mississauga",
+                "Looking for a roommate to share a room in one bedroom basement", "1000", "active","2019-11-23 18:04:00");
+
+        ROOM_LIST.add(room1);
+        ROOM_LIST.add(room2);
+        ROOM_LIST.add(room3);
+        ROOM_LIST.add(room4);
+
+        ROOM_PAST_LIST.add(pastroom1);
+        ROOM_PAST_LIST.add(pastroom1);
+        ROOM_PAST_LIST.add(pastroom1);
+        ROOM_PAST_LIST.add(pastroom1);
+
     }
 
     private void createMessageList() {
