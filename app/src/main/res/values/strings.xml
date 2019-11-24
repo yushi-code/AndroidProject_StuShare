@@ -5,4 +5,7 @@
     <string name="myBooks">My Books</string>
     <string name="viewBooks">View Books</string>
     <string name="createBooks">Create Books</string>
+    <string name="messageCentre">Message Centre</string>
+    <string name="home">Home</string>
+    <string name="logout">Logout</string>
 </resources>
