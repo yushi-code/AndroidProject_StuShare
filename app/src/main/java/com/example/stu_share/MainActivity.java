@@ -27,6 +27,9 @@ import static com.example.stu_share.CarCoordinator.CAR_LIST;
 import static com.example.stu_share.CarCoordinator.CAR_PAST_LIST;
 import static com.example.stu_share.RoomCoordinator.ROOM_LIST;
 import static com.example.stu_share.RoomCoordinator.ROOM_PAST_LIST;
+import static com.example.stu_share.BookCoordinator.BOOK_LIST;
+import static com.example.stu_share.BookCoordinator.BOOK_PAST_LIST;
+
 
 import static com.example.stu_share.MessageCordinator.MESSAGE_LIST;
 
@@ -138,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
                         createCars();
                         createMessageList();
                         createRooms();
+                        createBooks();
                         i.putExtra("user",user1);
                         startActivity(i);
                     }else{
@@ -206,19 +210,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createRooms() {
-        RoomCoordinator.Room room1 =new RoomCoordinator.Room("1", "Yi Shi", "Renting a room", "2019-12-20", "2",
+        RoomCoordinator.Room room1 =new RoomCoordinator.Room("1", "Yi Shi", "Renting a room in two bedroom basement", "2019-12-20", "2",
                 "10","Basement","offering", "yes","spadiana",
                 "Looking for a roommate to share a room in two bedroom basement", "1000", "active","2019-11-23 18:04:00");
 
-        RoomCoordinator.Room room2 =new RoomCoordinator.Room("2", "Dharam KC", "Want a room", "2019-12-25", "3",
+        RoomCoordinator.Room room2 =new RoomCoordinator.Room("2", "Dharam KC", "Want a room in the three bedroom apartment", "2019-12-25", "3",
                 "12","Apartment","wanting", "yes","yonge and bloor",
                 "Want a roommate to share a room in two bedroom apartment", "800", "active","2019-11-20 10:04:00");
 
-        RoomCoordinator.Room room3 =new RoomCoordinator.Room("3", "Ayusha", "Renting a room", "2019-12-1", "1",
+        RoomCoordinator.Room room3 =new RoomCoordinator.Room("3", "Ayusha", "Looking for a roommate to share room ", "2019-12-1", "1",
                 "0","Basement","offering", "yes","scarborough",
                 "Looking for a roommate to share a room in two bedroom apartment", "1000", "active","2019-11-22 16:04:00");
 
-        RoomCoordinator.Room room4 =new RoomCoordinator.Room("4", "Harmanpreet Kaur", "Renting a room", "2019-12-20", "2",
+        RoomCoordinator.Room room4 =new RoomCoordinator.Room("4", "Harmanpreet Kaur", "Looking for the roommate in the mississauga", "2019-12-20", "2",
                 "10","Basement","offering", "yes","mississauga",
                 "Looking for a roommate to share a room in one bedroom basement", "1000", "active","2019-11-23 18:04:00");
 
@@ -245,11 +249,62 @@ public class MainActivity extends AppCompatActivity {
         ROOM_LIST.add(room4);
 
         ROOM_PAST_LIST.add(pastroom1);
-        ROOM_PAST_LIST.add(pastroom1);
-        ROOM_PAST_LIST.add(pastroom1);
-        ROOM_PAST_LIST.add(pastroom1);
+        ROOM_PAST_LIST.add(pastroom2);
+        ROOM_PAST_LIST.add(pastroom3);
+        ROOM_PAST_LIST.add(pastroom4);
 
     }
+
+    private void createBooks(){
+        BookCoordinator.Book book1 = new BookCoordinator.Book("1", "Harman", "Code Complete",
+                "Steve McConnell", "2","0735619670", "$52",
+                "This book is brand new available for buying", "2019-11-23 18:04:10","active");
+
+        BookCoordinator.Book book2 = new BookCoordinator.Book("2", "Ayusha", "Clean Code: A Handbook of Agile Software Craftsmanship",
+                "Robert C. Martin ", "1"," 9780132350884", "$10",
+                "This book is in mint condition and looks like new for rent for 10 months", "2019-11-24 16:02:30","active");
+
+        BookCoordinator.Book book3 = new BookCoordinator.Book("3", "Dharam", "Java: The Complete Reference, Tenth Edition",
+                "Herbert Schildt", "10","0735619670", "$20",
+                "I am looking for this book. If anyone has this book please contact ", "2019-11-29 14:04:00","active");
+        BookCoordinator.Book book4 = new BookCoordinator.Book("4", "David", "Book for python course",
+                "McConnell", "2","0735619670", "$10 ",
+                "This book is brand new. I have it available for rest for 4 months for 10 per month", "2019-11-28 15:03:00","active");
+
+        BookCoordinator.Book pastbook1 = new BookCoordinator.Book("1", "Harman", "(Past)Code Complete",
+                "Steve McConnell", "2","0735619670", "$52",
+                "This book is brand new available for buying", "2019-11-23 18:04:10","active");
+
+        BookCoordinator.Book pastbook2 = new BookCoordinator.Book("2", "Ayusha", "(Past)Clean Code: A Handbook of Agile Software Craftsmanship",
+                "Robert C. Martin ", "1"," 9780132350884", "$10",
+                "This book is in mint condition and looks like new for rent for 10 months", "2019-11-24 16:02:30","active");
+
+        BookCoordinator.Book pastbook3 = new BookCoordinator.Book("3", "Dharam", "(Past)Java: The Complete Reference, Tenth Edition",
+                "Herbert Schildt", "10","0735619670", "$20",
+                "I am looking for this book. If anyone has this book please contact ", "2019-11-29 14:04:00","active");
+
+        BookCoordinator.Book pastbook4 = new BookCoordinator.Book("4", "David", "(Past)Book for python course",
+                "McConnell", "2","0735619670", "$10 ",
+                "This book is brand new. I have it available for rest for 4 months for 10 per month", "2019-11-28 15:03:00","active");
+
+
+
+        BOOK_LIST.add(book1);
+        BOOK_LIST.add(book2);
+        BOOK_LIST.add(book3);
+        BOOK_LIST.add(book4);
+
+
+        BOOK_PAST_LIST.add(pastbook1);
+        BOOK_PAST_LIST.add(pastbook2);
+        BOOK_PAST_LIST.add(pastbook3);
+        BOOK_PAST_LIST.add(pastbook4);
+
+
+    }
+
+
+
 
     private void createMessageList() {
         MessageCordinator.Message message1=new MessageCordinator.Message(1,"Android Programming Book for Sell");
