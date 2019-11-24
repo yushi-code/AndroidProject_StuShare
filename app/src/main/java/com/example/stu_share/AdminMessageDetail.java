@@ -1,26 +1,24 @@
 package com.example.stu_share;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class MessageActivity extends AppCompatActivity {
-    private Button home,logout;
+public class AdminMessageDetail extends AppCompatActivity {
+    Button btnDelete, btnCancel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message);
+        setContentView(R.layout.activity_admin_message_detail);
 
-
-        Button btnCancel = findViewById(R.id.btnMsg_Delete);
+        btnCancel = findViewById(R.id.btnCancel_Admin);
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), ListEvents.class);
-//              intent.putExtra("args", userReg);
+                Intent intent = new Intent(getBaseContext(), AdminMessageList.class);
                 startActivity(intent);
             }
         });

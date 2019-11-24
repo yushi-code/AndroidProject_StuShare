@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CarCurrentDDetail"></activity>
+        <activity android:name=".AdminMessageDetail"></activity>
+        <activity android:name=".AdminMessageList" />
+        <activity android:name=".MessageSentDetailActivity" />
+        <activity android:name=".ReceivedMessageDetailActivity" />
+        <activity android:name=".CarCurrentDDetail" />
         <activity android:name=".CarCurrentList" />
         <activity android:name=".CarPastDetail" />
         <activity android:name=".CarPastList" />

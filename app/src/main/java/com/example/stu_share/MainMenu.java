@@ -32,9 +32,9 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i= new Intent(getBaseContext(),RoomMenu.class);
-               i.putExtra("user",user);
-                startActivity(i);
+//                Intent i= new Intent(getBaseContext(),RoomMenu.class);
+//                i.putExtra("user",user);
+//                startActivity(i);
 
             }
         });
@@ -70,7 +70,7 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getBaseContext(),MessageListActivity.class);
-                i.putExtra("user",user);
+//                i.putExtra("user",user);
                 startActivity(i);
             }
         });

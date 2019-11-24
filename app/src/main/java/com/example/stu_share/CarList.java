@@ -20,6 +20,7 @@ public class CarList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_list);
+
         listCar=findViewById(R.id.listCar1);
         final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,CAR_LIST);
         listCar.setAdapter(arrayAdapter);
