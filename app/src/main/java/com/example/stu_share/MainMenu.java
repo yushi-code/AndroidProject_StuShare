@@ -1,7 +1,5 @@
 package com.example.stu_share;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +7,9 @@ import android.widget.Button;
 
 //import static com.example.stu_share.CarCoordinator.CAR_LIST;
 //import static com.example.stu_share.CarCoordinator.CAR_PAST_LIST;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 
 public class MainMenu extends AppCompatActivity {
     private Button buttonBooks,buttonRooms,buttonCars,buttonEvents,buttonMyProfile,buttonMessageCenter,buttonLogout,buttonContactUs;
