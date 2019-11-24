@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class AdminDashboardActivity extends AppCompatActivity {
-    Button profile,viewUser,viewEvents, btnLogout, btnMessageCenter;
+    Button profile,viewUser,viewEvents, btnLogout, btnViewMessage, btnViewBooks, btnViewCars,btnViewRoomShare;
     public static User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,13 +47,39 @@ public class AdminDashboardActivity extends AppCompatActivity {
             startActivity(intent);
         }
         });
-        btnMessageCenter = findViewById(R.id.btnViewBooks);
-        btnMessageCenter.setOnClickListener(new View.OnClickListener() {
+        btnViewMessage = findViewById(R.id.btnAdmViewMessage);
+        btnViewMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), MessageListActivity.class);
+                Intent intent = new Intent(getBaseContext(), AdminMessageList.class);
 //              intent.putExtra("args", userReg);
                 startActivity(intent);
+            }
+        });
+
+        btnViewBooks = findViewById(R.id.btnViewBooks);
+        btnViewBooks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(getBaseContext(), BookList.class);
+//                startActivity(intent);
+            }
+        });
+
+        btnViewCars = findViewById(R.id.btnViewCarShares);
+        btnViewCars.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(),CarList.class);
+                startActivity(intent);
+            }
+        });
+        btnViewRoomShare = findViewById(R.id.btnViewRentalRoom);
+        btnViewRoomShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(getBaseContext(), BookList.class);
+//                startActivity(intent);
             }
         });
         }

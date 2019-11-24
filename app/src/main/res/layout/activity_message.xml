@@ -16,7 +16,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <EditText
-        android:id="@+id/editMsgSubject"
+        android:id="@+id/textMsgSubject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textEmailSubject" />
@@ -28,19 +28,19 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <EditText
-        android:id="@+id/editMessage"
+        android:id="@+id/textMessageBody"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="start|top"
         android:lines="10" />
 
     <Button
-        android:id="@+id/btnSend"
+        android:id="@+id/btnReply"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="send" />
     <Button
-        android:id="@+id/btnMsg_Cancel"
+        android:id="@+id/btnMsg_Delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="cancel" />
