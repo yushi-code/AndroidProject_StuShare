@@ -48,7 +48,7 @@ public class BookMenu extends AppCompatActivity {
         btnMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(getBaseContext(),MessageListActivity.class);
+                Intent i= new Intent(getBaseContext(),MessageList.class);
                 startActivity(i);
             }
         });

@@ -8,7 +8,7 @@ public class BookCoordinator {
     public final static List<Book> BOOK_LIST = new ArrayList<Book>();
     public final static List<Book> BOOK_PAST_LIST = new ArrayList<Book>();
 
-    public class Book implements Serializable {
+    public static class Book implements Serializable {
         public String id;
         public String ownerId;
         public String title;
