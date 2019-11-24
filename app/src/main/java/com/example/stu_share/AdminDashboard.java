@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AdminDashboardActivity extends AppCompatActivity {
+public class AdminDashboard extends AppCompatActivity {
     Button profile,viewUser,viewEvents, btnLogout, btnViewMessage, btnViewBooks, btnViewCars,btnViewRoomShare;
     public static User user;
     @Override
@@ -61,8 +61,8 @@ public class AdminDashboardActivity extends AppCompatActivity {
         btnViewBooks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getBaseContext(), BookList.class);
-//                startActivity(intent);
+               Intent intent = new Intent(getBaseContext(), AdminBookList.class);
+               startActivity(intent);
             }
         });
 
@@ -70,7 +70,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
         btnViewCars.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(),CarList.class);
+                Intent intent = new Intent(getBaseContext(),AdminCarList.class);
                 startActivity(intent);
             }
         });
@@ -78,8 +78,8 @@ public class AdminDashboardActivity extends AppCompatActivity {
         btnViewRoomShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getBaseContext(), BookList.class);
-//                startActivity(intent);
+              Intent intent = new Intent(getBaseContext(), AdminRoomList.class);
+              startActivity(intent);
             }
         });
         }

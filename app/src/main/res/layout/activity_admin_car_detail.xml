@@ -224,26 +224,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="176dp"
-        android:text="Email"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView53" />
-
-    <Button
-        android:id="@+id/btnMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="176dp"
-        android:layout_marginEnd="36dp"
-        android:text="Message"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCarLocation" />
-
     <TextView
         android:id="@+id/textView30"
         android:layout_width="wrap_content"
@@ -263,5 +243,18 @@
         app:layout_constraintBottom_toBottomOf="@+id/txtCarMileage"
         app:layout_constraintStart_toEndOf="@+id/txtCarMileage"
         app:layout_constraintTop_toTopOf="@+id/txtCarMileage" />
+
+    <Button
+        android:id="@+id/btnAdmCarTerminate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="Terminate"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCarDetail3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

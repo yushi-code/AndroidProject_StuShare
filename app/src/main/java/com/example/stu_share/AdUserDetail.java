@@ -52,7 +52,7 @@ public class AdUserDetail extends AppCompatActivity {
 
                 Toast.makeText(getBaseContext(), "User is activated!",
                         Toast.LENGTH_LONG).show();
-                Intent intent =new Intent(getBaseContext(),AdminDashboardActivity.class);
+                Intent intent =new Intent(getBaseContext(),AdminDashboard.class);
                 sendPost("active");
                 intent.putExtra("user",user);
                 startActivity(intent);
@@ -65,7 +65,7 @@ public class AdUserDetail extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "User is suspended!",
                         Toast.LENGTH_LONG).show();
                 sendPost("suspended");
-                Intent intent =new Intent(getBaseContext(),AdminDashboardActivity.class);
+                Intent intent =new Intent(getBaseContext(),AdminDashboard.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
 
@@ -133,7 +133,7 @@ public class AdUserDetail extends AppCompatActivity {
     }
 
     public void OpenMenuActivity() {
-        Intent intent = new Intent(this, AdminDashboardActivity.class);
+        Intent intent = new Intent(this, AdminDashboard.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }
