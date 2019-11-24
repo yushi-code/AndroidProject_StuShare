@@ -28,6 +28,7 @@
         <activity android:name=".ResetConfirm" />
         <activity android:name=".OwnDetail" />
         <activity android:name=".AdEventDetail" />
+        <activity android:name=".EventMenu" />
         <activity android:name=".AdEventList" />
         <activity android:name=".AdUserDetail" />
         <activity android:name=".UserList" />
@@ -46,7 +47,8 @@
         <activity android:name=".Create" />
         <activity android:name=".Owned" />
         <activity android:name=".MyEvents" />
-        <activity android:name=".Menu" />
+        <activity android:name=".MessageActivity" />
+        <activity android:name=".MessageListActivity" />
         <activity android:name=".Signup2" />
         <activity android:name=".Signup" />
         <activity android:name=".SplashActivity">

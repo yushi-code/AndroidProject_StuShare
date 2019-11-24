@@ -21,7 +21,7 @@ public class MessageListActivity extends AppCompatActivity {
         msgHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), EventMenu.class);
+                Intent intent = new Intent(getBaseContext(), MainMenu.class);
 //              intent.putExtra("args", userReg);
                 startActivity(intent);
             }
