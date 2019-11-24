@@ -15,20 +15,18 @@ public class BookCoordinator {
         public String author;
         public String edition;
         public String isbn;
-        public String price;
         public String details;
         public String created;
         public String status;
 
-        public Book(String id, String ownerId, String title, String author, String edition, String isbn,
-                     String price, String details, String created, String status){
+        public Book(String id, String ownerId, String title, String author, String edition,
+                    String isbn, String details, String created, String status){
             this.id = id;
             this.ownerId = ownerId;
             this.title = title;
             this.author = author;
             this.edition = edition;
             this.isbn = isbn;
-            this.price = price;
             this.details = details;
             this.created = created;
             this.status = status;
@@ -52,12 +50,7 @@ public class BookCoordinator {
         public String getIsbn(){
             return isbn;
         }
-        public String getPrice(){
-            return price;
-        }
-        public String getDetails(){
-            return details;
-        }
+        public String getDetails(){ return details; }
         public String getCreated(){
             return created;
         }
@@ -84,12 +77,7 @@ public class BookCoordinator {
         public void setIsbn(String isbn) {
             this.isbn = isbn;
         }
-        public void setPrice(String price) {
-            this.price = price;
-        }
-        public void setDetails(String details) {
-            this.details = details;
-        }
+        public void setDetails(String details) { this.details = details; }
         public void setCreated(String created) {
             this.created = created;
         }
@@ -100,7 +88,7 @@ public class BookCoordinator {
 
         public String toString(){
             return "Title: " + title + "\nAuthor: " + author + "\nEdition: " + edition +
-                    "\nISBN: " + isbn +  "\nPrice" + price + "\nDetails: " + details;
+                    "\nISBN: " + isbn + "Details: " + details;
         }
     }
 }
