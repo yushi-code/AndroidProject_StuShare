@@ -24,6 +24,7 @@ public class BookCurrentDetail extends AppCompatActivity {
         author=findViewById(R.id.txtAuthor);
         edition=findViewById(R.id.txtEdition);
         isbn=findViewById(R.id.txtISBN);
+
         details=findViewById(R.id.txtDetail);
 
 
@@ -55,6 +56,7 @@ public class BookCurrentDetail extends AppCompatActivity {
         author.setText(book.author);
         edition.setText(book.edition);
         isbn.setText(book.isbn);
+
         details.setText(book.details);
 
         home.setOnClickListener(new View.OnClickListener() {
