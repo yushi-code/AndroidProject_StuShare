@@ -16,7 +16,7 @@ public class BookMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_menu);
 
-        btnMyBooks = findViewById(R.id.myBooks);
+        btnMyBooks = findViewById(R.id.btnMyBooks);
         btnMyBooks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
