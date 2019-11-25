@@ -39,7 +39,7 @@ public class AdminCarList extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(getBaseContext(),CarMenu.class);
+                Intent i= new Intent(getBaseContext(),AdminDashboard.class);
                 startActivity(i);
             }
         });

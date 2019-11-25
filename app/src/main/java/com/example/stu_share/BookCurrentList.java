@@ -1,7 +1,5 @@
 package com.example.stu_share;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +7,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 
 import static com.example.stu_share.BookCoordinator.BOOK_LIST;
 
@@ -21,7 +22,9 @@ public class BookCurrentList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_current_list);
 
-        listBook=findViewById(R.id.listBook1);
+
+        listBook=findViewById(R.id.bookCurrentList);
+
         final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,BOOK_LIST);
         listBook.setAdapter(arrayAdapter);
         listBook.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -32,7 +35,10 @@ public class BookCurrentList extends AppCompatActivity {
             {
                 arrayAdapter.notifyDataSetChanged();
                 BookCoordinator.Book book =(BookCoordinator.Book) adapter.getItemAtPosition(position1);
+
                 Intent intent =new Intent(getBaseContext(), BookCurrentDetail.class);
+
+               
                 intent.putExtra("book",book);
                 intent.putExtra("position1",position1);
                 startActivity(intent);

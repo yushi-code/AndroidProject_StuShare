@@ -23,7 +23,7 @@ public class RoomPastList extends AppCompatActivity {
         setContentView(R.layout.activity_room_past_list);
 
         listRoom=findViewById(R.id.listPastRoom);
-        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,ROOM_PAST_LIST);
+        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, ROOM_PAST_LIST);
         listRoom.setAdapter(arrayAdapter);
         listRoom.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {

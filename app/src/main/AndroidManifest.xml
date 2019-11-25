@@ -55,12 +55,12 @@
         <activity android:name=".ResetWithEmail" />
         <activity android:name=".ResetConfirm" />
         <activity android:name=".EventOwnDetail" />
-        <activity android:name=".AdEventDetail" />
+        <activity android:name=".AdminEventDetail" />
         <activity android:name=".EventMenu" />
-        <activity android:name=".AdEventList" />
+        <activity android:name=".AdminEventList" />
         <activity android:name=".AdUserDetail" />
         <activity android:name=".AdminUserList" />
-        <activity android:name=".EditProfile" />
+        <activity android:name=".MyProfileEdit" />
         <activity android:name=".EventJoinedDetail" />
         <activity android:name=".AdminDashboard" />
         <activity android:name=".EventPastDetail" />
