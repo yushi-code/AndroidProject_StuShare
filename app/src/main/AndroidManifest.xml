@@ -60,7 +60,7 @@
         <activity android:name=".AdminEventList" />
         <activity android:name=".AdUserDetail" />
         <activity android:name=".AdminUserList" />
-        <activity android:name=".EditProfile" />
+        <activity android:name=".MyProfileEdit" />
         <activity android:name=".EventJoinedDetail" />
         <activity android:name=".AdminDashboard" />
         <activity android:name=".EventPastDetail" />

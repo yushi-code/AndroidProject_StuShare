@@ -1,7 +1,5 @@
 package com.example.stu_share;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,7 +29,7 @@ import java.net.URL;
 
 
 
-public class EditProfile extends AppCompatActivity {
+public class MyProfileEdit extends AppCompatActivity {
     Button btnSubmit, btnHome7, btnLogout8;
     TextView editFn,editLn,editQ,editA;
     private User user;
@@ -150,11 +150,15 @@ public class EditProfile extends AppCompatActivity {
             }});
         thread.start();
     }
-                public void OpenMenuActivity () {
-                    Intent intent = new Intent(this, EventMenu.class);
-                    intent.putExtra("user", user);
-                    startActivity(intent);
-                }
+    public void OpenMenuActivity() {
+        if(user.role.equals("admin")){
+            Intent intent = new Intent(this, AdminDashboard.class);
+            intent.putExtra("user",user);
+            startActivity(intent);
+        }else{Intent intent = new Intent(this, MainMenu.class);
+            intent.putExtra("user",user);
+            startActivity(intent);}
+    }
 
     public void logout(){
         Intent intent =new Intent(this, MainActivity.class);
