@@ -44,7 +44,7 @@ public class AdminBookList extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(getBaseContext(),BookMenu.class);
+                Intent i= new Intent(getBaseContext(),AdminDashboard.class);
                 startActivity(i);
             }
         });
