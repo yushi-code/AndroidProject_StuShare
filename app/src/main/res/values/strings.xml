@@ -28,4 +28,5 @@
     <string name="Details">Book Details</string>
     <string name="price">Price</string>
     <string name="Price">Price of Book</string>
+    <string name="my_car_share">My Car Share</string>
 </resources>

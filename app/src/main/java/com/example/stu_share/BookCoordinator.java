@@ -98,9 +98,8 @@ public class BookCoordinator {
         }
 
 
-        public String toString(){
-            return "Title: " + title + "\nAuthor: " + author + "\nEdition: " + edition +
-                    "\nISBN: " + isbn + "Details: " + details;
+        public String toString() {
+            return title  ;
         }
     }
 }
