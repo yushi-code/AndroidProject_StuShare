@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class BookCurrentDetail extends AppCompatActivity {
 
-    private EditText title, author, edition, isbn, details;
+    private EditText title, author, edition, isbn, details, price;
     private Button home,logout,terminate,update;
 
 
@@ -26,6 +26,10 @@ public class BookCurrentDetail extends AppCompatActivity {
         isbn=findViewById(R.id.txtISBN);
 
         details=findViewById(R.id.txtDetail);
+        price=findViewById(R.id.txtPrice);
+
+        terminate=findViewById(R.id.btnTerminate);
+
 
 
         final BookCoordinator.Book book=(BookCoordinator.Book)getIntent().getSerializableExtra("book");
@@ -58,6 +62,7 @@ public class BookCurrentDetail extends AppCompatActivity {
         isbn.setText(book.isbn);
 
         details.setText(book.details);
+        price.setText(book.price);
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override

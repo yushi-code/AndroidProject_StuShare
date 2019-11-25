@@ -26,5 +26,14 @@
     <string name="update">Update</string>
     <string name="details">Details:</string>
     <string name="Details">Book Details</string>
+<<<<<<< HEAD
     <string name="my_car_share">My Car Share</string>
+||||||| merged common ancestors
+    <string name="my_car_share">My Car Share</string>
+    <string name="my_car_share">My Car Share</string>
+=======
+    <string name="price">Price</string>
+    <string name="Price">Price of Book</string>
+    <string name="my_car_share">My Car Share</string>
+>>>>>>> b6f4ba89263adb95948ff2091d30349fbc7c0149
 </resources>
