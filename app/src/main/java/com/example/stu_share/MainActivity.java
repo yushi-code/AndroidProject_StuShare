@@ -257,37 +257,35 @@ public class MainActivity extends AppCompatActivity {
 
     private void createBooks(){
         BookCoordinator.Book book1 = new BookCoordinator.Book("1", "Harman", "Code Complete",
-                "Steve McConnell", "2","0735619670", "$52",
-                "This book is brand new available for buying", "2019-11-23 18:04:10","active");
+                "Steve McConnell", "2","0735619670",
+                "This book is brand new available for buying", "52","2019-11-23 18:04:10","active");
 
         BookCoordinator.Book book2 = new BookCoordinator.Book("2", "Ayusha", "Clean Code: A Handbook of Agile Software Craftsmanship",
-                "Robert C. Martin ", "1"," 9780132350884", "$10",
-                "This book is in mint condition and looks like new for rent for 10 months", "2019-11-24 16:02:30","active");
+                "Robert C. Martin ", "1"," 9780132350884",
+                "This book is in mint condition and looks like new for rent for 10 months","$10", "2019-11-24 16:02:30","active");
 
         BookCoordinator.Book book3 = new BookCoordinator.Book("3", "Dharam", "Java: The Complete Reference, Tenth Edition",
-                "Herbert Schildt", "10","0735619670", "$20",
-                "I am looking for this book. If anyone has this book please contact ", "2019-11-29 14:04:00","active");
+                "Herbert Schildt", "10","0735619670",
+                "I am looking for this book. If anyone has this book please contact ", "$20","2019-11-29 14:04:00","active");
         BookCoordinator.Book book4 = new BookCoordinator.Book("4", "David", "Book for python course",
-                "McConnell", "2","0735619670", "$10 ",
-                "This book is brand new. I have it available for rest for 4 months for 10 per month", "2019-11-28 15:03:00","active");
+                "McConnell", "2","0735619670",
+                "This book is brand new. I have it available for rest for 4 months for 10 per month", "$10 ","2019-11-28 15:03:00","active");
 
         BookCoordinator.Book pastbook1 = new BookCoordinator.Book("1", "Harman", "(Past)Code Complete",
-                "Steve McConnell", "2","0735619670", "$52",
-                "This book is brand new available for buying", "2019-11-23 18:04:10","active");
+                "Steve McConnell", "2","0735619670",
+                "This book is brand new available for buying", "$52","2019-11-23 18:04:10","active");
 
         BookCoordinator.Book pastbook2 = new BookCoordinator.Book("2", "Ayusha", "(Past)Clean Code: A Handbook of Agile Software Craftsmanship",
-                "Robert C. Martin ", "1"," 9780132350884", "$10",
-                "This book is in mint condition and looks like new for rent for 10 months", "2019-11-24 16:02:30","active");
+                "Robert C. Martin ", "1"," 9780132350884",
+                "This book is in mint condition and looks like new for rent for 10 months", "$10","2019-11-24 16:02:30","active");
 
         BookCoordinator.Book pastbook3 = new BookCoordinator.Book("3", "Dharam", "(Past)Java: The Complete Reference, Tenth Edition",
-                "Herbert Schildt", "10","0735619670", "$20",
-                "I am looking for this book. If anyone has this book please contact ", "2019-11-29 14:04:00","active");
+                "Herbert Schildt", "10","0735619670",
+                "I am looking for this book. If anyone has this book please contact ", "$20","2019-11-29 14:04:00","active");
 
         BookCoordinator.Book pastbook4 = new BookCoordinator.Book("4", "David", "(Past)Book for python course",
-                "McConnell", "2","0735619670", "$10 ",
-                "This book is brand new. I have it available for rest for 4 months for 10 per month", "2019-11-28 15:03:00","active");
-
-
+                "McConnell", "2","0735619670",
+                "This book is brand new. I have it available for rest for 4 months for 10 per month","$10 ", "2019-11-28 15:03:00","active");
 
         BOOK_LIST.add(book1);
         BOOK_LIST.add(book2);
