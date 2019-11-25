@@ -43,7 +43,7 @@ public class AdminRoomList extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(getBaseContext(),RoomMenu.class);
+                Intent i= new Intent(getBaseContext(),AdminDashboard.class);
                 startActivity(i);
             }
         });
