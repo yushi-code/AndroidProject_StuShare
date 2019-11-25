@@ -45,7 +45,7 @@ public class BookPastDetail extends AppCompatActivity {
 
 
         home=findViewById(R.id.btnHome);
-        logout=findViewById(R.id.btnLogout);
+        logout=findViewById(R.id.b);
         title.setText(book.title);
         author.setText(book.author);
         edition.setText(book.edition);
