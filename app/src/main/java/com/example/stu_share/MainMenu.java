@@ -23,9 +23,9 @@ public class MainMenu extends AppCompatActivity {
         buttonBooks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent i= new Intent(getBaseContext(),BookMenu.class);
-                //i.putExtra("user",user);
-                //startActivity(i);
+                Intent i= new Intent(getBaseContext(),BookMenu.class);
+                i.putExtra("user",user);
+                startActivity(i);
             }
         });
         buttonRooms=findViewById(R.id.btnRooms);

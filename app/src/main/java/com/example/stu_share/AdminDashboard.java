@@ -34,7 +34,7 @@ public class AdminDashboard extends AppCompatActivity {
         viewEvents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getBaseContext(),AdEventList.class);
+                Intent intent=new Intent(getBaseContext(), AdminEventList.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
             }
