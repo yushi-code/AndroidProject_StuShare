@@ -24,8 +24,7 @@ public class BookCurrentDetail extends AppCompatActivity {
         author=findViewById(R.id.txtAuthor);
         edition=findViewById(R.id.txtEdition);
         isbn=findViewById(R.id.txtISBN);
-
-        details=findViewById(R.id.txtDetail);
+        details=findViewById(R.id.txtDetails);
         price=findViewById(R.id.txtPrice);
 
         terminate=findViewById(R.id.btnTerminate);
@@ -33,7 +32,7 @@ public class BookCurrentDetail extends AppCompatActivity {
 
 
         final BookCoordinator.Book book=(BookCoordinator.Book)getIntent().getSerializableExtra("book");
-        final int position=(int)getIntent().getSerializableExtra("position");
+        final int position1=(int)getIntent().getSerializableExtra("position1");
         terminate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
