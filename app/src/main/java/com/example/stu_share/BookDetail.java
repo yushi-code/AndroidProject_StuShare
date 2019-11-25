@@ -1,12 +1,12 @@
 package com.example.stu_share;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class BookDetail extends AppCompatActivity {
 
@@ -65,7 +65,7 @@ public class BookDetail extends AppCompatActivity {
         txtAuthor.setText(book.author);
         txtEdition.setText(book.edition);
         txtISBN.setText(book.isbn);
-        txtDetails.setText(book.details);
+//        txtDetails.setText(book.details);
 
     }
 }

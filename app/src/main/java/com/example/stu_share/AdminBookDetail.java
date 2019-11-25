@@ -47,7 +47,7 @@ public class AdminBookDetail extends AppCompatActivity {
         txtAuthor=findViewById(R.id.txtAuthor);
         txtEdition=findViewById(R.id.txtEdition);
         txtISBN=findViewById(R.id.txtISBN);
-        txtDetails=findViewById(R.id.txtDetails);
+        //txtDetails=findViewById(R.id.txtDetails);
 
         BookCoordinator.Book book=(BookCoordinator.Book)getIntent().getSerializableExtra("book");
         txtTitle.setText(book.title);
