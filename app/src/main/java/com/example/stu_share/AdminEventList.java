@@ -24,7 +24,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdEventList extends AppCompatActivity {
+public class AdminEventList extends AppCompatActivity {
     Button btnLogout, btnHome;
     ListView listView;
     DBHelper dbHelper=null;
@@ -64,7 +64,7 @@ public class AdEventList extends AppCompatActivity {
                                     long arg3)
             {
                 EventCoordinator.Event event2=(EventCoordinator.Event) adapter.getItemAtPosition(position);
-                Intent intent =new Intent(getBaseContext(), AdEventDetail.class);
+                Intent intent =new Intent(getBaseContext(), AdminEventDetail.class);
                 intent.putExtra("args",event2);
                 intent.putExtra("user",user);
                 startActivity(intent);

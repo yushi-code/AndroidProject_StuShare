@@ -24,7 +24,7 @@ import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
 
-public class AdEventDetail extends AppCompatActivity {
+public class AdminEventDetail extends AppCompatActivity {
     private Button btnLogout,btnJoin, btnHome;
     private TextView txtEvtTitle,txtEvtDetail,txtStDate,txtStTime,txtEndTime,txtEndDate;
    // DBHelper dbHelper = null;
