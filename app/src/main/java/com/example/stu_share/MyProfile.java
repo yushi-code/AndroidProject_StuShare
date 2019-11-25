@@ -1,14 +1,11 @@
 package com.example.stu_share;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MyProfile extends AppCompatActivity {
     Button btnHome4, btnLogout4, btnEdit;
@@ -22,7 +19,6 @@ public class MyProfile extends AppCompatActivity {
         btnHome4 = findViewById(R.id.btnHome4);
         btnLogout4 = findViewById(R.id.btnLogout4);
         btnEdit = findViewById(R.id.btnEdit);
-
         txtFn=findViewById(R.id.txtFName);
         txtLn=findViewById(R.id.txtLName);
         txtEm=findViewById(R.id.txtEmail);
@@ -37,14 +33,12 @@ public class MyProfile extends AppCompatActivity {
                 openEditProfile();
             }
         });
-
         btnLogout4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 logout();
             }
         });
-
         btnHome4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,18 +46,20 @@ public class MyProfile extends AppCompatActivity {
             }
         });
     }
-
     public void openEditProfile(){
-        Intent intent =new Intent(this, EditProfile.class);
+        Intent intent =new Intent(this, MyProfileEdit.class);
         intent.putExtra("user",userTemp);
         startActivity(intent);
     }
     public void OpenMenuActivity() {
-        Intent intent = new Intent(this, EventMenu.class);
-        intent.putExtra("user",userTemp);
-        startActivity(intent);
+        if(userTemp.role.equals("admin")){
+            Intent intent = new Intent(this, AdminDashboard.class);
+            intent.putExtra("user",userTemp);
+            startActivity(intent);
+        }else{Intent intent = new Intent(this, MainMenu.class);
+            intent.putExtra("user",userTemp);
+            startActivity(intent);}
     }
-
     public void logout(){
         Intent intent =new Intent(this, MainActivity.class);
         startActivity(intent);
