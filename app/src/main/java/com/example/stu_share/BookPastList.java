@@ -39,7 +39,7 @@ public class BookPastList extends AppCompatActivity {
             }
         });
 
-        home=findViewById(R.id.btnHome3);
+        home=findViewById(R.id.btnHome6);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +47,7 @@ public class BookPastList extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        logout=findViewById(R.id.btnLogout2);
+        logout=findViewById(R.id.btnLogout12);
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
