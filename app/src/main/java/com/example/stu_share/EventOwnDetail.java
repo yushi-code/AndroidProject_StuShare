@@ -85,7 +85,7 @@ public class EventOwnDetail extends AppCompatActivity {
         });
 
         btnHome = findViewById(R.id.btnHome);
-        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout = findViewById(R.id.btnAlLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

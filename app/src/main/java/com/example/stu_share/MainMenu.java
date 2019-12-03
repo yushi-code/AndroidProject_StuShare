@@ -19,7 +19,7 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
 
         final User user=(User)getIntent().getSerializableExtra("user");
-        buttonBooks=findViewById(R.id.btnBooks);
+        buttonBooks=findViewById(R.id.btnAlBooks);
         buttonBooks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +57,7 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        buttonMyProfile=findViewById(R.id.btnMyProfile);
+        buttonMyProfile=findViewById(R.id.btnAlMyProfile);
         buttonMyProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +66,7 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        buttonMessageCenter=findViewById(R.id.btnMessageCenter);
+        buttonMessageCenter=findViewById(R.id.btnAlMessageCenter);
         buttonMessageCenter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +75,7 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        buttonLogout=findViewById(R.id.btnLogout);
+        buttonLogout=findViewById(R.id.btnAlLogout);
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +83,7 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        buttonContactUs=findViewById((R.id.btnContactUs));
+        buttonContactUs=findViewById((R.id.btnAlContactUs));
         buttonContactUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

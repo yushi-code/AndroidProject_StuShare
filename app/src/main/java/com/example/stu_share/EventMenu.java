@@ -46,14 +46,14 @@ public class EventMenu extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout = findViewById(R.id.btnAlLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 logout();
             }
         });
-        Button btnMessageCenter=findViewById(R.id.btnMessageCenter);
+        Button btnMessageCenter=findViewById(R.id.btnAlMessageCenter);
         btnMessageCenter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

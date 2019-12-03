@@ -24,7 +24,7 @@ public class CarMenu extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        buttonMessageCenter=findViewById(R.id.btnMessageCenter);
+        buttonMessageCenter=findViewById(R.id.btnAlMessageCenter);
         buttonMessageCenter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +56,7 @@ public class CarMenu extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        buttonLogout=findViewById(R.id.btnLogout);
+        buttonLogout=findViewById(R.id.btnAlLogout);
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -16,7 +16,7 @@ public class BookMyMenu extends AppCompatActivity {
 
 
         home=findViewById(R.id.btnHome);
-        logout=findViewById(R.id.btnLogout);
+        logout=findViewById(R.id.btnAlLogout);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

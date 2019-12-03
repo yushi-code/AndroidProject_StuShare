@@ -35,7 +35,7 @@ public class AdminEventList extends AppCompatActivity {
         setContentView(R.layout.activity_admin_event_list);
 
         downloadJSON("https://f9team1.gblearn.com/stu_share/read_all_events.php");
-        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout = findViewById(R.id.btnAlLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

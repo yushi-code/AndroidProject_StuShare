@@ -52,7 +52,7 @@ public class BookCreate extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        btnLogout=findViewById(R.id.btnLogout);
+        btnLogout=findViewById(R.id.btnAlLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

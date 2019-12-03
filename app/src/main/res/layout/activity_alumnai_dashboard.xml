@@ -4,50 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RoomMenu">
-
+    tools:context=".AlumnaiDashboard"
+    tools:layout_editor_absoluteY="81dp">
 
     <Button
-        android:id="@+id/btnCrtRooms"
+        android:id="@+id/btnAlContactUs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
-        android:text="Create Room Share"
+        android:text="Contact Us"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnViewRooms" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAlMyProfile" />
 
     <Button
-        android:id="@+id/btnViewRooms"
+        android:id="@+id/btnAlMyProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
-        android:text="View Room Shares"
+        android:text="My Profile"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMyRooms" />
-
-    <Button
-        android:id="@+id/btnMainMenu1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:text="Main"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAlMessageCenter" />
 
     <Button
         android:id="@+id/btnAlLogout"
@@ -65,11 +55,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:text="Welcome Stu-share User!"
+        android:text="Welcome Alumnai!"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -78,13 +66,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnMyRooms"
+        android:id="@+id/btnAlBooks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="30dp"
-        android:text="My Room Share"
+        android:text="Books"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -104,8 +92,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCrtRooms" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/btnAlBooks" />
 </androidx.constraintlayout.widget.ConstraintLayout>

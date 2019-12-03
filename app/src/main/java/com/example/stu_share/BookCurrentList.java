@@ -53,7 +53,7 @@ public class BookCurrentList extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        logout=findViewById(R.id.btnLogout);
+        logout=findViewById(R.id.btnAlLogout);
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

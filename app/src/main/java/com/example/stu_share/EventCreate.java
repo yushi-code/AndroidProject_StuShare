@@ -149,7 +149,7 @@ public class EventCreate extends AppCompatActivity {
 
 //        dbHelper = new DBHelper(this);
 //        final SQLiteDatabase db = dbHelper.getWritableDatabase();
-        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout = findViewById(R.id.btnAlLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
