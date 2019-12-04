@@ -9,11 +9,12 @@ import android.widget.Button;
 
 public class AlumnaiDashboard extends AppCompatActivity {
     private Button buttonBooks,buttonMyProfile,buttonMessageCenter,buttonLogout,buttonContactUs;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alumnai_dashboard);
-
+        user=(User)getIntent().getSerializableExtra("user");
         buttonBooks = findViewById(R.id.btnAlBooks);
         buttonMyProfile = findViewById(R.id.btnAlMyProfile);
         buttonMessageCenter = findViewById(R.id.btnAlMessageCenter);
@@ -24,7 +25,7 @@ public class AlumnaiDashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getBaseContext(),BookMenu.class);
-//                i.putExtra("user",user);
+                i.putExtra("user",user);
                 startActivity(i);
 
             }
@@ -34,7 +35,7 @@ public class AlumnaiDashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getBaseContext(),MyProfile.class);
-//                i.putExtra("user",user);
+                i.putExtra("user",user);
                 startActivity(i);
 
             }
@@ -44,7 +45,7 @@ public class AlumnaiDashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getBaseContext(), MessageList.class);
-//                i.putExtra("user",user);
+               i.putExtra("user",user);
                 startActivity(i);
 
             }
@@ -62,8 +63,8 @@ public class AlumnaiDashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getBaseContext(), MessageCreate.class);
-//                i.putExtra("user",user);
-//                i.putExtra("id","admin");
+                i.putExtra("user",user);
+                i.putExtra("id","admin");
                 startActivity(i);
 
             }

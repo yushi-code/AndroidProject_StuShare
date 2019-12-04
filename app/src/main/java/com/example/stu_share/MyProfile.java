@@ -56,6 +56,10 @@ public class MyProfile extends AppCompatActivity {
             Intent intent = new Intent(this, AdminDashboard.class);
             intent.putExtra("user",userTemp);
             startActivity(intent);
+        }else  if(userTemp.role.equals("alumni")){
+            Intent intent = new Intent(this, AlumnaiDashboard.class);
+            intent.putExtra("user",userTemp);
+            startActivity(intent);
         }else{Intent intent = new Intent(this, MainMenu.class);
             intent.putExtra("user",userTemp);
             startActivity(intent);}

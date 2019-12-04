@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                         i.putExtra("user",user1);
                         startActivity(i);
 
-                    }  else if(user1.role.equals("alumnai")){
+                    }  else if(user1.role.equals("alumni")){
                             Intent i=new Intent(getBaseContext(), AlumnaiDashboard.class);
                             createMessageList();
                             createBooks();
