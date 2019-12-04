@@ -41,7 +41,7 @@ public class EventOwnedList extends AppCompatActivity {
 
 
 
-        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout = findViewById(R.id.btnAlLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

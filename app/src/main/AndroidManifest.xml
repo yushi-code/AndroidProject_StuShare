@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdminBookDetail"></activity>
+        <activity android:name=".AlumnaiDashboard"></activity>
+        <activity android:name=".AdminBookDetail" />
         <activity android:name=".AdminBookList" />
         <activity android:name=".AdminRoomDetail" />
         <activity android:name=".AdminRoomList" />

@@ -42,7 +42,7 @@ public class BookCurrentDetail extends AppCompatActivity {
             }
         });
         home=findViewById(R.id.btnHome);
-        logout=findViewById(R.id.btnLogout);
+        logout=findViewById(R.id.btnAlLogout);
 
         update=findViewById(R.id.btnUpdate);
         update.setOnClickListener(new View.OnClickListener() {

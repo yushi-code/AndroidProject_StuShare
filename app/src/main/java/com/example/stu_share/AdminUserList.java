@@ -38,7 +38,7 @@ public class AdminUserList extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.listUser);
         downloadJSON("https://f9team1.gblearn.com/stu_share/read_all_users.php");
-        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout = findViewById(R.id.btnAlLogout);
         user1=(User)getIntent().getSerializableExtra("user");
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override

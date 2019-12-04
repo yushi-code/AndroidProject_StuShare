@@ -131,10 +131,10 @@ public class MainActivity extends AppCompatActivity {
 
                     if(user1==null){
                         Intent i=new Intent(getBaseContext(), MainActivity.class);
-
                         i.putExtra("msgErr","Can't login,user name not found.");
                         startActivity(i);
-                    }else if(txtPswd.getText().toString().equals(user1.password)){
+                    }
+                    else if(txtPswd.getText().toString().equals(user1.password)){
                         Log.d("JSON",user1.toString()+"usertoString!");
                         if(user1.role.equals("admin")){
                         Intent i=new Intent(getBaseContext(), AdminDashboard.class);
@@ -144,7 +144,15 @@ public class MainActivity extends AppCompatActivity {
                         createBooks();
                         i.putExtra("user",user1);
                         startActivity(i);
-                    }else{
+
+                    }  else if(user1.role.equals("alumnai")){
+                            Intent i=new Intent(getBaseContext(), AlumnaiDashboard.class);
+                            createMessageList();
+                            createBooks();
+                            i.putExtra("user",user1);
+                            startActivity(i);
+                        }
+                        else{
                         Intent i=new Intent(getBaseContext(), MainMenu.class);
                         createCars();
                         createRooms();

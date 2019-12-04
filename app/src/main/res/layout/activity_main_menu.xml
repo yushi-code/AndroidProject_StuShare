@@ -8,7 +8,7 @@
     tools:layout_editor_absoluteY="81dp">
 
     <Button
-        android:id="@+id/btnContactUs"
+        android:id="@+id/btnAlContactUs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMyProfile" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAlMyProfile" />
 
     <Button
         android:id="@+id/btnRooms"
@@ -37,10 +37,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnBooks" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAlBooks" />
 
     <Button
-        android:id="@+id/btnMyProfile"
+        android:id="@+id/btnAlMyProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -53,10 +53,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMessageCenter" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAlMessageCenter" />
 
     <Button
-        android:id="@+id/btnLogout"
+        android:id="@+id/btnAlLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Logout"
@@ -112,7 +112,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnEvents" />
 
     <Button
-        android:id="@+id/btnBooks"
+        android:id="@+id/btnAlBooks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -127,7 +127,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnCars" />
 
     <Button
-        android:id="@+id/btnMessageCenter"
+        android:id="@+id/btnAlMessageCenter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
