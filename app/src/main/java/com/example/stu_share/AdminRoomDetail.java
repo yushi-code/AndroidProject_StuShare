@@ -12,17 +12,18 @@ import androidx.appcompat.app.AppCompatActivity;
 public class AdminRoomDetail extends AppCompatActivity {
     private TextView textTitle, textDate, textRooms, textlease, textPets, textOffering, textTypeHouse, textLocation, textDetail, textRent;
     private Button home, logout, terminate;
-
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_detail);
-
+        user=(User)getIntent().getSerializableExtra("user");
         Button btnEmail = findViewById(R.id.buttonEmail1);
         btnEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(), EmailActivity.class);
+                intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
@@ -47,6 +48,7 @@ public class AdminRoomDetail extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getBaseContext(),"Your post has been terminated!",Toast.LENGTH_LONG);
                 Intent i=new Intent(getBaseContext(), AdminDashboard.class);
+                i.putExtra("user",user);
                 startActivity(i);
             }
         });
@@ -67,6 +69,7 @@ public class AdminRoomDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getBaseContext(),AdminDashboard.class);
+                i.putExtra("user",user);
                 startActivity(i);
             }
         });

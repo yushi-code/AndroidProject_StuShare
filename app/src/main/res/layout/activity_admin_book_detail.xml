@@ -7,6 +7,19 @@
     tools:context=".AdminBookDetail">
 
     <Button
+        android:id="@+id/btnAlContactUs2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Contact Us"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtISBN" />
+
+    <Button
         android:id="@+id/btnHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -154,13 +167,14 @@
         android:id="@+id/btnBookTerminate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:text="Terminate"
         android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtISBN" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

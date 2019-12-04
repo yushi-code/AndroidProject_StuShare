@@ -11,13 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 public class BookDetail extends AppCompatActivity {
 
     private TextView txtTitle,txtAuthor,txtEdition,txtISBN,txtDetails;
-    private Button btnHome,btnLogout,btnEmail,message;
-
+    private Button btnHome,btnLogout,btnEmail,message,btnContact1;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_detail);
-
+        user=(User)getIntent().getSerializableExtra("user");
         Button btnLogout = findViewById(R.id.btnAlLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +32,7 @@ public class BookDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(),MainMenu.class);
+                intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
@@ -41,6 +42,7 @@ public class BookDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(),EmailActivity.class);
+                intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
@@ -53,7 +55,17 @@ public class BookDetail extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        btnContact1=findViewById(R.id.btnContact);
+        btnContact1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(getBaseContext(), MessageCreate.class);
+                i.putExtra("user",user);
+                i.putExtra("id","admin");
+                startActivity(i);
 
+            }
+        });
         txtTitle=findViewById(R.id.txtTitle);
         txtAuthor=findViewById(R.id.txtAuthor);
         txtEdition=findViewById(R.id.txtEdition);

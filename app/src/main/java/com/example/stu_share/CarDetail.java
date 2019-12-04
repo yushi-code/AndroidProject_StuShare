@@ -12,12 +12,13 @@ import android.widget.TextView;
 
 public class CarDetail extends AppCompatActivity {
     private TextView textTitle,textDate,textBrand,textModel,textYear,textMile,textLocation,textDetail,textPrice;
-    private Button home,logout,email,message;
+    private Button home,logout,email,message,btnContact1;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_detail);
-
+        user=(User)getIntent().getSerializableExtra("user");
         Button btnEmail = findViewById(R.id.btnEmail);
         btnEmail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +70,16 @@ public class CarDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getBaseContext(),MainActivity.class);
+                startActivity(i);
+            }
+        });
+        btnContact1=findViewById(R.id.btnContact);
+        btnContact1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(getBaseContext(), MessageCreate.class);
+                i.putExtra("user",user);
+                i.putExtra("id","admin");
                 startActivity(i);
             }
         });

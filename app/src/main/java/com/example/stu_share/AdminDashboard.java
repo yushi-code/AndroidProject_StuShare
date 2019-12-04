@@ -52,7 +52,7 @@ public class AdminDashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(), AdminMessageList.class);
-//              intent.putExtra("args", userReg);
+                intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
@@ -62,6 +62,7 @@ public class AdminDashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                Intent intent = new Intent(getBaseContext(), AdminBookList.class);
+                intent.putExtra("user",user);
                startActivity(intent);
             }
         });
@@ -71,6 +72,7 @@ public class AdminDashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(),AdminCarList.class);
+                intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
@@ -79,6 +81,7 @@ public class AdminDashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
               Intent intent = new Intent(getBaseContext(), AdminRoomList.class);
+                intent.putExtra("user",user);
               startActivity(intent);
             }
         });

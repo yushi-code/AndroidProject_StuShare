@@ -25,7 +25,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 
 public class EventDetail extends AppCompatActivity {
-    private Button btnLogout, btnJoin, btnLogout2, btnHome3;
+    private Button btnLogout, btnJoin,btnContact1, btnHome3;
     private TextView txtEvtTitle, txtEvtDetail, txtStDate, txtStTime, txtEndTime, txtEndDate;
     private User user2;
     //DBHelper dbHelper = null;
@@ -90,6 +90,17 @@ public class EventDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 OpenMenuActivity();
+            }
+        });
+        btnContact1=findViewById(R.id.btnContact);
+        btnContact1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(getBaseContext(), MessageCreate.class);
+                i.putExtra("user",user2);
+                i.putExtra("id","admin");
+                startActivity(i);
+
             }
         });
     }

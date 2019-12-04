@@ -14,12 +14,12 @@ import static com.example.stu_share.BookCoordinator.BOOK_LIST;
 public class BookCreate extends AppCompatActivity {
     private EditText txtTitle, txtAuthor, txtEdition, txtISBN, txtDetails, txtPrice;
     private Button btnHome, btnLogout, btnSubmit;
-
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_create);
-
+        user=(User)getIntent().getSerializableExtra("user");
         txtTitle=findViewById(R.id.txtTitle);
         txtAuthor=findViewById(R.id.txtAuthor);
         txtEdition=findViewById(R.id.txtEdition);
@@ -32,6 +32,7 @@ public class BookCreate extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i =new Intent(getBaseContext(),MainMenu.class);
+                i.putExtra("user",user);
                 startActivity(i);
             }
         });
@@ -49,6 +50,7 @@ public class BookCreate extends AppCompatActivity {
                         "You car share information has been recorded!",
                         Toast.LENGTH_SHORT).show();
                 Intent i =new Intent(getBaseContext(),BookMenu.class);
+                i.putExtra("user",user);
                 startActivity(i);
             }
         });

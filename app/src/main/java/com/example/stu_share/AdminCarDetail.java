@@ -11,17 +11,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class AdminCarDetail extends AppCompatActivity {
     private TextView textTitle,textDate,textBrand,textModel,textYear,textMile,textLocation,textDetail,textPrice;
-    private Button home,logout,terminate;
+    private Button home,logout,terminate,btnContact1;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_detail);
-
+        user=(User)getIntent().getSerializableExtra("user");
         Button btnEmail = findViewById(R.id.btnEmail);
         btnEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(),EmailActivity.class);
+                intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
@@ -42,6 +44,7 @@ public class AdminCarDetail extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(AdminCarDetail.this,"Your post has been terminated",Toast.LENGTH_LONG).show();
                 Intent i=new Intent(getBaseContext(),AdminDashboard.class);
+                i.putExtra("user",user);
                 startActivity(i);
             }
         });
@@ -62,6 +65,7 @@ public class AdminCarDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getBaseContext(),AdminDashboard.class);
+                i.putExtra("user",user);
                 startActivity(i);
             }
         });
@@ -72,7 +76,17 @@ public class AdminCarDetail extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        btnContact1=findViewById(R.id.btnContact);
+        btnContact1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(getBaseContext(), MessageCreate.class);
+                i.putExtra("user",user);
+                i.putExtra("id","admin");
+                startActivity(i);
 
+            }
+        });
 
     }
 

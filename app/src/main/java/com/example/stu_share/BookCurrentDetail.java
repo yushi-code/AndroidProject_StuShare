@@ -13,13 +13,13 @@ public class BookCurrentDetail extends AppCompatActivity {
 
     private EditText title, author, edition, isbn, details, price;
     private Button home,logout,terminate,update;
-
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_current_detail);
-
+        user=(User)getIntent().getSerializableExtra("user");
         title=findViewById(R.id.txtTitle);
         author=findViewById(R.id.txtAuthor);
         edition=findViewById(R.id.txtEdition);
@@ -51,6 +51,7 @@ public class BookCurrentDetail extends AppCompatActivity {
 
                 Toast.makeText(getBaseContext(),"Your information has been updated!",Toast.LENGTH_LONG);
                 Intent i=new Intent(getBaseContext(),BookMenu.class);
+                i.putExtra("user",user);
                 startActivity(i);
             }
         });
@@ -67,6 +68,7 @@ public class BookCurrentDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getBaseContext(),MainMenu.class);
+                i.putExtra("user",user);
                 startActivity(i);
             }
         });

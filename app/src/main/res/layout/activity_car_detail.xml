@@ -8,6 +8,16 @@
     tools:layout_editor_absoluteY="81dp">
 
 
+    <Button
+        android:id="@+id/btnContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="Contact us"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toEndOf="@+id/btnEmail"
+        app:layout_constraintTop_toTopOf="@+id/btnEmail" />
+
     <TextView
         android:id="@+id/txtCarDetail3"
         android:layout_width="288dp"
@@ -238,11 +248,10 @@
         android:id="@+id/btnMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="176dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginStart="20dp"
         android:text="Message"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCarLocation" />
+        app:layout_constraintStart_toEndOf="@+id/btnContact"
+        app:layout_constraintTop_toTopOf="@+id/btnContact" />
 
     <TextView
         android:id="@+id/textView30"

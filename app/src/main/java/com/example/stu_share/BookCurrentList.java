@@ -17,12 +17,12 @@ public class BookCurrentList extends AppCompatActivity {
 
     private ListView listBook;
     private Button home, logout;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_current_list);
-
-
+        user=(User)getIntent().getSerializableExtra("user");
         listBook=findViewById(R.id.bookCurrentList);
 
         final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,BOOK_LIST);
@@ -37,7 +37,7 @@ public class BookCurrentList extends AppCompatActivity {
                 BookCoordinator.Book book =(BookCoordinator.Book) adapter.getItemAtPosition(position1);
 
                 Intent intent =new Intent(getBaseContext(), BookCurrentDetail.class);
-
+                intent.putExtra("user",user);
                
                 intent.putExtra("book",book);
                 intent.putExtra("position1",position1);
@@ -50,6 +50,7 @@ public class BookCurrentList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getBaseContext(),BookMenu.class);
+                i.putExtra("user",user);
                 startActivity(i);
             }
         });

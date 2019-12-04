@@ -15,11 +15,12 @@ import static com.example.stu_share.CarCoordinator.CAR_LIST;
 public class AdminCarList extends AppCompatActivity {
     private ListView listCar;
     private Button home, logout;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_list);
-
+        user=(User)getIntent().getSerializableExtra("user");
         listCar=findViewById(R.id.listCar1);
         final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,CAR_LIST);
         listCar.setAdapter(arrayAdapter);
@@ -32,6 +33,7 @@ public class AdminCarList extends AppCompatActivity {
                 CarCoordinator.Car car =(CarCoordinator.Car) adapter.getItemAtPosition(position);
                 Intent intent =new Intent(getBaseContext(), CarDetail.class);
                 intent.putExtra("car",car);
+                intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
@@ -40,6 +42,7 @@ public class AdminCarList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getBaseContext(),AdminDashboard.class);
+                i.putExtra("user",user);
                 startActivity(i);
             }
         });

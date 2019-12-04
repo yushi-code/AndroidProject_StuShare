@@ -10,13 +10,13 @@ import android.widget.TextView;
 
 public class RoomDetail extends AppCompatActivity {
     private TextView textTitle, textDate, textRooms, textlease, textPets, textOffering, textTypeHouse, textLocation, textDetail, textRent;
-    private Button home, logout, email, message;
-
+    private Button home, logout, email, message,btnContact1;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_detail);
-
+        user=(User)getIntent().getSerializableExtra("user");
         Button btnEmail = findViewById(R.id.buttonEmail1);
         btnEmail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +46,17 @@ public class RoomDetail extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i=new Intent(getBaseContext(), MessageCreate.class);
                 startActivity(i);
+            }
+        });
+        btnContact1=findViewById(R.id.btnContact);
+        btnContact1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(getBaseContext(), MessageCreate.class);
+                i.putExtra("user",user);
+                i.putExtra("id","admin");
+                startActivity(i);
+
             }
         });
 

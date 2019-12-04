@@ -25,7 +25,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 
 public class AdminEventDetail extends AppCompatActivity {
-    private Button btnLogout,btnJoin, btnHome;
+    private Button btnLogout,btnJoin, btnHome,btnContact1;
     private TextView txtEvtTitle,txtEvtDetail,txtStDate,txtStTime,txtEndTime,txtEndDate;
    // DBHelper dbHelper = null;
     private User user;
@@ -52,9 +52,6 @@ public class AdminEventDetail extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent=new Intent(getBaseContext(),AdminDashboard.class);
-//                intent.putExtra("user",user);
-//                startActivity(intent);
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
@@ -63,18 +60,10 @@ public class AdminEventDetail extends AppCompatActivity {
         btnJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //add to database table with event id and participante id
-                //dbHelper = new DBHelper(getBaseContext());
-                //final SQLiteDatabase db = dbHelper.getWritableDatabase();
-                //dbHelper.eventStatusChange(db,event);
-
                 Toast.makeText(getBaseContext(), "you have successfully suspended the event",
                         Toast.LENGTH_LONG).show();
                 update("https://f9team1.gblearn.com/stu_share/EventSuspended.php");
                 update("https://f9team1.gblearn.com/stu_share/eventRegDeleteByAdmin.php");
-                //Intent intent=new Intent(getBaseContext(),AdminDashboard.class);
-                //intent.putExtra("user",user);
-                //startActivity(intent);
             }
         });
 
@@ -84,6 +73,17 @@ public class AdminEventDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 OpenMenuActivity();
+            }
+        });
+        btnContact1=findViewById(R.id.btnContact);
+        btnContact1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(getBaseContext(), MessageCreate.class);
+                i.putExtra("user",user);
+                i.putExtra("id","admin");
+                startActivity(i);
+
             }
         });
     }

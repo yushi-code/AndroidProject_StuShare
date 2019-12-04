@@ -26,8 +26,7 @@ import java.util.List;
 public class AdminUserList extends AppCompatActivity {
     Button btnLogout, btnHome;
     ListView listView;
-    //DBHelper dbHelper=null;
-    private User user2,user1;
+    private User user1;
     TextView txt;
 
     public static List<User> userList;
