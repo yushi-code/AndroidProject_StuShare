@@ -71,31 +71,23 @@ public class EventMyEvents extends AppCompatActivity {
 
     private void openRegActivity() {
         Intent intent =new Intent(this, EventListJoined.class);
-        String[] tt=new String[]{"2","2"};
-        //intent.putExtra("args",tt);
         intent.putExtra("user",user);
         startActivity(intent);
     }
 
     public void openOwnedEventActivity(){
         Intent intent =new Intent(this, EventOwnedList.class);
-        String[] tt=new String[]{"2","2"};
-        //intent.putExtra("args",tt);
         intent.putExtra("user",user);
         startActivity(intent);
     }
     public void openPstEvtAct(){
         Intent intent =new Intent(this, EventPastList.class);
-        String[] tt=new String[]{"2","2"};
-        //intent.putExtra("args",tt);
         intent.putExtra("user",user);
         Log.d("TAG","MyEvent to Regged event"+user.id);
         startActivity(intent);
     }
     public void openJoinActivity(){
         Intent intent =new Intent(this, EventList.class);
-        //String[] tt=new String[]{"2","2"};
-        //intent.putExtra("args",tt);
         intent.putExtra("user",user);
         startActivity(intent);
     }

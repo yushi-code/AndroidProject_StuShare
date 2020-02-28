@@ -48,7 +48,6 @@ public class Signup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
-//              intent.putExtra("args", userReg);
                 startActivity(intent);
             }
         });

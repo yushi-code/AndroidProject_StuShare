@@ -19,26 +19,7 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
 
         final User user=(User)getIntent().getSerializableExtra("user");
-        buttonBooks=findViewById(R.id.btnAlBooks);
-        buttonBooks.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent(getBaseContext(),BookMenu.class);
-                i.putExtra("user",user);
-                startActivity(i);
-            }
-        });
-        buttonRooms=findViewById(R.id.btnRooms);
-        buttonRooms.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent i= new Intent(getBaseContext(),RoomMenu.class);
-                i.putExtra("user",user);
-                startActivity(i);
-
-            }
-        });
         buttonEvents=findViewById(R.id.btnEvents);
         buttonEvents.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,16 +29,8 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        buttonCars=findViewById(R.id.btnCars);
-        buttonCars.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent(getBaseContext(),CarMenu.class);
-                i.putExtra("user",user);
-                startActivity(i);
-            }
-        });
-        buttonMyProfile=findViewById(R.id.btnAlMyProfile);
+
+        buttonMyProfile=findViewById(R.id.btnMyProfile);
         buttonMyProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,30 +39,12 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        buttonMessageCenter=findViewById(R.id.btnAlMessageCenter);
-        buttonMessageCenter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent(getBaseContext(), MessageList.class);
-//                i.putExtra("user",user);
-                startActivity(i);
-            }
-        });
-        buttonLogout=findViewById(R.id.btnAlLogout);
+
+        buttonLogout=findViewById(R.id.btnLogout);
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getBaseContext(),MainActivity.class);
-                startActivity(i);
-            }
-        });
-        buttonContactUs=findViewById((R.id.btnAlContactUs));
-        buttonContactUs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent(getBaseContext(), MessageCreate.class);
-                i.putExtra("user",user);
-                i.putExtra("id","admin");
                 startActivity(i);
             }
         });

@@ -35,7 +35,7 @@ public class EventCreateDescription extends AppCompatActivity {
             }
         });
 
-        btnLogout = findViewById(R.id.btnAlLogout);
+        btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

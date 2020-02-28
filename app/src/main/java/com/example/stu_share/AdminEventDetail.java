@@ -24,10 +24,13 @@ import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
 
+import static com.example.stu_share.EventCoordinator.EVENTS;
+
+
 public class AdminEventDetail extends AppCompatActivity {
-    private Button btnLogout,btnJoin, btnHome,btnContact1;
+    private Button btnLogout,btnJoin, btnHome;
     private TextView txtEvtTitle,txtEvtDetail,txtStDate,txtStTime,txtEndTime,txtEndDate;
-   // DBHelper dbHelper = null;
+    DBHelper dbHelper;
     private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,25 +52,27 @@ public class AdminEventDetail extends AppCompatActivity {
         txtStDate.setText(event.startDate);
         txtEndDate.setText(event.endDate);
         txtEndTime.setText(event.endTime);
+        dbHelper=new DBHelper(this);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
         btnJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Toast.makeText(getBaseContext(), "you have successfully suspended the event",
                         Toast.LENGTH_LONG).show();
-                update("https://f9team1.gblearn.com/stu_share/EventSuspended.php");
-                update("https://f9team1.gblearn.com/stu_share/eventRegDeleteByAdmin.php");
+                dbHelper.updateEventStatus("https://w0044421.gblearn.com/stu_share/EventSuspended.php",event.id);
+                dbHelper.updateEventStatus("https://w0044421.gblearn.com/stu_share/eventRegDeleteByAdmin.php",event.id);
+                Intent intent=new Intent(getBaseContext(),AdminDashboard.class);
+                intent.putExtra("user",user);
+                startActivity(intent);
             }
         });
-
-
         btnHome = findViewById(R.id.btnHome8);
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,76 +80,6 @@ public class AdminEventDetail extends AppCompatActivity {
                 OpenMenuActivity();
             }
         });
-        btnContact1=findViewById(R.id.btnContact);
-        btnContact1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent(getBaseContext(), MessageCreate.class);
-                i.putExtra("user",user);
-                i.putExtra("id","admin");
-                startActivity(i);
-
-            }
-        });
-    }
-
-    private void update(final String urlWebService) {
-
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    URL url = new URL(urlWebService);
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setRequestMethod("POST");
-                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-                    conn.setRequestProperty("Accept", "application/json");
-                    conn.setDoOutput(true);
-                    conn.setDoInput(true);
-
-                    JSONObject jsonParam = new JSONObject();
-                    //jsonParam.put("userId", user2.id);
-                    final EventCoordinator.Event event = (EventCoordinator.Event) getIntent().getSerializableExtra("args");
-                    jsonParam.put("eventId", event.id);
-
-                    Log.i("JSON", jsonParam.toString());
-                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
-                    BufferedWriter writer = new BufferedWriter(
-                            new OutputStreamWriter(os, "UTF-8"));
-
-                    os.writeBytes(jsonParam.toString());
-
-                    os.flush();
-                    os.close();
-                    conn.connect();
-                    Log.i("STATUS", String.valueOf(conn.getResponseCode()));
-                    Log.i("MSG", conn.getResponseMessage());
-
-                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    DataInputStream is = new DataInputStream(conn.getInputStream());
-
-                    StringBuilder total = new StringBuilder();
-                    String line;
-                    while ((line = in.readLine()) != null) {
-                        total.append(line).append('\n');
-                    }
-                    Log.d("TAG", "Server Response is: " + total.toString() + ": ");
-
-
-                } catch (ProtocolException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
-        thread.start();
-
-
-
     }
     public void OpenMenuActivity(){
         Intent intent = new Intent(this, AdminDashboard.class);

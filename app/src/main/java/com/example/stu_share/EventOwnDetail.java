@@ -29,12 +29,14 @@ import java.net.URL;
 public class EventOwnDetail extends AppCompatActivity {
     private Button btnLogout, btnHome, btnUpdate,btnTerminate;
     private EditText txtEvtTitle, txtEvtDetail, txtStDate, txtStTime, txtEndTime, txtEndDate;
-    //DBHelper dbHelper = null;
+    DBHelper dbHelper  ;
+    private String REGISTER_URL="https://w0044421.gblearn.com/stu_share/EventUpdate.php";
     private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_own_detail);
+        dbHelper=new DBHelper(this);
         btnUpdate=findViewById(R.id.btnUpdateOwn);
         btnTerminate=findViewById(R.id.btnTereminate);
         txtEvtTitle=findViewById(R.id.txtEventTitle);
@@ -63,7 +65,7 @@ public class EventOwnDetail extends AppCompatActivity {
                 event.setEndDate(txtEndDate.getText().toString());
                 event.setEndTime(txtEndTime.getText().toString());
 
-                updateEvent(event,"https://f9team1.gblearn.com/stu_share/EventUpdate.php");
+                dbHelper.updateEvent(event,"https://w0044421.gblearn.com/stu_share/EventUpdate.php");
                 Toast.makeText(getBaseContext(), "Event has been updated in your account",
                         Toast.LENGTH_LONG).show();
                 OpenMenuActivity();
@@ -73,11 +75,9 @@ public class EventOwnDetail extends AppCompatActivity {
         btnTerminate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                update("https://f9team1.gblearn.com/stu_share/EventSuspended.php");
-                update("https://f9team1.gblearn.com/stu_share/eventRegDeleteByAdmin.php");
-
-                event.setStatus("not active");
-
+                event.setStatus("suspended");
+                suspendEvent("https://w0044421.gblearn.com/stu_share/EventSuspended.php",event);
+                suspendEvent("https://w0044421.gblearn.com/stu_share/eventRegDeleteByAdmin.php",event);
                 Toast.makeText(getBaseContext(), "Event has been terminated from your account",
                         Toast.LENGTH_LONG).show();
                 OpenMenuActivity();
@@ -85,7 +85,7 @@ public class EventOwnDetail extends AppCompatActivity {
         });
 
         btnHome = findViewById(R.id.btnHome);
-        btnLogout = findViewById(R.id.btnAlLogout);
+        btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -159,7 +159,7 @@ public class EventOwnDetail extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-    private void update(final String urlWebService) {
+    private void suspendEvent(final String urlWebService,final EventCoordinator.Event event1) {
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -175,8 +175,8 @@ public class EventOwnDetail extends AppCompatActivity {
 
                     JSONObject jsonParam = new JSONObject();
                     //jsonParam.put("userId", user2.id);
-                    final EventCoordinator.Event event = (EventCoordinator.Event) getIntent().getSerializableExtra("args");
-                    jsonParam.put("eventId", event.id);
+
+                    jsonParam.put("eventId", event1.id);
 
                     Log.i("JSON", jsonParam.toString());
                     DataOutputStream os = new DataOutputStream(conn.getOutputStream());

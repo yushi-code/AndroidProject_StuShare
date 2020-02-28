@@ -2,12 +2,14 @@ package com.example.stu_share;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -28,27 +30,29 @@ import java.net.URL;
 public class ResetWithEmail extends AppCompatActivity {
     Button btnNext;
     EditText email;
-    //DBHelper dbHelper=null;
-    User userTemp;
+    public static TextView txtError;
+    DBHelper dbHelper;
+    Context resetContext;
+    private static final String REGISTER_URL="https://w0044421.gblearn.com/stu_share/user_login.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_with_email);
-        //dbHelper=new DBHelper(this);
+        txtError=findViewById(R.id.textView5);
+        dbHelper=new DBHelper(this);
         email=findViewById(R.id.txtEm);
         btnNext=findViewById(R.id.btnNext);
-        //dbHelper=new DBHelper(this);
-        //final SQLiteDatabase db = dbHelper.getWritableDatabase();
         final String userEmail=email.getText().toString();
-
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              doPost();
+              if(dbHelper.pullAUser(REGISTER_URL,email.getText().toString()).equals("no account")){
+                  txtError.setText("no account");
+              };
             }
         });
     }
-    public void doPost() {
+    public void pullAUser(final String urlweb, final String emailAdd) {
         final User userTest=new User();
 
         Thread thread = new Thread(new Runnable() {
@@ -56,7 +60,7 @@ public class ResetWithEmail extends AppCompatActivity {
             public void run() {
                 try {
 
-                    URL url = new URL("https://f9team1.gblearn.com/stu_share/user_login.php");
+                    URL url = new URL(urlweb);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("POST");
                     conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
@@ -65,7 +69,7 @@ public class ResetWithEmail extends AppCompatActivity {
                     conn.setDoInput(true);
 
                     JSONObject jsonParam = new JSONObject();
-                    jsonParam.put("email", email.getText().toString());
+                    jsonParam.put("email", emailAdd);
 
 
                     Log.i("JSON", jsonParam.toString());

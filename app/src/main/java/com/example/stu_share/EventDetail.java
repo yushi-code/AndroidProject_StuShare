@@ -25,15 +25,17 @@ import java.net.ProtocolException;
 import java.net.URL;
 
 public class EventDetail extends AppCompatActivity {
-    private Button btnLogout, btnJoin,btnContact1, btnHome3;
+    private Button btnLogout, btnJoin, btnLogout2, btnHome3;
     private TextView txtEvtTitle, txtEvtDetail, txtStDate, txtStTime, txtEndTime, txtEndDate;
     private User user2;
-    //DBHelper dbHelper = null;
+    DBHelper dbHelper;
+    private EventCoordinator.Event event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_detail);
+        dbHelper=new DBHelper(this);
         btnJoin = findViewById(R.id.btnJoin);
         btnLogout = findViewById(R.id.btnLogout2);
         btnHome3 = findViewById(R.id.btnHome3);
@@ -58,27 +60,10 @@ public class EventDetail extends AppCompatActivity {
 
                 Toast.makeText(getBaseContext(), "you have successfully joined the event",
                         Toast.LENGTH_LONG).show();
-                update("https://f9team1.gblearn.com/stu_share/EventReg.php");
+                dbHelper.joinEvent("https://w0044421.gblearn.com/stu_share/EventReg.php",user2,event);
 
             }
         });
-        Button btnEmail = findViewById(R.id.btnEmail);
-        btnEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(),EmailActivity.class);
-                startActivity(intent);
-            }
-        });
-        Button btnMessage = findViewById(R.id.btnMessage);
-        btnMessage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), MessageCreate.class);
-                startActivity(intent);
-            }
-        });
-
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,76 +77,8 @@ public class EventDetail extends AppCompatActivity {
                 OpenMenuActivity();
             }
         });
-        btnContact1=findViewById(R.id.btnContact);
-        btnContact1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent(getBaseContext(), MessageCreate.class);
-                i.putExtra("user",user2);
-                i.putExtra("id","admin");
-                startActivity(i);
-
-            }
-        });
     }
-    private void update(final String urlWebService) {
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    URL url = new URL(urlWebService);
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setRequestMethod("POST");
-                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-                    conn.setRequestProperty("Accept", "application/json");
-                    conn.setDoOutput(true);
-                    conn.setDoInput(true);
-
-                    JSONObject jsonParam = new JSONObject();
-                    jsonParam.put("userId", user2.id);
-                    final EventCoordinator.Event event = (EventCoordinator.Event) getIntent().getSerializableExtra("args");
-                    jsonParam.put("eventId", event.id);
-
-                    Log.i("JSON", jsonParam.toString());
-                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
-                    BufferedWriter writer = new BufferedWriter(
-                            new OutputStreamWriter(os, "UTF-8"));
-
-                    os.writeBytes(jsonParam.toString());
-
-                    os.flush();
-                    os.close();
-                    conn.connect();
-                    Log.i("STATUS", String.valueOf(conn.getResponseCode()));
-                    Log.i("MSG", conn.getResponseMessage());
-
-                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    DataInputStream is = new DataInputStream(conn.getInputStream());
-
-                    StringBuilder total = new StringBuilder();
-                    String line;
-                    while ((line = in.readLine()) != null) {
-                        total.append(line).append('\n');
-                    }
-                    Log.d("TAG", "Server Response is: " + total.toString() + ": ");
-
-
-                } catch (ProtocolException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
-        thread.start();
-
-
-
- }
     public void logout(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
