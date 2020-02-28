@@ -15,7 +15,7 @@ This version includes:
 10. Register(GBC email only)
 
 PS: 
-1.  The database server is currently not avaliable as the school provided free account is shut down.
+1.  The database server is currently  avaliable as the school provided free account is open again,but after April it will be closed again..
 2.  There are more features can be developped, such as view my own events registered participants, my events heat map, new postings list, gesture support. These are the features that I can do but have no time to do it.
 3.  The UI can be re-designed. Currently the UI is based on only buttons. However, I can make it with gestures which you swipe left and right to navigate through the different list and navigation menu on top and bottom will make the UI neat. These are the features that I can do but have no time to do it.
 
