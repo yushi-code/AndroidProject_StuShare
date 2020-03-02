@@ -18,7 +18,9 @@ public class EventCoordinator {
         EVENTS.add(event);
         EVENT_MAP.put(event.id, event);
     }
-
+    /*public static Event createEvent( String orgID, String startDate, String startTime, String endDate, String endTime, String eventTitle, String eventDetail) {
+        return new Event(String.valueOf(random.nextLong()),orgID, "active",startDate, startTime, endDate, endTime, eventTitle, eventDetail);
+    }*/
     public static class Event implements Serializable {
         public String id;
         public  String orgID;
@@ -119,7 +121,9 @@ public class EventCoordinator {
 
 
         public String toString(){
-            return "Event:"+eventTitle+"\nDetails about this event:"+eventDetail+"\nStatus: "+status ;
+            return "Event:"+eventTitle+"\nDetails about this event:"+eventDetail
+                    +"\nStart date & time:"+getStartDate()+" "+getStartTime()
+                    +"\nEnd date & time:"+getEndDate()+" "+getEndTime();
         }
     }
 }

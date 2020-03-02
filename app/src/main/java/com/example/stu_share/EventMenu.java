@@ -9,7 +9,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class EventMenu extends AppCompatActivity {
-    private Button btnMyEvents, btnViewEvents,btnCrtEvt, btnHome, btnLogout;
+        private Button btnMyEvents, btnViewEvents,btnCrtEvt, btnHome, btnLogout;
     public static User user1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +46,24 @@ public class EventMenu extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout = findViewById(R.id.btnAlLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 logout();
             }
         });
+        Button btnMessageCenter=findViewById(R.id.btnAlMessageCenter);
+        btnMessageCenter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), MessageList.class);
+//              intent.putExtra("args", userReg);
+                startActivity(intent);
+            }
+        });
+
+
     }
     public void openMyEventsActivity(){
         Intent intent =new Intent(this, EventMyEvents.class);
@@ -70,6 +81,8 @@ public class EventMenu extends AppCompatActivity {
         intent.putExtra("user",user1);
         startActivity(intent);
     }
+
+
     public void logout(){
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("user",user1);

@@ -1,6 +1,6 @@
 <?php
 $host = "gblearn.com";
-$user_name = "w0044421_w004442";
+$user_name = "w0044421_w0044421";
 $user_password = "Stushare127";
 $db_name = "w0044421_stushare";
 

@@ -34,10 +34,9 @@ public class MyProfileEdit extends AppCompatActivity {
     TextView editFn,editLn,editQ,editA;
     private User user;
     private final String urlWebService="https://w0044421.gblearn.com/stu_share/user_update.php";
-    private DBHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        dbHelper=new DBHelper(this);
+
         super.onCreate(savedInstanceState);
         user=(User)getIntent().getSerializableExtra("user");
         setContentView(R.layout.activity_profile_edit);
@@ -76,7 +75,7 @@ public class MyProfileEdit extends AppCompatActivity {
                     user.setAnswer(editA.getText().toString());
                     Toast.makeText(getBaseContext(), "Profile has been updated",
                             Toast.LENGTH_LONG).show();
-                    dbHelper.updateUser(user,urlWebService);
+                    updateUser(user,urlWebService);
                     Intent intent = new Intent(getBaseContext(), AdminDashboard.class);
                     intent.putExtra("user",user);
                     startActivity(intent);
@@ -88,7 +87,7 @@ public class MyProfileEdit extends AppCompatActivity {
                     user.setAnswer(editA.getText().toString());
                     Toast.makeText(getBaseContext(), "Profile has been updated",
                             Toast.LENGTH_LONG).show();
-                    dbHelper.updateUser(user,urlWebService);
+                    updateUser(user,urlWebService);
                     Intent intent = new Intent(getBaseContext(), EventMenu.class);
                     intent.putExtra("user",user);
                     startActivity(intent);
@@ -97,6 +96,59 @@ public class MyProfileEdit extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void updateUser(final User user, final String urlWebService) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL(urlWebService);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                    conn.setRequestProperty("Accept", "application/json");
+                    conn.setDoOutput(true);
+                    conn.setDoInput(true);
+
+                    JSONObject jsonParam = new JSONObject();
+                    jsonParam.put("userId", user.id);
+                    jsonParam.put("firstname", user.firstName);
+                    jsonParam.put("lastname", user.lastName);
+                    jsonParam.put("question", user.question);
+                    jsonParam.put("answer", user.answer);
+
+                    Log.i("JSON", jsonParam.toString());
+                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+                    BufferedWriter writer = new BufferedWriter(
+                            new OutputStreamWriter(os, "UTF-8"));
+                    os.writeBytes(jsonParam.toString());
+                    os.flush();
+                    os.close();
+                    conn.connect();
+                    Log.i("STATUS", String.valueOf(conn.getResponseCode()));
+                    Log.i("MSG", conn.getResponseMessage());
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    DataInputStream is = new DataInputStream(conn.getInputStream());
+
+                    StringBuilder total = new StringBuilder();
+                    String line;
+                    while ((line = in.readLine()) != null) {
+                        total.append(line).append('\n');
+                    }
+                    Log.d("TAG", "Server Response is: " + total.toString() + ": ");
+                } catch (UnsupportedEncodingException | JSONException e) {
+                    e.printStackTrace();
+                } catch (ProtocolException e) {
+                    e.printStackTrace();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }});
+        thread.start();
     }
     public void OpenMenuActivity() {
         if(user.role.equals("admin")){

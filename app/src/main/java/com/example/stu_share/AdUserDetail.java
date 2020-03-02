@@ -24,14 +24,13 @@ import java.net.URL;
 public class AdUserDetail extends AppCompatActivity {
     TextView txtDetail;
     Button btnDeact,btnLogout,btnAct, btnHome;
-    DBHelper dbHelper;
+    //DBHelper dbHelper = null;
     private User userDetail;
     private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_user_detail);
-        dbHelper=new DBHelper(this);
         userDetail=(User)getIntent().getSerializableExtra("args");
         user=(User)getIntent().getSerializableExtra("user");
         txtDetail=findViewById(R.id.txtAcctDerail);
@@ -50,10 +49,11 @@ public class AdUserDetail extends AppCompatActivity {
         btnAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Toast.makeText(getBaseContext(), "User is activated!",
                         Toast.LENGTH_LONG).show();
                 Intent intent =new Intent(getBaseContext(),AdminDashboard.class);
-                dbHelper.adminUpdateUser("https://w0044421.gblearn.com/stu_share/user_status_update.php","active",userDetail);
+                sendPost("active");
                 intent.putExtra("user",user);
                 startActivity(intent);
             }
@@ -61,12 +61,14 @@ public class AdUserDetail extends AppCompatActivity {
         btnDeact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Toast.makeText(getBaseContext(), "User is suspended!",
                         Toast.LENGTH_LONG).show();
-                dbHelper.adminUpdateUser("https://w0044421.gblearn.com/stu_share/user_status_update.php","suspended",userDetail);
+                sendPost("suspended");
                 Intent intent =new Intent(getBaseContext(),AdminDashboard.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
+
             }
         });
         btnHome = findViewById(R.id.btnHome19);
@@ -76,6 +78,58 @@ public class AdUserDetail extends AppCompatActivity {
                 OpenMenuActivity();
             }
         });
+    }
+    public void sendPost(final String status) {
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL("https://w0044421.gblearn.com/stu_share/user_status_update.php");
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                    conn.setRequestProperty("Accept","application/json");
+                    conn.setDoOutput(true);
+                    conn.setDoInput(true);
+
+                    JSONObject jsonParam = new JSONObject();
+                    jsonParam.put("status", status);
+                    jsonParam.put("userId", userDetail.id);
+
+
+
+                    Log.i("JSON", jsonParam.toString());
+                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+                    BufferedWriter writer = new BufferedWriter(
+                            new OutputStreamWriter(os, "UTF-8"));
+                    os.writeBytes(jsonParam.toString());
+                    os.flush();
+                    os.close();
+                    conn.connect();
+                    Log.i("STATUS", String.valueOf(conn.getResponseCode()));
+                    Log.i("MSG" , conn.getResponseMessage());
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    DataInputStream is=new DataInputStream(conn.getInputStream());
+
+                    StringBuilder total = new StringBuilder();
+                    String line;
+                    while ((line = in.readLine()) != null)
+                    {
+                        total.append(line).append('\n');
+                    }
+                    Log.d("TAG", "Server Response is: " + total.toString() + ": " );
+
+                    conn.disconnect();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+
     }
 
     public void OpenMenuActivity() {

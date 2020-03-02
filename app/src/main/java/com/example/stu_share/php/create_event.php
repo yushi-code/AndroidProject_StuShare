@@ -13,7 +13,7 @@
 	
 				
 	$sql = "INSERT INTO event (organizerId,status,startDate,startTime,endDate,endTime,title,detail)
-			VALUES(' $organizer_id','$status','$start_date','$start_time','$end_date','$end_time','$title','$detail')";
+			VALUES('$organizer_id','$status','$start_date','$start_time','$end_date','$end_time','$title','$detail')";
 	if(mysqli_query($con,$sql)){
 		echo 'successfully registered';	
 	}

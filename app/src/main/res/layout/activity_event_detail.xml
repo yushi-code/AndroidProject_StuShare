@@ -8,6 +8,21 @@
     tools:layout_editor_absoluteY="81dp">
 
     <Button
+        android:id="@+id/btnContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Contact Us"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/btnHome3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -158,13 +173,31 @@
         app:layout_constraintTop_toBottomOf="@+id/txtStDate" />
 
     <Button
+        android:id="@+id/btnEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="20dp"
+        android:text="Email"
+        app:layout_constraintBottom_toTopOf="@+id/btnContact"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/btnJoin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="21dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="20dp"
         android:text="Join"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/btnMessage"
+        app:layout_constraintTop_toTopOf="@+id/btnMessage" />
+
+    <Button
+        android:id="@+id/btnMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="Message"
+        app:layout_constraintBottom_toBottomOf="@+id/btnEmail"
+        app:layout_constraintStart_toEndOf="@+id/btnEmail" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

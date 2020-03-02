@@ -1,8 +1,6 @@
 package com.example.stu_share;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class User implements Serializable {
     public String getEmail() {
@@ -16,7 +14,6 @@ public class User implements Serializable {
     public String getLastName() {
         return lastName;
     }
-    public static final List<User> USERS = new ArrayList<User>();
 
     public User(){
 
@@ -100,8 +97,13 @@ public class User implements Serializable {
         return "User Information \n" +
                 "id= " + id + '\t' +
                 ", email=" + email + '\t' +
+                ", password=" + password + '\t' +
                 ", firstName=" + firstName + '\t' +
                 ", lastName=" + lastName + '\t' +
+                ", collegeCode=" + collegeCode + '\t' +
+                ", registerYear=" + registerYear + '\t' +
+                ", programCode=" + programCode + '\t' +
+                ", expireYear=" + expireYear + '\t' +
                 ", question=" + question + '\t' +
                 ", answer=" + answer + '\t' +
                 ", role=" + role + '\t' +

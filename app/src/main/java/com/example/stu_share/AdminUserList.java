@@ -23,26 +23,21 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.stu_share.EventCoordinator.EVENTS;
-import static com.example.stu_share.User.USERS;
-
 public class AdminUserList extends AppCompatActivity {
     Button btnLogout, btnHome;
     ListView listView;
-    DBHelper dbHelper;
-    private User user2,user1;
+    private User user1;
     TextView txt;
-    public static ArrayAdapter AdminUserAdapter;
+
+    public static List<User> userList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dbHelper=new DBHelper(this);
         setContentView(R.layout.activity_admin_user_list);
-        dbHelper.downloadUserJSON("https://w0044421.gblearn.com/stu_share/read_all_users.php");
-        listView = findViewById(R.id.listUser);
-        AdminUserAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, USERS);
-        listView.setAdapter(AdminUserAdapter);
-        btnLogout = findViewById(R.id.btnLogout);
+
+        listView = (ListView) findViewById(R.id.listUser);
+        downloadJSON("https://w0044421.gblearn.com/stu_share/read_all_users.php");
+        btnLogout = findViewById(R.id.btnAlLogout);
         user1=(User)getIntent().getSerializableExtra("user");
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +52,7 @@ public class AdminUserList extends AppCompatActivity {
                 home();
             }
         });
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -68,11 +64,13 @@ public class AdminUserList extends AppCompatActivity {
                 intent.putExtra("args",user2);
                 intent.putExtra("user",user1);
                 startActivity(intent);
+
             }
         });
     }
     public void logout(){
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("user",user1);
         startActivity(intent);
     }
     public void home(){
@@ -80,6 +78,82 @@ public class AdminUserList extends AppCompatActivity {
         intent.putExtra("user",user1);
         startActivity(intent);
     }
+    private void downloadJSON(final String urlWebService) {
 
+        class DownloadJSON extends AsyncTask<Void, Void, String> {
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                //Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+                try {
+                    loadIntoListView(s);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+            @Override
+            protected String doInBackground(Void... voids) {
+                try {
+                    URL url = new URL(urlWebService);
+                    HttpURLConnection con = (HttpURLConnection)url.openConnection();
+                    con.setRequestMethod("POST");
+                    StringBuilder sb = new StringBuilder();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    String json;
+                    while ((json = bufferedReader.readLine()) != null) {
+                        sb.append(json + "\n");
+                    }
+                    return sb.toString().trim();
+                } catch (Exception e) {
+                    return null;
+                }
+            }
+        }
+        DownloadJSON getJSON = new DownloadJSON();
+        getJSON.execute();
+    }
+
+    private void loadIntoListView(String json) throws JSONException {
+        JSONArray jsonArray = new JSONArray(json);
+        List<User> userL = new ArrayList<User>();
+        String[] stocks = new String[jsonArray.length()];
+        String[] userShort = new String[jsonArray.length()];
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject obj = jsonArray.getJSONObject(i);
+            User user1=new User();
+
+            //please keep adding all the information to user1 objects!!!!!!!!
+            user1.setId( obj.getString("id"));
+            user1.setEmail( obj.getString("email"));
+            user1.setPassword(obj.getString("password"));
+            user1.setFirstName( obj.getString("firstName"));
+            user1.setLastName(obj.getString("lastName"));
+            user1.setCollegeCode( obj.getString("collegeCode"));
+            user1.setProgramCode( obj.getString("programCode"));
+            user1.setRegisterYear(obj.getString("registeredYear"));
+            user1.setExpireYear( obj.getString("expireYear"));
+            user1.setStatus( obj.getString("status"));
+            user1.setQuestion(obj.getString("question"));
+            user1.setAnswer( obj.getString("answer"));
+            user1.setRole( obj.getString("role"));
+            userL.add(user1);
+            userShort[i] = user1.getFirstName() + " " + user1.getLastName();
+            stocks[i] = user1.getFirstName() ;
+
+        }
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, userL);
+        listView.setAdapter(arrayAdapter);
+
+    }
 }
 

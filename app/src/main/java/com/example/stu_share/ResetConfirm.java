@@ -32,15 +32,11 @@ import java.net.URL;
 public class ResetConfirm extends AppCompatActivity {
     EditText txtPSWD,txtPSWD2;
     Button btnSubmit;
-    private User user;
-    private DBHelper dbHelper;
     private final String urlWebService="https://w0044421.gblearn.com/stu_share/user_reset_pswd.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_confirm);
-        user=(User)getIntent().getSerializableExtra("args");
-        dbHelper=new DBHelper(this);
         btnSubmit=findViewById(R.id.btnSubmitPswd);
         txtPSWD=findViewById(R.id.txtNewPswd);
         final String pswd=txtPSWD.getText().toString();
@@ -54,7 +50,7 @@ public class ResetConfirm extends AppCompatActivity {
 
 
                     user.setPassword(txtPSWD.getText().toString());
-                    dbHelper.updateUser(user,urlWebService);
+                    updateUser(user,urlWebService);
                     Toast.makeText(getBaseContext(), "Password reset successfully!",
                             Toast.LENGTH_LONG).show();
                     Intent i=new Intent(getBaseContext(),MainActivity.class);
@@ -63,5 +59,54 @@ public class ResetConfirm extends AppCompatActivity {
             }
         });
 
+    }
+    private void updateUser(final User user, final String urlWebService) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL(urlWebService);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                    conn.setRequestProperty("Accept", "application/json");
+                    conn.setDoOutput(true);
+                    conn.setDoInput(true);
+
+                    JSONObject jsonParam = new JSONObject();
+                    jsonParam.put("userId", user.id);
+                    jsonParam.put("password", user.password);
+
+                    Log.i("JSON", jsonParam.toString());
+                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+                    BufferedWriter writer = new BufferedWriter(
+                            new OutputStreamWriter(os, "UTF-8"));
+                    os.writeBytes(jsonParam.toString());
+                    os.flush();
+                    os.close();
+                    conn.connect();
+                    Log.i("STATUS", String.valueOf(conn.getResponseCode()));
+                    Log.i("MSG", conn.getResponseMessage());
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    DataInputStream is = new DataInputStream(conn.getInputStream());
+
+                    StringBuilder total = new StringBuilder();
+                    String line;
+                    while ((line = in.readLine()) != null) {
+                        total.append(line).append('\n');
+                    }
+                    Log.d("TAG", "Server Response is: " + total.toString() + ": ");
+                } catch (UnsupportedEncodingException | JSONException e) {
+                    e.printStackTrace();
+                } catch (ProtocolException e) {
+                    e.printStackTrace();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }});
+        thread.start();
     }
 }
