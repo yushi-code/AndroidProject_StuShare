@@ -1,5 +1,7 @@
 package com.example.stu_share;
 
+import android.media.Image;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,9 +33,12 @@ public class EventCoordinator {
         public  String endTime;
         public  String eventTitle;
         public  String eventDetail;
+
         public Event(){
 
         }
+
+
         public void setId(String id) {
             this.id = id;
         }
