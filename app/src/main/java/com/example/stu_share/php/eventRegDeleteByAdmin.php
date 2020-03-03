@@ -6,9 +6,9 @@
     //$userID=$nameJ->{'userId'};
     $eventID = $nameJ->{'eventId'};
 	$sql = "delete from event_reg where eventId='$eventID';";
-	//$sql = "UPDATE event SET status='suspended' where id='$eventID';";
- mysqli_query($con, $sql);
-echo $sql;
+
+    mysqli_query($con, $sql);
+    echo $sql;
 	mysqli_close($con);
     
 ?>  

@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -18,8 +19,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -41,7 +48,7 @@ public class EventCreate extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener startDateSetListener;
     private TextView endDisplayDate;
     private DatePickerDialog.OnDateSetListener endDateSetListener;
-
+    private EventCoordinator.Event event1;
     EditText txtStTime,txtEndTime;
     private User user;
     Button btnCreate, btnHome, btnLogout;
@@ -216,7 +223,9 @@ public class EventCreate extends AppCompatActivity {
             };
 
         };
-        txtStDate.setOnClickListener(new View.OnClickListener() {
+         event1=(EventCoordinator.Event)getIntent().getSerializableExtra("event");
+         Log.i("EVENTINFOCREATE",event1.toString());
+         txtStDate.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -237,78 +246,64 @@ public class EventCreate extends AppCompatActivity {
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createEvent();
-//                final EventCoordinator.Event event2=
-//                        new EventCoordinator.Event("1","2","active",txtStDate.getText().toString(),txtStTime.getText().toString(),txtEndDate.getText().toString(),txtEndTime.getText().toString(),event1.eventTitle,event1.eventDetail);
-
-//                long id = dbHelper.insertEvent(db, event2);
-//                dbHelper.updateEventList(db,dbHelper.getEventCursorAct(db));
-//                Toast.makeText(getBaseContext(), "Event added with\n "+event2.toString(),
-//                        Toast.LENGTH_LONG).show();
+             sendPost();
                 OpenMenuActivity();
             }
         });
 
     }
-    private void createEvent() {
-        final EventCoordinator.Event event1=(EventCoordinator.Event)getIntent().getSerializableExtra("event");
-        event1.setStartDate(txtStDate.getText().toString());
-        event1.setEndDate(txtEndDate.getText().toString());
-        event1.setStartTime(txtStTime.getText().toString());
-        event1.setEndTime(txtEndTime.getText().toString());
 
-        String startDate = event1.startDate;
-        String startTime = event1.startTime;
-        String endDate = event1.endDate;
-        String endTime = event1.endTime;
-        String eventTitle = event1.eventTitle;
-        String eventDetail = event1.eventDetail;
+    public void sendPost() {
 
-        create("active",startDate, startTime, endDate, endTime, eventTitle, eventDetail);
-    }
-
-    private void create(String status, String startDate, String startTime, String endDate, String endTime, String eventTitle, String eventDetail) {
-        String urlSuffix = "?status=" + status +"&startDate=" + startDate + "&startTime=" + startTime + "&endDate=" + endDate + "&endTime=" + endTime
-                + "&title=" + eventTitle + "&detail=" + eventDetail;
-
-        class CreateEvent extends AsyncTask<String, Void, String> {
-
-            ProgressDialog loading;
-
+        Thread thread = new Thread(new Runnable() {
             @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                loading = ProgressDialog.show(EventCreate.this, "Please Wait", null, true, true);
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                loading.dismiss();
-                Toast.makeText(getApplicationContext(), "Registered", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            protected String doInBackground(String... strings) {
-                String s = strings[0];
-                BufferedReader bufferReader = null;
+            public void run() {
                 try {
-                    URL url = new URL(REGISTER_URL + s);
-                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                    con.setRequestMethod("POST");
-                    bufferReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                    String result;
-                    result = bufferReader.readLine();
-                    return result;
+                    URL url = new URL("https://w0044421.gblearn.com/stu_share/create_event.php");
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                    conn.setRequestProperty("Accept","application/json");
+                    conn.setDoOutput(true);
+                    conn.setDoInput(true);
+                    JSONObject jsonParam = new JSONObject();
+                    jsonParam.put("eventTitle", event1.eventTitle);
+                    jsonParam.put("organizerId", user.id);
+                    jsonParam.put("eventDetail",event1.eventDetail);
+                    Log.i("EVENTINFOCREATEPOST",event1.toString());
+                    jsonParam.put("endTime", txtEndTime.getText().toString());
+                    jsonParam.put("startTime", txtStTime.getText().toString());
+                    jsonParam.put("endDate", txtEndDate.getText().toString());
+                    jsonParam.put("startDate", txtStDate.getText().toString());
+                    Log.i("JSON", jsonParam.toString());
+                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+                    BufferedWriter writer = new BufferedWriter(
+                            new OutputStreamWriter(os, "UTF-8"));
+                    os.writeBytes(jsonParam.toString());
+                    os.flush();
+                    os.close();
+                    conn.connect();
+                    Log.i("STATUS", String.valueOf(conn.getResponseCode()));
+                    Log.i("MSG" , conn.getResponseMessage());
 
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    DataInputStream is=new DataInputStream(conn.getInputStream());
+
+                    StringBuilder total = new StringBuilder();
+                    String line;
+                    while ((line = in.readLine()) != null)
+                    {
+                        total.append(line).append('\n');
+                    }
+                    Log.d("TAG", "Server Response is: " + total.toString() + ": " );
+                    conn.disconnect();
                 } catch (Exception e) {
-                    return null;
+                    e.printStackTrace();
                 }
-            }
 
-        }
-        CreateEvent event = new CreateEvent();
-        event.execute(urlSuffix);
+            }
+        });
+        thread.start();
     }
 
     public void OpenMenuActivity(){

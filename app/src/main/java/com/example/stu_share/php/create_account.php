@@ -26,7 +26,7 @@
 			if(isset($check)){
 				echo 'username or email already exist';
 			}else{
-				$sql = "INSERT INTO user (email,password,first_name,last_name,college_code,program_code,registered_year,expire_year,status,question,answer,role)
+				$sql = "INSERT INTO user (email,password,firstName,lastName,collegeCode,programCode,registeredYear,expireYear,status,question,answer,role)
 						VALUES('$email','$password','$fname','$lname','$college_code','program_code','$registered_year','$graduation_year','active','$question','$answer','Student')";
 				if(mysqli_query($con,$sql)){
 					echo 'successfully registered';	

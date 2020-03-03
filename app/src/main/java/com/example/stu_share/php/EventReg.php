@@ -9,7 +9,7 @@
 
     $eventID = $nameJ->{'eventId'};
     
-	$sql = "INSERT INTO `event_reg` (`id`, `eventId`, `userId`, `status`) VALUES (NULL, '$eventID', '$userID', 'registered');";
+	$sql = "INSERT INTO `event_reg` ( `eventId`, `userId`, `status`) VALUES ( '$eventID', '$userID', 'registered');";
     echo $sql;
 	
     mysqli_query($con, $sql);

@@ -63,7 +63,7 @@ public class AdminEventDetail extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "you have successfully suspended the event",
                         Toast.LENGTH_LONG).show();
                 update("https://w0044421.gblearn.com/stu_share/EventSuspended.php");
-                update("https://w0044421.gblearn.com/stu_share/eventRegDeleteByAdmin.php");
+                //update("https://w0044421.gblearn.com/stu_share/eventRegDeleteByAdmin.php");
             }
         });
 

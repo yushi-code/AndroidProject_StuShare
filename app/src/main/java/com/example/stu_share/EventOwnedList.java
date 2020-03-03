@@ -161,34 +161,7 @@ public class EventOwnedList extends AppCompatActivity {
         getJSON.execute();
                 }
 
-//                //
-//                private void loadIntoListView(String json) throws JSONException {
-//                    JSONArray jsonArray = new JSONArray(json);
-//                    List<EventCoordinator.Event> eventL = new ArrayList<EventCoordinator.Event>();
-//
-//                    for (int i = 0; i < jsonArray.length(); i++) {
-//                        JSONObject obj = jsonArray.getJSONObject(i);
-//                        EventCoordinator.Event event1 = new EventCoordinator.Event();
-//
-//                        event1.setId( obj.getString("id"));
-//                        event1.setOrgID(obj.getString("organizerId"));
-//                        event1.setStatus(obj.getString("status"));
-//
-//                        event1.setStartDate(obj.getString("startDate"));
-//                        event1.setStartTime(obj.getString("startTime"));
-//                        event1.setEndDate(obj.getString("endDate"));
-//
-//                        event1.setEndTime(obj.getString("endTime"));
-//                        event1.setEventTitle(obj.getString("title"));
-//                        event1.setEventDetail(obj.getString("detail"));
-//
-//                        eventL.add(event1);
-//
-//                    }
-//                    ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, eventL);
-//                    listView.setAdapter(arrayAdapter);
-//                }
-    //
+
 
     private void loadIntoListView(String json) throws JSONException {
         JSONArray jsonArray = new JSONArray(json);

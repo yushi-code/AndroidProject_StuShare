@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bkgimg"
     tools:context=".EventPastDetail"
     tools:layout_editor_absoluteY="81dp">
 
@@ -35,6 +36,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#ECE9E5"
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/txtStTime" />
@@ -45,6 +47,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#ECE9E5"
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@+id/textView18"
         app:layout_constraintTop_toTopOf="@+id/textView18" />
@@ -55,6 +58,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#ECE9E5"
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="@+id/textView18" />
@@ -65,6 +69,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#ECE9E5"
         android:textSize="16dp"
         app:layout_constraintEnd_toStartOf="@+id/textView13"
         app:layout_constraintHorizontal_bias="0.0"
@@ -76,10 +81,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="39dp"
         android:text="Title"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#ECE9E5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnHome" />
 
@@ -88,9 +93,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:text="Event Title"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#ECE9E5"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -100,10 +105,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="60dp"
         android:text="Detail"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#ECE9E5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEventTitle" />
 
@@ -112,9 +117,9 @@
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:text="Time"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#ECE9E5"
         app:layout_constraintStart_toEndOf="@+id/txtStDate"
         app:layout_constraintTop_toTopOf="@+id/textView18" />
 
@@ -123,9 +128,9 @@
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:text="Time"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#ECE9E5"
         app:layout_constraintStart_toEndOf="@+id/txtEndDate"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
@@ -144,22 +149,22 @@
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="1dp"
         android:text="Start"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEventTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEventTitle"
+        android:textColor="#ECE9E5" />
 
     <TextView
         android:id="@+id/textView19"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="1dp"
         android:text="End"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#ECE9E5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
 

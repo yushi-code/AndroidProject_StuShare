@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bkgimg"
     tools:context=".AdminMessageDetail">
 
     <Button
@@ -23,6 +24,7 @@
         android:layout_marginTop="10dp"
         android:text="Subject:"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#ECE9E5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,6 +37,7 @@
         android:layout_marginTop="8dp"
         android:hint="e.g. Ride-Share from Scarborough"
         android:inputType="textEmailSubject"
+        android:textColor="#ECE9E5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView54" />
@@ -46,6 +49,7 @@
         android:layout_marginTop="20dp"
         android:text="Message:"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#ECE9E5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textMsgSubject_admin" />
@@ -57,6 +61,7 @@
         android:gravity="start|top"
         android:hint="Please call me at 333-444-5555."
         android:lines="10"
+        android:textColor="#ECE9E5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

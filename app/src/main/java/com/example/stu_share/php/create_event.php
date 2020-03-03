@@ -1,20 +1,25 @@
 <?php
 
 	require 'connection.php';
-	       
-    $organizer_id = $_GET['organizer_id'];
-    $status = $_GET['status'];	
-	$start_date = $_GET['startDate'];	
-	$start_time = $_GET['startTime'];
-	$end_date = $_GET['endDate'];
-	$end_time = $_GET['endTime'];	
-	$title = $_GET['title'];	
-	$detail = $_GET['detail'];
+	$nameJ=json_decode(file_get_contents('php://input'));
+    $organizer_id = $nameJ->{'organizerId'};
+    $status = $nameJ->{'status'};	
+	$start_date = $nameJ->{'startDate'};	
+	$start_time = $nameJ->{'startTime'};
+	$end_date = $nameJ->{'endDate'};
+	$end_time = $nameJ->{'endTime'};	
+	$title = $nameJ->{'eventTitle'};
+	$detail = $nameJ->{'eventDetail'};
+	
+	//New Attribute!This may require to get changed as the way code is generated.
+	$eventCode=$nameJ->{'eventCode'};
 	
 				
-	$sql = "INSERT INTO event (organizerId,status,startDate,startTime,endDate,endTime,title,detail)
-			VALUES('$organizer_id','$status','$start_date','$start_time','$end_date','$end_time','$title','$detail')";
+	$sql = "INSERT INTO event (eventCode,organizerId,status,startDate,startTime,endDate,endTime,title,detail)
+			VALUES('','$organizer_id','active','$start_date','$start_time','$end_date','$end_time','$title','$detail')";
+			echo $sql;
 	if(mysqli_query($con,$sql)){
+
 		echo 'successfully registered';	
 	}
 	else{				

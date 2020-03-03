@@ -59,23 +59,6 @@ public class Signup2 extends AppCompatActivity {
         });
     }
 
-    private void createUserAccount() {
-        userReg=(User)getIntent().getSerializableExtra("args");
-        userReg.setProgramCode(txtPC.getText().toString());
-        userReg.setRegisterYear(txtRY.getText().toString());
-        userReg.setExpireYear(txtExp.getText().toString());
-        String email = userReg.email;
-        String password = userReg.password;
-        String first_name = userReg.firstName;
-        String last_name = userReg.lastName;
-        String question = userReg.question;
-        String answer = userReg.answer;
-        String program_code = userReg.programCode;
-        String registered_year = userReg.registerYear;
-        String expire_year = userReg.expireYear;
-
-
-    }
     public void sendPost() {
 
         Thread thread = new Thread(new Runnable() {
@@ -139,50 +122,7 @@ public class Signup2 extends AppCompatActivity {
 
 
     }
-    private void createAccount(String email, String password, String firstName, String lastName, String collegeCode, String programCode, String registeredYear, String exprireYear,String status, String question, String answer, String role){
-        String urlSuffix = "?email=" + email + "&password=" + password + "&firstName=" + firstName + "&lastName=" + lastName + "&collegeCode=" + collegeCode + "&programCode=" + programCode
-                + "&registeredYear=" + registeredYear + "&expireYear=" + exprireYear +"&status=" + status + "&question=" + question + "&answer=" + answer +"&role=" + role;
-        Log.i("createAccount",urlSuffix);
-        class CreateUserAccount extends AsyncTask<String, Void, String> {
-            ProgressDialog loading;
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                loading = ProgressDialog.show(Signup2.this, "Please Wait", null, true, true);
-            }
 
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                loading.dismiss();
-                Toast.makeText(getApplicationContext(),"Registered", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(Menu.class, this);
-//                startActivity(intent);
-            }
-
-            @Override
-            protected String doInBackground(String... strings) {
-                String s = strings[0];
-                BufferedReader bufferReader=null;
-                try {
-                    URL url=new URL(REGISTER_URL+s);
-
-                    HttpURLConnection con=(HttpURLConnection)url.openConnection();
-                    con.setRequestMethod("POST");
-                    bufferReader=new BufferedReader(new InputStreamReader(con.getInputStream()));
-                    String result;
-                    result=bufferReader.readLine();
-                    return  result;
-
-                }catch (Exception e){
-                    return null;
-                }
-            }
-
-        }
-        CreateUserAccount account=new CreateUserAccount();
-        account.execute(urlSuffix);
-    }
 
     public void logout() {
         Intent intent = new Intent(this, MainActivity.class);

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bkgimg"
     tools:context=".EventRegDetail">
 
     <Button
@@ -34,6 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="text end time"
+        android:textColor="#ECE9E5"
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@+id/textView124"
         app:layout_constraintTop_toBottomOf="@+id/txtStTime123" />
@@ -44,6 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="start date"
+        android:textColor="#ECE9E5"
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@+id/textView128"
         app:layout_constraintTop_toTopOf="@+id/textView128" />
@@ -54,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="start time"
+        android:textColor="#ECE9E5"
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@+id/textView123"
         app:layout_constraintTop_toTopOf="@+id/textView128" />
@@ -64,6 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="end date"
+        android:textColor="#ECE9E5"
         android:textSize="16dp"
         app:layout_constraintEnd_toStartOf="@+id/textView13"
         app:layout_constraintHorizontal_bias="0.0"
@@ -75,10 +80,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="39dp"
         android:text="Event"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#ECE9E5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnHome" />
 
@@ -97,10 +102,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="60dp"
         android:text="Detail"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#ECE9E5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEventTitle123" />
 
@@ -109,9 +114,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="174dp"
-        android:layout_marginLeft="174dp"
         android:text="Time"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#ECE9E5"
         app:layout_constraintStart_toEndOf="@+id/textView128"
         app:layout_constraintTop_toTopOf="@+id/textView128" />
 
@@ -123,7 +128,8 @@
         android:text="Time"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="@+id/textView123"
-        app:layout_constraintTop_toBottomOf="@+id/textView123" />
+        app:layout_constraintTop_toBottomOf="@+id/textView123"
+        android:textColor="#ECE9E5" />
 
     <TextView
         android:id="@+id/txtEvtDetail123"
@@ -139,10 +145,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:text="Start"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#ECE9E5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView120" />
 
@@ -151,10 +157,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="6dp"
         android:text="End"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#ECE9E5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView128" />
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bkgimg"
     tools:context=".MainMenu"
     tools:layout_editor_absoluteY="81dp">
 
@@ -75,6 +76,7 @@
         android:layout_marginEnd="30dp"
         android:text="Welcome Here!"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="#ECE9E5"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

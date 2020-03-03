@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bkgimg"
     tools:context=".AdminEventDetail">
 
     <Button
@@ -33,7 +34,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="175dp"
-        android:layout_marginRight="175dp"
+        android:textColor="#ECE9E5"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -44,6 +45,7 @@
         android:id="@+id/txtStDate"
         android:layout_width="70dp"
         android:layout_height="20dp"
+        android:textColor="#ECE9E5"
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@+id/textView18"
         app:layout_constraintTop_toTopOf="@+id/textView18" />
@@ -52,6 +54,7 @@
         android:id="@+id/txtStTime"
         android:layout_width="70dp"
         android:layout_height="20dp"
+        android:textColor="#ECE9E5"
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="@+id/textView18" />
@@ -60,6 +63,7 @@
         android:id="@+id/txtEndDate"
         android:layout_width="70dp"
         android:layout_height="20dp"
+        android:textColor="#ECE9E5"
         android:textSize="16dp"
         app:layout_constraintEnd_toStartOf="@+id/textView13"
         app:layout_constraintHorizontal_bias="0.0"
@@ -84,9 +88,9 @@
         android:layout_width="wrap_content"
         android:layout_height="16dp"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:text="Event"
+        android:textColor="#ECE9E5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogout111" />
 
@@ -105,9 +109,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
         android:layout_marginTop="60dp"
         android:text="Detail"
+        android:textColor="#ECE9E5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEventTitle" />
 
@@ -116,8 +120,8 @@
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:text="Time"
+        android:textColor="#ECE9E5"
         app:layout_constraintStart_toEndOf="@+id/txtStDate"
         app:layout_constraintTop_toTopOf="@+id/textView18" />
 
@@ -126,9 +130,9 @@
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="6dp"
         android:text="Time"
+        android:textColor="#ECE9E5"
         app:layout_constraintStart_toEndOf="@+id/txtEndDate"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
@@ -137,10 +141,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:textColor="#ECE9E5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -151,9 +154,9 @@
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="70dp"
         android:text="Start"
+        android:textColor="#ECE9E5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogout111" />
 
@@ -164,7 +167,8 @@
         android:layout_marginTop="6dp"
         android:text="End"
         app:layout_constraintStart_toStartOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintTop_toBottomOf="@+id/textView18"
+        android:textColor="#ECE9E5" />
 
     <Button
         android:id="@+id/btnHome8"

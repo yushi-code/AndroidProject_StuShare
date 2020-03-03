@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bkgimg"
     tools:context=".ResetWithEmail">
 
     <TextView
@@ -11,11 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="140dp"
-        android:layout_marginLeft="140dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="140dp"
-        android:layout_marginRight="140dp"
         android:text="Please enter your email"
+        android:textColor="#ECE9E5"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,13 +26,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="140dp"
-        android:layout_marginLeft="140dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="140dp"
-        android:layout_marginRight="140dp"
         android:ems="10"
         android:hint="Please enter email here"
         android:inputType="textPersonName"
+        android:textColor="#ECE9E5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
