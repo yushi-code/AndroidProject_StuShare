@@ -27,6 +27,8 @@ import java.util.List;
 public class EventList extends AppCompatActivity {
     ListView listView;
 
+     EventAdapter mAdapter;
+
     Button btnHome, btnLogout12;
     private User user3;
 
@@ -131,7 +133,7 @@ public class EventList extends AppCompatActivity {
 
     private void loadIntoListView(String json) throws JSONException {
         JSONArray jsonArray = new JSONArray(json);
-        List<EventCoordinator.Event> eventL = new ArrayList<EventCoordinator.Event>();
+        ArrayList<EventCoordinator.Event> eventL = new ArrayList<EventCoordinator.Event>();
 
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
@@ -148,11 +150,16 @@ public class EventList extends AppCompatActivity {
             event1.setEndTime(obj.getString("endTime"));
             event1.setEventTitle(obj.getString("title"));
             event1.setEventDetail(obj.getString("detail"));
+            // a = obj.getString("imagePath");
+           //event1.setmImageDrawable(R.drawable.jif);
+            event1.setmImageDrawable((obj.getString("imagePath")));
 
             eventL.add(event1);
         }
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, eventL);
-        listView.setAdapter(arrayAdapter);
+//        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, eventL);
+//        listView.setAdapter(arrayAdapter);
+        mAdapter = new EventAdapter(this, eventL);
+        listView.setAdapter(mAdapter);
     }
 
 }
