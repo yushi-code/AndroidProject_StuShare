@@ -11,9 +11,9 @@ public class PicassoClient {
     {
         if(imageUrl.length()>0 && imageUrl!=null)
         {
-            Picasso.with(c).load(imageUrl).placeholder(R.drawable.placeholder).into(img);
+            Picasso.with(c).load(imageUrl).placeholder(R.drawable.jif).into(img);
         }else {
-            Picasso.with(c).load(R.drawable.placeholder).into(img);
+            Picasso.with(c).load(R.drawable.jif).into(img);
         }
     }
 

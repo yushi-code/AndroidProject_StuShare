@@ -154,6 +154,7 @@ public class EventList extends AppCompatActivity {
            //event1.setmImageDrawable(R.drawable.jif);
             event1.setmImageDrawable((obj.getString("imagePath")));
 
+
             eventL.add(event1);
         }
 //        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, eventL);

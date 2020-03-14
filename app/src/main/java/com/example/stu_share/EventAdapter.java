@@ -41,6 +41,7 @@ public class EventAdapter extends ArrayAdapter<EventCoordinator.Event> {
 
        // ImageView image = (ImageView)listItem.findViewById(R.id.imageView_poster);
         ImageView image = (ImageView)listItem.findViewById(R.id.imageView_poster);
+        //\
         PicassoClient.downloadImage(mContext,currentEvent.getmImageDrawable(), image);
         //image.setImageResource(currentEvent.getmImageDrawable());
 
