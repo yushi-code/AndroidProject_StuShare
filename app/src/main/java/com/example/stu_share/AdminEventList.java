@@ -27,6 +27,7 @@ import java.util.List;
 
 public class AdminEventList extends AppCompatActivity {
     Button btnLogout, btnHome;
+    EventAdapter mAdapter;
     ListView listView;
     DBHelper dbHelper=null;
     private User user;
@@ -130,7 +131,7 @@ public class AdminEventList extends AppCompatActivity {
 
     private void loadIntoListView(String json) throws JSONException {
         JSONArray jsonArray = new JSONArray(json);
-        List<EventCoordinator.Event> eventL = new ArrayList<EventCoordinator.Event>();
+        ArrayList<EventCoordinator.Event> eventL = new ArrayList<EventCoordinator.Event>();
         String[] stocks = new String[jsonArray.length()];
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
@@ -147,6 +148,7 @@ public class AdminEventList extends AppCompatActivity {
             event1.setEndTime(obj.getString("endTime"));
             event1.setEventTitle(obj.getString("title"));
             event1.setEventDetail(obj.getString("detail"));
+            event1.setmImageDrawable((obj.getString("imagePath")));
 
             eventL.add(event1);
             //userShort[i] = user1.getFirstName() + " " + user1.getLastName();
@@ -155,8 +157,10 @@ public class AdminEventList extends AppCompatActivity {
             //stocks[i] = obj.getString("title") + " " + obj.getString("detail");
 
         }
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, eventL);
-        listView.setAdapter(arrayAdapter);
+//        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, eventL);
+//        listView.setAdapter(arrayAdapter);
+        mAdapter = new EventAdapter(this, eventL);
+        listView.setAdapter(mAdapter);
     }
 
 
