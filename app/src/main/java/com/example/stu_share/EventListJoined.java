@@ -23,6 +23,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ import java.util.List;
 public class EventListJoined extends AppCompatActivity {
     Button btnLogout, btnHome;
     ListView listView;
+    EventAdapter mAdapter;
     private User user ;
 
     public static  List<EventCoordinator.Event> evt = new ArrayList<EventCoordinator.Event>();
@@ -55,8 +57,8 @@ public class EventListJoined extends AppCompatActivity {
         user=(User)getIntent().getSerializableExtra("user");
         listView = (ListView) findViewById(R.id.listView2323);
         downloadJSON("https://w0044421.gblearn.com/stu_share/EventsRegistered.php");
-        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,evt);
-        listView.setAdapter(arrayAdapter);
+        //final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,evt);
+        //listView.setAdapter(arrayAdapter);
         Log.d("TAG","LISTJOINEVENT"+user.id);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
@@ -141,7 +143,7 @@ public class EventListJoined extends AppCompatActivity {
 
     private void loadIntoListView(String json) throws JSONException {
         JSONArray jsonArray = new JSONArray(json);
-        List<EventCoordinator.Event> eventL = new ArrayList<EventCoordinator.Event>();
+        ArrayList<EventCoordinator.Event> eventL = new ArrayList<EventCoordinator.Event>();
 
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
@@ -158,12 +160,14 @@ public class EventListJoined extends AppCompatActivity {
             event1.setEndTime(obj.getString("endTime"));
             event1.setEventTitle(obj.getString("title"));
             event1.setEventDetail(obj.getString("detail"));
-
+            event1.setmImageDrawable((obj.getString("imagePath")));
             eventL.add(event1);
 
         }
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, eventL);
-        listView.setAdapter(arrayAdapter);
+//        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, eventL);
+//        listView.setAdapter(arrayAdapter);
+        mAdapter = new EventAdapter(this, eventL);
+        listView.setAdapter(mAdapter);
     }
 
     public void sendPost(final List<EventCoordinator.Event>evt) {

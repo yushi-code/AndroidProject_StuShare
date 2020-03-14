@@ -31,6 +31,8 @@ import java.util.List;
 public class EventPastList extends AppCompatActivity {
     private Button btnLogout, btnHome;
     ListView listView;
+
+    EventAdapter mAdapter;
     //DBHelper dbHelper=null;
     private User user;
     public static  List<EventCoordinator.Event> evt = new ArrayList<EventCoordinator.Event>();
@@ -60,7 +62,7 @@ public class EventPastList extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.listV);
         downloadJSON("https://w0044421.gblearn.com/stu_share/EventsView_PastEvents.php");
-        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,EventCoordinator.EVENTS);
+        //final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,EventCoordinator.EVENTS);
         //listView.setAdapter(arrayAdapter);
         user=(User)getIntent().getSerializableExtra("user");
         Log.d("TAG","OwnedEvent"+user.id);
@@ -179,7 +181,7 @@ public class EventPastList extends AppCompatActivity {
 
     private void loadIntoListView(String json) throws JSONException {
         JSONArray jsonArray = new JSONArray(json);
-        List<EventCoordinator.Event> eventL = new ArrayList<EventCoordinator.Event>();
+        ArrayList<EventCoordinator.Event> eventL = new ArrayList<EventCoordinator.Event>();
         //String[] stocks = new String[jsonArray.length()];
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
@@ -196,6 +198,7 @@ public class EventPastList extends AppCompatActivity {
             event1.setEndTime(obj.getString("endTime"));
             event1.setEventTitle(obj.getString("title"));
             event1.setEventDetail(obj.getString("detail"));
+            event1.setmImageDrawable((obj.getString("imagePath")));
 
             eventL.add(event1);
             //userShort[i] = user1.getFirstName() + " " + user1.getLastName();
@@ -204,8 +207,10 @@ public class EventPastList extends AppCompatActivity {
             //stocks[i] = obj.getString("title") + " " + obj.getString("detail");
 
         }
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, eventL);
-        listView.setAdapter(arrayAdapter);
+        //ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, eventL);
+        //listView.setAdapter(arrayAdapter);
+        mAdapter = new EventAdapter(this, eventL);
+        listView.setAdapter(mAdapter);
     }
 
     public void sendPost(final List<EventCoordinator.Event>evt) {
