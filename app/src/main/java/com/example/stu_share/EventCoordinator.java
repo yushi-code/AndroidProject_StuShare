@@ -34,6 +34,8 @@ public class EventCoordinator {
         public  String eventTitle;
         public  String eventDetail;
 
+        public String mImageDrawable;
+
         public Event(){
 
         }
@@ -111,7 +113,11 @@ public class EventCoordinator {
             return eventDetail;
         }
 
-        public Event(String id, String orgID, String status, String startDate, String startTime, String endDate, String endTime, String eventTitle, String eventDetail) {
+
+
+        public Event( String id, String orgID, String status, String startDate,
+                     String startTime, String endDate, String endTime,
+                      String eventTitle, String eventDetail, String mImageDrawable) {
             this.id=id;
             this.orgID = orgID;
             this.status = status;
@@ -121,6 +127,14 @@ public class EventCoordinator {
             this.endTime = endTime;
             this.eventTitle = eventTitle;
             this.eventDetail = eventDetail;
+            this.mImageDrawable = mImageDrawable;
+        }
+        public String getmImageDrawable() {
+            return mImageDrawable;
+        }
+
+        public void setmImageDrawable(String mImageDrawable) {
+            this.mImageDrawable = mImageDrawable;
         }
 
 
