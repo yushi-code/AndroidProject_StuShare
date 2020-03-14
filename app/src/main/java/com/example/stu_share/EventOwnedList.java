@@ -31,6 +31,7 @@ import java.util.List;
 public class EventOwnedList extends AppCompatActivity {
     private Button btnCancel, btnEdit, btnViewAttend, btnCheckIn, btnLogout, btnHome;
     ListView listView;
+    EventAdapter mAdapter;
     //DBHelper dbHelper=null;
     private User user;
     public static  List<EventCoordinator.Event> evt = new ArrayList<EventCoordinator.Event>();
@@ -61,7 +62,7 @@ public class EventOwnedList extends AppCompatActivity {
 //        dbHelper.updateEventList(db,dbHelper.getEventCursorOwn(db,args[0]));
         listView = (ListView) findViewById(R.id.listV1);
         downloadJSON("https://w0044421.gblearn.com/stu_share/EventView_Owned_Events.php");
-        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, evt);
+        //final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, evt);
         //listView.setAdapter(arrayAdapter);
         user=(User)getIntent().getSerializableExtra("user");
         Log.d("TAG","OwnedEvent"+user.id);
@@ -165,7 +166,7 @@ public class EventOwnedList extends AppCompatActivity {
 
     private void loadIntoListView(String json) throws JSONException {
         JSONArray jsonArray = new JSONArray(json);
-        List<EventCoordinator.Event> eventL = new ArrayList<EventCoordinator.Event>();
+        ArrayList<EventCoordinator.Event> eventL = new ArrayList<EventCoordinator.Event>();
         //String[] stocks = new String[jsonArray.length()];
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
@@ -182,7 +183,7 @@ public class EventOwnedList extends AppCompatActivity {
             event1.setEndTime(obj.getString("endTime"));
             event1.setEventTitle(obj.getString("title"));
             event1.setEventDetail(obj.getString("detail"));
-
+            event1.setmImageDrawable((obj.getString("imagePath")));
             eventL.add(event1);
             //userShort[i] = user1.getFirstName() + " " + user1.getLastName();
 
@@ -190,8 +191,10 @@ public class EventOwnedList extends AppCompatActivity {
             //stocks[i] = obj.getString("title") + " " + obj.getString("detail");
 
         }
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, eventL);
-        listView.setAdapter(arrayAdapter);
+//        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, eventL);
+//        listView.setAdapter(arrayAdapter);
+        mAdapter = new EventAdapter(this, eventL);
+        listView.setAdapter(mAdapter);
     }
 
     public void sendPost(final List<EventCoordinator.Event>evt) {
