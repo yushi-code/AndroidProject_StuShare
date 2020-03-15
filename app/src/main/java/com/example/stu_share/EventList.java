@@ -1,17 +1,21 @@
 package com.example.stu_share;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventList extends AppCompatActivity {
-    ListView listView;
+     ListView listView;
 
      EventAdapter mAdapter;
 
@@ -39,7 +43,36 @@ public class EventList extends AppCompatActivity {
         downloadJSON("https://w0044421.gblearn.com/stu_share/EventView_Status_Active.php");
         listView = (ListView) findViewById(R.id.listview);
 //        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,EventCoordinator.EVENTS);
-//        listView.setAdapter(arrayAdapter);
+ //       listView.setAdapter(mAdapter);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        OpenMenuActivity();
+                        break;
+                    case R.id.action_message:
+                        Intent intent = new Intent(getBaseContext(), MessageList.class);
+//              intent.putExtra("args", userReg);
+                        intent.putExtra("user",user3);
+                        startActivity(intent);
+                        break;
+                    case R.id.action_myevents:
+                        openMyEventsActivity();
+                        break;
+
+                    case R.id.action_profile:
+                        Intent i= new Intent(getBaseContext(),MyProfile.class);
+                        i.putExtra("user",user3);
+                        startActivity(i);
+                        break;
+                }
+                return false;
+            }
+        });
+
 
         user3=(User)getIntent().getSerializableExtra("user");
         Log.d("MYMENU","my menu user ID"+user3.id);
@@ -81,6 +114,12 @@ public class EventList extends AppCompatActivity {
         intent.putExtra("user",user3);
         startActivity(intent);
     }
+    public void openMyEventsActivity(){
+        Intent intent =new Intent(this, EventMyEvents.class);
+        intent.putExtra("user",user3);
+        Log.d("TAG","Menu to MyEvent"+user3.id);
+        startActivity(intent);
+    }
 
     public void OpenMenuActivity() {
         Intent intent = new Intent(this, EventMenu.class);
@@ -100,7 +139,7 @@ public class EventList extends AppCompatActivity {
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                 try {
                     loadIntoListView(s);
                 } catch (JSONException e) {

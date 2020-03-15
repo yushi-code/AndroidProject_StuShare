@@ -91,6 +91,15 @@ public class User implements Serializable {
     public  String answer;
     public  String role;
     public  String status;
+    public String mImageDrawable;
+
+    public String getmImageDrawable() {
+        return mImageDrawable;
+    }
+
+    public void setmImageDrawable(String mImageDrawable) {
+        this.mImageDrawable = mImageDrawable;
+    }
 
     @Override
     public String toString() {
@@ -113,7 +122,7 @@ public class User implements Serializable {
 
     public User(String id, String email, String pswd, String fn, String ln, String collegeCode,
                 String programCode, String registerYear, String expYear, String question,
-                String answer, String role, String status ){
+                String answer, String role, String status, String mImageDrawable ){
         this.id=id;
         this.email=email;
         this.password=pswd;
@@ -127,6 +136,7 @@ public class User implements Serializable {
         this.answer=answer;
         this.role=role;
         this.status=status;
+        this.mImageDrawable = mImageDrawable;
     }
 
 
