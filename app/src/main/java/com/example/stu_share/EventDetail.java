@@ -1,14 +1,18 @@
 package com.example.stu_share;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,6 +38,34 @@ public class EventDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_detail);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        OpenMenuActivity();
+                        break;
+                    case R.id.action_message:
+                        Intent intent = new Intent(getBaseContext(), MessageList.class);
+//              intent.putExtra("args", userReg);
+                        intent.putExtra("user",user2);
+                        startActivity(intent);
+                        break;
+                    case R.id.action_myevents:
+                        openMyEventsActivity();
+                        break;
+
+                    case R.id.action_profile:
+                        Intent i= new Intent(getBaseContext(),MyProfile.class);
+                        i.putExtra("user",user2);
+                        startActivity(i);
+                        break;
+                }
+                return false;
+            }
+        });
         btnJoin = findViewById(R.id.btnJoin);
         btnLogout = findViewById(R.id.btnLogout2);
         btnHome3 = findViewById(R.id.btnHome3);
@@ -170,6 +202,12 @@ public class EventDetail extends AppCompatActivity {
     public void OpenMenuActivity() {
         Intent intent = new Intent(this, EventMenu.class);
         intent.putExtra("user",user2);
+        startActivity(intent);
+    }
+    public void openMyEventsActivity(){
+        Intent intent =new Intent(this, EventMyEvents.class);
+        intent.putExtra("user",user2);
+        Log.d("TAG","Menu to MyEvent"+user2.id);
         startActivity(intent);
     }
 }

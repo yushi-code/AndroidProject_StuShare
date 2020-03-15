@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -17,7 +18,10 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONObject;
 
@@ -58,6 +62,35 @@ public class EventCreate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        OpenMenuActivity();
+                        break;
+                    case R.id.action_message:
+                        Intent intent = new Intent(getBaseContext(), MessageList.class);
+//              intent.putExtra("args", userReg);
+                        intent.putExtra("user",user);
+                        startActivity(intent);
+                        break;
+                    case R.id.action_myevents:
+                        openMyEventsActivity();
+                        break;
+
+                    case R.id.action_profile:
+                        Intent i= new Intent(getBaseContext(),MyProfile.class);
+                        i.putExtra("user",user);
+                        startActivity(i);
+                        break;
+                }
+                return false;
+            }
+        });
 
         startDisplayDate = findViewById(R.id.txtStDate);
         endDisplayDate = findViewById(R.id.txtEndDate);
@@ -314,6 +347,12 @@ public class EventCreate extends AppCompatActivity {
 
     public void logout(){
         Intent intent =new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    public void openMyEventsActivity(){
+        Intent intent =new Intent(this, EventMyEvents.class);
+        intent.putExtra("user",user);
+        Log.d("TAG","Menu to MyEvent"+user.id);
         startActivity(intent);
     }
 }

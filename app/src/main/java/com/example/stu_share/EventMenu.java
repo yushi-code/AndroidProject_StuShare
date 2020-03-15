@@ -3,10 +3,14 @@ package com.example.stu_share;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class EventMenu extends AppCompatActivity {
         private Button btnMyEvents, btnViewEvents,btnCrtEvt, btnHome, btnLogout;
@@ -63,8 +67,40 @@ public class EventMenu extends AppCompatActivity {
             }
         });
 
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        break;
+                    case R.id.action_message:
+                        Intent intent = new Intent(getBaseContext(), MessageList.class);
+//              intent.putExtra("args", userReg);
+                        intent.putExtra("user",user1);
+                        startActivity(intent);
+                        break;
+                    case R.id.action_myevents:
+                        openMyEventsActivity();
+                        break;
+
+                    case R.id.action_profile:
+                        Intent i= new Intent(getBaseContext(),MyProfile.class);
+                        i.putExtra("user",user1);
+                        startActivity(i);
+                        break;
+                }
+                return false;
+            }
+        });
+
+
 
     }
+
+
+
     public void openMyEventsActivity(){
         Intent intent =new Intent(this, EventMyEvents.class);
         intent.putExtra("user",user1);
