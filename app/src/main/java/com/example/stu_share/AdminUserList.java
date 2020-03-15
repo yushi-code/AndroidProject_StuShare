@@ -20,11 +20,13 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdminUserList extends AppCompatActivity {
     Button btnLogout, btnHome;
+    UserAdapter mAdapter;
     ListView listView;
     private User user1;
     TextView txt;
@@ -124,7 +126,7 @@ public class AdminUserList extends AppCompatActivity {
 
     private void loadIntoListView(String json) throws JSONException {
         JSONArray jsonArray = new JSONArray(json);
-        List<User> userL = new ArrayList<User>();
+        ArrayList<User> userL = new ArrayList<User>();
         String[] stocks = new String[jsonArray.length()];
         String[] userShort = new String[jsonArray.length()];
 
@@ -146,13 +148,17 @@ public class AdminUserList extends AppCompatActivity {
             user1.setQuestion(obj.getString("question"));
             user1.setAnswer( obj.getString("answer"));
             user1.setRole( obj.getString("role"));
+            user1.setmImageDrawable((obj.getString("imagePath")));
             userL.add(user1);
             userShort[i] = user1.getFirstName() + " " + user1.getLastName();
             stocks[i] = user1.getFirstName() ;
 
         }
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, userL);
-        listView.setAdapter(arrayAdapter);
+//        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, userL);
+//        listView.setAdapter(arrayAdapter);
+        mAdapter = new UserAdapter(this, userL);
+        listView.setAdapter(mAdapter);
+
 
     }
 }
