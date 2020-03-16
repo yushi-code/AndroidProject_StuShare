@@ -38,19 +38,12 @@ public class EventAdapter extends ArrayAdapter<EventCoordinator.Event> {
             listItem = LayoutInflater.from(mContext).inflate(R.layout.list_item,parent,false);
 
         EventCoordinator.Event currentEvent = eventList.get(position);
-
-       // ImageView image = (ImageView)listItem.findViewById(R.id.imageView_poster);
         ImageView image = (ImageView)listItem.findViewById(R.id.imageView_poster);
-        //\
         PicassoClient.downloadImage(mContext,currentEvent.getmImageDrawable(), image);
-        //image.setImageResource(currentEvent.getmImageDrawable());
-
         TextView name = (TextView) listItem.findViewById(R.id.textView_name);
         name.setText(currentEvent.getEventTitle());
-
         TextView release = (TextView) listItem.findViewById(R.id.textView_release);
         release.setText(currentEvent.getEventDetail());
-
         return listItem;
     }
 }

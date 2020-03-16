@@ -6,12 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,7 +25,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -30,23 +37,38 @@ import java.util.List;
 
 public class EventList extends AppCompatActivity {
      ListView listView;
-
      EventAdapter mAdapter;
-
-    Button btnHome, btnLogout12;
-    private User user3;
-
+     Button btnHome, btnLogout12;
+     private User user3;
+    EditText txtS;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_list);
-        downloadJSON("https://w0044421.gblearn.com/stu_share/EventView_Status_Active.php");
-        listView = (ListView) findViewById(R.id.listview);
-//        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,EventCoordinator.EVENTS);
- //       listView.setAdapter(mAdapter);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        txtS=findViewById(R.id.txtSearch);
 
+        downloadJSON("https://w0044421.gblearn.com/stu_share/EventView_Status_Active.php","");
+        listView = (ListView) findViewById(R.id.listview);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        txtS.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                //EventList.this.mAdapter.getFilter().filter(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String url="https://w0044421.gblearn.com/stu_share/SearchEvent.php";
+                downloadJSON(url,s.toString());
+            }
+        });
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
@@ -55,7 +77,6 @@ public class EventList extends AppCompatActivity {
                         break;
                     case R.id.action_message:
                         Intent intent = new Intent(getBaseContext(), MessageList.class);
-//              intent.putExtra("args", userReg);
                         intent.putExtra("user",user3);
                         startActivity(intent);
                         break;
@@ -127,7 +148,8 @@ public class EventList extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void downloadJSON(final String urlWebService) {
+    private void downloadJSON(final String urlWebService,final String keywords) {
+        Log.i("KEYWORDS","Keyword is: "+keywords);
 
         class DownloadJSON extends AsyncTask<Void, Void, String> {
 
@@ -151,17 +173,38 @@ public class EventList extends AppCompatActivity {
             protected String doInBackground(Void... voids) {
                 try {
                     URL url = new URL(urlWebService);
-                    HttpURLConnection con = (HttpURLConnection)url.openConnection();
-                    con.setRequestMethod("POST");
-                    StringBuilder sb = new StringBuilder();
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                    String json;
-                    while ((json = bufferedReader.readLine()) != null) {
-                        sb.append(json + "\n");
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                    conn.setRequestProperty("Accept","application/json");
+                    conn.setDoOutput(true);
+                    conn.setDoInput(true);
+
+                    JSONObject jsonParam = new JSONObject();
+                    jsonParam.put("keyword", keywords);
+                    Log.i("JSON", jsonParam.toString());
+                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+                    BufferedWriter writer = new BufferedWriter(
+                            new OutputStreamWriter(os, "UTF-8"));
+                    os.writeBytes(jsonParam.toString());
+                    os.flush();
+                    os.close();
+                    conn.connect();
+                    Log.i("STATUS", String.valueOf(conn.getResponseCode()));
+                    Log.i("MSG" , conn.getResponseMessage());
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    DataInputStream is=new DataInputStream(conn.getInputStream());
+                    StringBuilder total = new StringBuilder();
+                    String line;
+                    while ((line = in.readLine()) != null)
+                    {
+                        total.append(line).append('\n');
                     }
-                    Log.d("LIST",sb.toString());
-                    return sb.toString().trim();
+                    Log.d("TAG", "Server Response is: " + total.toString() + ": " );
+                    //loadIntoListView(total.toString().trim(),evt);
+                    return total.toString().trim();
                 } catch (Exception e) {
+                    e.printStackTrace();
                     return null;
                 }
             }
