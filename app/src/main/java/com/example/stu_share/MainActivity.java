@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(i);
                         }
                         else{
-                        Intent i=new Intent(getBaseContext(), MainMenu.class);
+                        Intent i=new Intent(getBaseContext(), EventList.class);
                         createCars();
                         createRooms();
                         createMessageList();
