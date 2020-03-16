@@ -3,10 +3,12 @@
     require 'connection.php';
         $nameJ=json_decode(file_get_contents('php://input'));
  $title=$nameJ->{'keyword'};
+    if(empty($title)){
+    $sql="SELECT * FROM event WHERE status LIKE 'active';";
+    }else{
+	$sql = "SELECT * FROM  event WHERE title like '%$title%' AND status LIKE 'active';";}
 
-	$sql = "SELECT * FROM  event WHERE title='$title';";
-
-
+// echo $sql;
 	if ($result = mysqli_query($con, $sql)){
 		 
 		 $resultArray = array();

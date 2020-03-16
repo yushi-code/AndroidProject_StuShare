@@ -3,6 +3,7 @@ package com.example.stu_share;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -39,7 +41,7 @@ public class EventList extends AppCompatActivity {
      ListView listView;
      EventAdapter mAdapter;
      Button btnHome, btnLogout12;
-     private User user3;
+     private static User user3;
     EditText txtS;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,7 +131,39 @@ public class EventList extends AppCompatActivity {
         });
 
     }
+    public boolean onTouchEvent(MotionEvent touchEvent){
+        return onTouchEvent(touchEvent,getApplicationContext());
+    }
+    public static float x1,x2,y1,y2;
 
+    //To allow swipe left or right gesure
+    public static boolean onTouchEvent(MotionEvent touchEvent, Context context){
+        switch(touchEvent.getAction()){
+            //Start point
+            case MotionEvent.ACTION_DOWN:
+                x1 = touchEvent.getX();
+                y1 = touchEvent.getY();
+                break;
+            //End point
+            case MotionEvent.ACTION_UP:
+                x2 = touchEvent.getX();
+                y2 = touchEvent.getY();
+                if(x1 < x2){
+                    Intent i = new Intent(context, MyProfile.class);
+                    i.putExtra("user",user3);
+                    //Regular class call activity need use .setFlags method
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(i);
+                }else if(x1 >  x2){
+                    Intent i = new Intent(context, EventMyEvents.class);
+                    i.putExtra("user",user3);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(i);
+                }
+                break;
+        }
+        return false;
+    }
     public void logout(){
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("user",user3);

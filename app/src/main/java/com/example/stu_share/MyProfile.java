@@ -1,6 +1,8 @@
 package com.example.stu_share;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MyProfile extends AppCompatActivity {
     Button btnHome4, btnLogout4, btnEdit;
     TextView txtFn,txtLn,txtEm,txtQ;
-    private User userTemp;
+    private static User userTemp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,5 +69,44 @@ public class MyProfile extends AppCompatActivity {
     public void logout(){
         Intent intent =new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+    public boolean onTouchEvent(MotionEvent touchEvent){
+        return onTouchEvent(touchEvent,getApplicationContext());
+    }
+    public static float x1,x2,y1,y2;
+
+    //To allow swipe left or right gesure
+    public static boolean onTouchEvent(MotionEvent touchEvent, Context context){
+        switch(touchEvent.getAction()){
+            //Start point
+            case MotionEvent.ACTION_DOWN:
+                x1 = touchEvent.getX();
+                y1 = touchEvent.getY();
+                break;
+            //End point
+            case MotionEvent.ACTION_UP:
+                x2 = touchEvent.getX();
+                y2 = touchEvent.getY();
+                Class cc;
+                if(x1 < x2){
+                    if(userTemp.role.equals("admin")){
+                        cc = AdminDashboard.class;
+                    }else{
+                        cc=EventMyEvents.class;
+                    }
+                    Intent i = new Intent(context,cc );
+                    i.putExtra("user",userTemp);
+                    //Regular class call activity need use .setFlags method
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(i);
+                }else if(x1 >  x2){
+                    Intent i = new Intent(context, EventList.class);
+                    i.putExtra("user",userTemp);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(i);
+                }
+                break;
+        }
+        return false;
     }
 }

@@ -1,9 +1,11 @@
 package com.example.stu_share;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,7 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class EventMyEvents extends AppCompatActivity {
     private Button  btnOwnedEvents, btnPstEvt,btnJoin,btnCreateEvent,btnHome, btnLogout,btnReg;
-    private User user;
+    private static User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -147,5 +149,38 @@ public class EventMyEvents extends AppCompatActivity {
         intent.putExtra("user",user);
         startActivity(intent);
     }
+    public boolean onTouchEvent(MotionEvent touchEvent){
+        return onTouchEvent(touchEvent,getApplicationContext());
+    }
+    public static float x1,x2,y1,y2;
 
+    //To allow swipe left or right gesure
+    public static boolean onTouchEvent(MotionEvent touchEvent, Context context){
+        switch(touchEvent.getAction()){
+            //Start point
+            case MotionEvent.ACTION_DOWN:
+                x1 = touchEvent.getX();
+                y1 = touchEvent.getY();
+                break;
+            //End point
+            case MotionEvent.ACTION_UP:
+                x2 = touchEvent.getX();
+                y2 = touchEvent.getY();
+                if(x1 < x2){
+
+                    Intent i = new Intent(context,EventList.class );
+                    i.putExtra("user",user);
+                    //Regular class call activity need use .setFlags method
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(i);
+                }else if(x1 >  x2){
+                    Intent i = new Intent(context, MyProfile.class);
+                    i.putExtra("user",user);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(i);
+                }
+                break;
+        }
+        return false;
+    }
 }
