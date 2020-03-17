@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -40,33 +41,43 @@ import java.util.List;
 public class EventList extends AppCompatActivity {
      ListView listView;
      EventAdapter mAdapter;
-     Button btnHome, btnLogout12;
+     Button btnHome, btnLogout12,btnSpinner;
      private static User user3;
     EditText txtS;
+    Spinner spinner;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_list);
         txtS=findViewById(R.id.txtSearch);
-
-        downloadJSON("https://w0044421.gblearn.com/stu_share/EventView_Status_Active.php","");
+        spinner=findViewById(R.id.spinner1);
+        btnSpinner=findViewById(R.id.btnSpinnerSelect);
+        btnSpinner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text = spinner.getSelectedItem().toString();
+                String url="https://w0044421.gblearn.com/stu_share/EventView_Sort.php";
+                downloadJSON(url,text);
+                Toast.makeText(getApplicationContext(),text,Toast.LENGTH_LONG).show();
+            }
+        });
+        String url="https://w0044421.gblearn.com/stu_share/EventView_Status_Active.php";
+        downloadJSON(url,"");
         listView = (ListView) findViewById(R.id.listview);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         txtS.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                //EventList.this.mAdapter.getFilter().filter(null);
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                String url="https://w0044421.gblearn.com/stu_share/SearchEvent.php";
+                String url="https://w0044421.gblearn.com/stu_share/Event_Search.php";
                 downloadJSON(url,s.toString());
             }
         });
@@ -246,7 +257,6 @@ public class EventList extends AppCompatActivity {
         DownloadJSON getJSON = new DownloadJSON();
         getJSON.execute();
     }
-
     private void loadIntoListView(String json) throws JSONException {
         JSONArray jsonArray = new JSONArray(json);
         ArrayList<EventCoordinator.Event> eventL = new ArrayList<EventCoordinator.Event>();
@@ -254,27 +264,18 @@ public class EventList extends AppCompatActivity {
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
             EventCoordinator.Event event1 = new EventCoordinator.Event();
-
             event1.setId( obj.getString("id"));
             event1.setOrgID(obj.getString("organizerId"));
             event1.setStatus(obj.getString("status"));
-
             event1.setStartDate(obj.getString("startDate"));
             event1.setStartTime(obj.getString("startTime"));
             event1.setEndDate(obj.getString("endDate"));
-
             event1.setEndTime(obj.getString("endTime"));
             event1.setEventTitle(obj.getString("title"));
             event1.setEventDetail(obj.getString("detail"));
-            // a = obj.getString("imagePath");
-           //event1.setmImageDrawable(R.drawable.jif);
             event1.setmImageDrawable((obj.getString("imagePath")));
-
-
             eventL.add(event1);
         }
-//        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, eventL);
-//        listView.setAdapter(arrayAdapter);
         mAdapter = new EventAdapter(this, eventL);
         listView.setAdapter(mAdapter);
     }

@@ -36,7 +36,7 @@ public class EventCoordinator {
 
         public String mImageDrawable;
 
-        public Event(){
+        public Event() {
 
         }
 

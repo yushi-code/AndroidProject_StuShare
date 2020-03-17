@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="country_prompt">Choose a country</string>
+    <string-array name="column_name">
+        <item>Title</item>
+        <item>Start Date</item>
+        <item>Most recent</item>
+    </string-array>
+</resources>

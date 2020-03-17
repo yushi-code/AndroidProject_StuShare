@@ -13,8 +13,7 @@
 		 
 		 $resultArray = array();
 		 $tempArray = array();
-		 
-		
+
 		 while($row = $result->fetch_object())
 		 {
 		 $tempArray = $row;
