@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -38,6 +39,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class EventList extends AppCompatActivity {
      ListView listView;
      EventAdapter mAdapter;
@@ -46,11 +50,21 @@ public class EventList extends AppCompatActivity {
     EditText txtS;
     Spinner spinner;
 
+    @BindView(R.id.toolbar)
+    public Toolbar toolBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_list);
+
+        ButterKnife.bind(this);
+
+        toolBar.setTitle(getResources().getString(R.string.Events));
+        setSupportActionBar(toolBar);
+
+        DrawerUtil.getDrawer(this,toolBar);
+
         txtS=findViewById(R.id.txtSearch);
         spinner=findViewById(R.id.spinner1);
         btnSpinner=findViewById(R.id.btnSpinnerSelect);
@@ -125,21 +139,21 @@ public class EventList extends AppCompatActivity {
             }
         });
 
-        btnHome = findViewById(R.id.btnHome);
-        btnLogout12 = findViewById(R.id.btnLogout12);
-        btnLogout12.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logout();
-            }
-        });
+//        btnHome = findViewById(R.id.btnHome);
+//        btnLogout12 = findViewById(R.id.btnLogout12);
+//        btnLogout12.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                logout();
+//            }
+//        });
 
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                OpenMenuActivity();
-            }
-        });
+//        btnHome.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                OpenMenuActivity();
+//            }
+//        });
 
     }
     public boolean onTouchEvent(MotionEvent touchEvent){
