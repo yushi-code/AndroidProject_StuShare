@@ -21,17 +21,17 @@ public class DrawerUtil {
         drawerEmptyItem.withEnabled(false);
 
         PrimaryDrawerItem drawerItemManagePlayers = new PrimaryDrawerItem().withIdentifier(1)
-                .withName(R.string.price).withIcon(R.drawable.placeholder);
+                .withName(R.string.profile).withIcon(R.drawable.ic_profile);
         PrimaryDrawerItem drawerItemManagePlayersTournaments = new PrimaryDrawerItem()
-                .withIdentifier(2).withName(R.string.author).withIcon(R.drawable.jif);
+                .withIdentifier(2).withName(R.string.logout).withIcon(R.drawable.ic_logout);
 
 
         SecondaryDrawerItem drawerItemSettings = new SecondaryDrawerItem().withIdentifier(3)
-                .withName(R.string.logout).withIcon(R.drawable.ic_join);
+                .withName(R.string.logout).withIcon(R.drawable.ic_logout);
         SecondaryDrawerItem drawerItemAbout = new SecondaryDrawerItem().withIdentifier(4)
                 .withName(R.string.home).withIcon(R.drawable.ic_join);
         SecondaryDrawerItem drawerItemHelp = new SecondaryDrawerItem().withIdentifier(5)
-                .withName(R.string.bookEdition).withIcon(R.drawable.placeholder);
+                .withName(R.string.create).withIcon(R.drawable.placeholder);
         SecondaryDrawerItem drawerItemDonate = new SecondaryDrawerItem().withIdentifier(6)
                 .withName(R.string.Details).withIcon(R.drawable.ic_profile);
 
