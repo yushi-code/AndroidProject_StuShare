@@ -54,9 +54,7 @@ public class MainActivity extends AppCompatActivity {
         final String txtPassword = txtPswd.getText().toString();
         final String txtE = txtEm.getText().toString();
         final String txtP = txtPswd.getText().toString();
-        txtErr = findViewById(R.id.txtVErr);
-        String msgError=(String)getIntent().getSerializableExtra("msgErr");
-        txtErr.setText(msgError);
+        txtErr = findViewById(R.id.txtWrong);
         user=(User)getIntent().getSerializableExtra("user");
 
         btnFgtPswd.setOnClickListener(new View.OnClickListener() {
@@ -127,25 +125,24 @@ public class MainActivity extends AppCompatActivity {
                     }
                     Log.d("TAG", "Server Response is: " + total.toString() + ": " );
 
-                    User user1=jsonToUser(total.toString().trim(),user);
+                    final User user1=jsonToUser(total.toString().trim(),user);
+                    runOnUiThread(new Runnable() {
+                    public void run() {
+                        if (user1 == null) {
+                            txtErr.setText("No such a user exists!");
+                        } else if (!txtPswd.getText().toString().equals(user1.password)) {
+                            txtErr.setText("Wrong password provided!");
+                        }
+                        else if(user1.role.equals("admin")){
+                            Intent i=new Intent(getBaseContext(), AdminDashboard.class);
+                            createCars();
+                            createMessageList();
+                            createRooms();
+                            createBooks();
+                            i.putExtra("user",user1);
+                            startActivity(i);
 
-                    if(user1==null){
-                        Intent i=new Intent(getBaseContext(), MainActivity.class);
-                        i.putExtra("msgErr","Can't login,user name not found.");
-                        startActivity(i);
-                    }
-                    else if(txtPswd.getText().toString().equals(user1.password)){
-                        Log.d("JSON",user1.toString()+"usertoString!");
-                        if(user1.role.equals("admin")){
-                        Intent i=new Intent(getBaseContext(), AdminDashboard.class);
-                        createCars();
-                        createMessageList();
-                        createRooms();
-                        createBooks();
-                        i.putExtra("user",user1);
-                        startActivity(i);
-
-                    }  else if(user1.role.equals("alumni")){
+                        }  else if(user1.role.equals("alumni")){
                             Intent i=new Intent(getBaseContext(), AlumnaiDashboard.class);
                             createMessageList();
                             createBooks();
@@ -153,27 +150,23 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(i);
                         }
                         else{
-                        Intent i=new Intent(getBaseContext(), EventList.class);
-                        createCars();
-                        createRooms();
-                        createMessageList();
-                        createBooks();
-                        i.putExtra("user",user1);
-                        startActivity(i);
-                    }
+                            Intent i=new Intent(getBaseContext(), EventList.class);
+                            createCars();
+                            createRooms();
+                            createMessageList();
+                            createBooks();
+                            i.putExtra("user",user1);
+                            startActivity(i);
+                        }
 
-                }else{
-                    Intent i=new Intent(getBaseContext(), MainActivity.class);
-                    i.putExtra("msgErr","\"Paassword wrong!\"");
-                    startActivity(i);
-                }
-                              user=user1;
+                    }});
+            user=user1;
                     conn.disconnect();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-            }
+    }
         });
         thread.start();
 
