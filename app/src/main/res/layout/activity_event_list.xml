@@ -18,16 +18,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_scrollFlags="scroll|enterAlways"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+   </androidx.appcompat.widget.Toolbar>
+
 
     <include
         android:id="@+id/sortSpinner"
         layout="@layout/spinner"
-        android:layout_width="251dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="144dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSearch" />
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:layout_marginEnd="5dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <ListView
         android:id="@+id/listview"
@@ -52,17 +56,18 @@
 
     <EditText
         android:id="@+id/txtSearch"
-        android:layout_width="184dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="129dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="98dp"
+        android:layout_width="174dp"
+        android:layout_height="46dp"
+
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="1dp"
         android:ems="10"
-        android:hint="Please enter your keywords here"
+        android:hint="Search"
         android:inputType="textPersonName"
         android:textColorHint="#E8E3E3"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/sortSpinner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

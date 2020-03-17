@@ -28,7 +28,9 @@
     <string name="Details">Book Details</string>
     <string name="my_car_share">My Car Share</string>
     <string name="price">Price</string>
+    <string name="profile">My Profile</string>
     <string name="Price">Price of Book</string>
     <string name="Events">Join Available Events</string>
+    <string name="create">Create a new Event</string>
 
 </resources>
