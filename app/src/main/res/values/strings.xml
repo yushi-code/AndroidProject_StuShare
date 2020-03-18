@@ -32,5 +32,7 @@
     <string name="Price">Price of Book</string>
     <string name="Events">Join Available Events</string>
     <string name="create">Create a new Event</string>
+    <string name="contact">Contact Us</string>
+    <string name="upcoming">Upcoming Events</string>
 
 </resources>
